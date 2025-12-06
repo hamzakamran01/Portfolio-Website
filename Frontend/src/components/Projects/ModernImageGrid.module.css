@@ -1,0 +1,299 @@
+/* ============================================================================
+   MODERN IMAGE GRID - Sophisticated overlay layout
+   ============================================================================ */
+
+.imageGrid {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 0.8fr;
+  gap: 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Main Large Image */
+.mainImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.mainImage:hover img {
+  transform: scale(1.05);
+}
+
+/* Secondary Grid (2x2) */
+.secondaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.secondaryImage {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.secondaryImage:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mainImage:hover .overlay,
+.secondaryImage:hover .overlay {
+  opacity: 1;
+}
+
+.imageLabel {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 231, 255, 0.3);
+  border-radius: 8px;
+  color: #00E7FF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+}
+
+.mainImage:hover .imageLabel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.moreOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreOverlay span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00E7FF;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ============================================================================
+   LIGHTBOX
+   ============================================================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightboxContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #00E7FF;
+  transform: scale(1.1);
+}
+
+.lightboxImage {
+  max-width: 90%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.navButton:hover {
+  background: rgba(0, 231, 255, 0.3);
+  border-color: #00E7FF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.caption {
+  text-align: center;
+  color: #CBD5E1;
+  max-width: 600px;
+}
+
+.caption p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.caption span {
+  font-family: 'Orbitron', sans-serif;
+  color: #00E7FF;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .imageGrid {
+    grid-template-rows: 1fr 0.6fr;
+  }
+
+  .mainImage {
+    min-height: 250px;
+  }
+
+  .secondaryImage {
+    height: 100px;
+  }
+
+  .navButton,
+  .closeButton {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .lightboxImage {
+    max-width: 95%;
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageGrid {
+    grid-template-rows: 1fr;
+    gap: 0.75rem;
+  }
+
+  .mainImage {
+    min-height: 200px;
+  }
+
+  .secondaryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .secondaryImage {
+    height: 80px;
+  }
+
+  .moreOverlay span {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .mainImage img,
+  .secondaryImage img,
+  .overlay,
+  .imageLabel {
+    transition: none !important;
+  }
+
+  .mainImage:hover img,
+  .secondaryImage:hover img {
+    transform: none !important;
+  }
+}

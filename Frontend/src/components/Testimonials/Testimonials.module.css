@@ -1,0 +1,261 @@
+/* ============================================================================
+   TESTIMONIALS SECTION STYLES - Enhanced 3D testimonials
+   ============================================================================ */
+
+.section {
+  padding: 8rem 2rem;
+  background: #0D1B2A;
+  min-height: 100vh;
+  color: #E0E7FF;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.section.inView {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #00E7FF 0%, #7B00FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #94A3B8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* 3D Canvas */
+.canvasWrapper {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0, 231, 255, 0.05) 0%, rgba(123, 0, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Testimonial Cards */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00E7FF 0%, #7B00FF 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card:hover,
+.card:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 231, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 231, 255, 0.2);
+}
+
+.card:hover::before,
+.card:focus::before {
+  transform: scaleX(1);
+}
+
+.card:focus {
+  outline: 2px solid #00E7FF;
+  outline-offset: 4px;
+}
+
+.card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.cardActive {
+  background: rgba(0, 231, 255, 0.1);
+  border-color: #00E7FF;
+  box-shadow: 0 12px 40px rgba(0, 231, 255, 0.3);
+}
+
+.cardActive::before {
+  transform: scaleX(1);
+}
+
+.quoteIcon {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: rgba(0, 231, 255, 0.2);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.quote {
+  color: #E0E7FF;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  position: relative;
+  font-style: italic;
+}
+
+.authorInfo {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+.author {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  color: #00E7FF;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.role {
+  color: #94A3B8;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Pulse Animation for Active Card */
+.cardActive {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 12px 40px rgba(0, 231, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 12px 60px rgba(0, 231, 255, 0.5);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .canvasWrapper {
+    height: 450px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .canvasWrapper {
+    height: 400px;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .quote {
+    font-size: 1rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .container {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .canvasWrapper {
+    height: 350px;
+  }
+
+  .quoteIcon {
+    font-size: 3rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .cardsContainer {
+    gap: 1.5rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .card {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .card:hover,
+  .card:focus {
+    transform: none !important;
+  }
+
+  .cardActive {
+    animation: none !important;
+  }
+}

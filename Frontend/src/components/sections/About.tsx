@@ -14,8 +14,8 @@ interface Stat {
 
 const STATS: Stat[] = [
   { value: 2, label: 'Years of Experience' },
-  { value: 15, label: 'Projects Completed' },
-  { value: 5, label: 'Tech Stacks Mastered' }
+  { value: 15, label: 'Enterprise Solutions Delivered' },
+  { value: 70, label: 'Avg. Efficiency Gain (%)' }
 ];
 
 const ANIMATION_CONFIG = {
@@ -68,7 +68,7 @@ const About: React.FC = () => {
   const animateNumber = useCallback((element: Element, targetValue: number) => {
     let current = 0;
     const increment = targetValue / (ANIMATION_CONFIG.duration / ANIMATION_CONFIG.stepTime);
-    
+
     const timer = setInterval(() => {
       current += increment;
       if (current >= targetValue) {
@@ -115,13 +115,13 @@ const About: React.FC = () => {
   }, [animateNumber]);
 
   const canvasConfig = useMemo(() => ({
-    camera: { 
-      position: [0, 0, 20] as [number, number, number], 
-      fov: 45 
+    camera: {
+      position: [0, 0, 20] as [number, number, number],
+      fov: 45
     },
     lights: {
       ambient: { intensity: 0.5 },
-      point: { 
+      point: {
         position: [10, 10, 10] as [number, number, number],
         intensity: 1
       }
@@ -137,7 +137,7 @@ const About: React.FC = () => {
       >
         About Me
       </motion.h2>
-      
+
       <div className={styles.modelContainer}>
         <Canvas camera={canvasConfig.camera}>
           <ambientLight {...canvasConfig.lights.ambient} />
@@ -146,7 +146,7 @@ const About: React.FC = () => {
           <OrbitControls enableZoom={false} />
         </Canvas>
       </div>
-      
+
       <motion.div
         className={styles.aboutContent}
         variants={containerVariants}
@@ -155,20 +155,22 @@ const About: React.FC = () => {
       >
         <motion.div className={styles.aboutText} variants={itemVariants}>
           <motion.p variants={itemVariants}>
-            I'm Hamza Kamran, a dedicated web developer with over 2 years of experience in building
-            full-stack applications using MERN stack. Having expertise in React.js my passion lies
-            in creating immersive 3D web experiences with technologies like Three.js and GSAP.
+            I'm Hamza Kamran, an enterprise web developer and solutions architect specializing in
+            scalable architectures and AI-powered automation. With 2+ years of experience, I design
+            and build intelligent automation workflows that streamline operations for SMEs, reducing
+            manual workload by up to 70% while accelerating growth.
           </motion.p>
           <motion.p variants={itemVariants}>
-            I've worked on numerous projects, from e-commerce platforms to interactive portfolios,
-            always pushing the boundaries of what's possible on the web. When I'm not coding, you
-            can find me exploring literature and politics.
+            My expertise spans end-to-end solution architecture—from enterprise React applications
+            to sophisticated AI automation pipelines using modern frameworks. I transform complex
+            business challenges into elegant, automated systems that deliver measurable ROI. When
+            I'm not architecting solutions, you can find me exploring literature and politics.
           </motion.p>
           <motion.div className={styles.aboutStats} ref={statsRef} variants={itemVariants}>
             {STATS.map((stat) => (
-              <motion.div 
+              <motion.div
                 key={stat.label}
-                className={styles.stat} 
+                className={styles.stat}
                 whileHover={{ scale: 1.05 }}
               >
                 <h3>0</h3>
@@ -177,15 +179,15 @@ const About: React.FC = () => {
             ))}
           </motion.div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className={styles.profileImageContainer}
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
         >
-          <img 
-            src={profileImage} 
-            alt="Hamza Kamran" 
+          <img
+            src={profileImage}
+            alt="Hamza Kamran"
             className={styles.profileImage}
             loading="lazy"
           />

@@ -1,0 +1,11 @@
+/* ============================================================================
+   PROJECTS WRAPPER - Container for all project sections
+   ============================================================================ */
+
+.projectsWrapper {
+  width: 100%;
+  background: #0A0F1A;
+  color: #E0E7FF;
+  position: relative;
+  overflow-x: hidden;
+}

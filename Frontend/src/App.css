@@ -116,5 +116,11 @@ section h2 {
   }
   .project-grid {
     grid-template-columns: 1fr; /* 1 column */
+  }
+}
 
-} }
+/* Spinner animation for lazy loading */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

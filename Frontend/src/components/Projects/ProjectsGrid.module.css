@@ -1,0 +1,27 @@
+/* ============================================================================
+   PROJECTS GRID STYLES - Responsive bento grid layout
+   ============================================================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  auto-rows: 400px;
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    auto-rows: 450px;
+  }
+}

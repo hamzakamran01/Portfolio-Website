@@ -1,156 +1,247 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaAws, FaDocker, FaFigma } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiPostgresql, SiWebpack, SiVercel } from 'react-icons/si';
+import {
+  FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt,
+  FaBrain, FaRobot, FaNetworkWired, FaCode, FaDatabase, FaServer
+} from 'react-icons/fa';
+import {
+  SiTypescript, SiNextdotjs, SiMongodb, SiExpress,
+  SiPostgresql, SiNestjs, SiGraphql, SiRedis, SiKubernetes,
+  SiTerraform, SiVercel, SiOpenai, SiLangchain
+} from 'react-icons/si';
 import { TbBrandThreejs } from 'react-icons/tb';
 import styles from './Skills.module.css';
 import { useInView } from 'react-intersection-observer';
 
-// Temporary placeholder for OrbitingTimeLine
-
-
+// --- Types ---
 interface Skill {
   name: string;
-  level: number;
-  icon: React.ComponentType<{ size?: number; color?: string }>;
-  color?: string;
+  expertise: 'Expert' | 'Advanced' | 'Proficient';
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  category?: string;
 }
 
 interface SkillCategory {
   title: string;
+  subtitle: string;
+  icon: React.ReactNode;
+  gradient: string;
   skills: Skill[];
 }
 
-const skillCategories: SkillCategory[] = [
+// --- Data ---
+const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: "Frontend Development",
+    title: "Agentic AI & Automation",
+    subtitle: "Building intelligent autonomous systems",
+    icon: <FaBrain />,
+    gradient: "linear-gradient(135deg, #7B00FF 0%, #00E7FF 100%)",
     skills: [
-      { name: "React.js", level: 95, icon: FaReact, color: "#61DAFB" },
-      { name: "Three.js", level: 90, icon: FaHtml5, color: "#000000" },
-      { name: "TypeScript", level: 85, icon: SiTypescript, color: "#3178C6" },
-      { name: "GSAP", level: 88, icon: SiNextdotjs, color: "#88CE02" },
-      { name: "Tailwind CSS", level: 92, icon: SiTailwindcss, color: "#06B6D4" }
+      { name: "Claude Agent SDK", expertise: "Expert", icon: FaRobot, color: "#7B00FF" },
+      { name: "n8n Workflows", expertise: "Expert", icon: FaNetworkWired, color: "#FF6D6D" },
+      { name: "LangChain", expertise: "Advanced", icon: SiLangchain, color: "#00D084" },
+      { name: "OpenAI API", expertise: "Expert", icon: SiOpenai, color: "#10A37F" },
+      { name: "AI Orchestration", expertise: "Advanced", icon: FaBrain, color: "#00E7FF" },
+      { name: "Agent Frameworks", expertise: "Advanced", icon: FaRobot, color: "#9333EA" },
     ]
   },
   {
-    title: "Backend Development",
+    title: "Full-Stack Development",
+    subtitle: "Modern web applications & APIs",
+    icon: <FaCode />,
+    gradient: "linear-gradient(135deg, #00E7FF 0%, #6366F1 100%)",
     skills: [
-      { name: "Node.js", level: 88, icon: FaNodeJs, color: "#339933" },
-      { name: "MongoDB", level: 85, icon: SiMongodb, color: "#47A248" },
-      { name: "Express.js", level: 90, icon: SiExpress, color: "#000000" },
-      { name: "REST APIs", level: 92, icon: FaAws, color: "#009688" },
-      { name: "GraphQL", level: 80, icon: FaGitAlt, color: "#E535AB" }
+      { name: "React.js", expertise: "Expert", icon: FaReact, color: "#61DAFB" },
+      { name: "Next.js", expertise: "Expert", icon: SiNextdotjs, color: "#000000" },
+      { name: "TypeScript", expertise: "Expert", icon: SiTypescript, color: "#3178C6" },
+      { name: "Node.js", expertise: "Expert", icon: FaNodeJs, color: "#339933" },
+      { name: "Nest.js", expertise: "Advanced", icon: SiNestjs, color: "#E0234E" },
+      { name: "Express.js", expertise: "Expert", icon: SiExpress, color: "#000000" },
+      { name: "GraphQL", expertise: "Advanced", icon: SiGraphql, color: "#E535AB" },
+      { name: "Three.js", expertise: "Advanced", icon: TbBrandThreejs, color: "#000000" },
     ]
   },
   {
-    title: "Other Skills",
+    title: "Cloud & DevOps",
+    subtitle: "Scalable infrastructure & deployment",
+    icon: <FaServer />,
+    gradient: "linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)",
     skills: [
-      { name: "Git & GitHub", level: 90, icon: FaGitAlt, color: "#F05032" },
-      { name: "UI/UX Design", level: 85, icon: FaCss3Alt, color: "#F24E1E" },
-      { name: "Responsive Design", level: 95, icon: FaAws, color: "#6366F1" },
-      { name: "Performance Opt", level: 88, icon: FaAws, color: "#00E7FF" },
-      { name: "Testing", level: 82, icon: FaGitAlt, color: "#6366F1" }
+      { name: "AWS", expertise: "Advanced", icon: FaAws, color: "#FF9900" },
+      { name: "Docker", expertise: "Advanced", icon: FaDocker, color: "#2496ED" },
+      { name: "Kubernetes", expertise: "Proficient", icon: SiKubernetes, color: "#326CE5" },
+      { name: "Terraform", expertise: "Proficient", icon: SiTerraform, color: "#7B42BC" },
+      { name: "Vercel", expertise: "Expert", icon: SiVercel, color: "#000000" },
+      { name: "CI/CD Pipelines", expertise: "Advanced", icon: FaGitAlt, color: "#F05032" },
+    ]
+  },
+  {
+    title: "Databases & Backend",
+    subtitle: "Data architecture & optimization",
+    icon: <FaDatabase />,
+    gradient: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+    skills: [
+      { name: "MongoDB", expertise: "Expert", icon: SiMongodb, color: "#47A248" },
+      { name: "PostgreSQL", expertise: "Advanced", icon: SiPostgresql, color: "#336791" },
+      { name: "Redis", expertise: "Advanced", icon: SiRedis, color: "#DC382D" },
+      { name: "Database Design", expertise: "Expert", icon: FaDatabase, color: "#00E7FF" },
+      { name: "REST APIs", expertise: "Expert", icon: FaServer, color: "#6366F1" },
+      { name: "Microservices", expertise: "Advanced", icon: FaNetworkWired, color: "#FF6D6D" },
     ]
   }
 ];
 
-const Skills = () => {
-  const [skillsRef, skillsInView] = useInView({
+// Expertise level configuration
+const EXPERTISE_CONFIG = {
+  'Expert': { color: '#00E7FF', glow: '0 0 20px rgba(0, 231, 255, 0.5)', weight: 3 },
+  'Advanced': { color: '#7B00FF', glow: '0 0 20px rgba(123, 0, 255, 0.5)', weight: 2 },
+  'Proficient': { color: '#6366F1', glow: '0 0 20px rgba(99, 102, 241, 0.5)', weight: 1 }
+};
+
+// --- Component ---
+const Skills: React.FC = () => {
+  const [headerRef, headerInView] = useInView({
     triggerOnce: false,
-    threshold: 0.2
+    threshold: 0.3
   });
 
-  const [toolsRef, toolsInView] = useInView({
+  const [categoriesRef, categoriesInView] = useInView({
     triggerOnce: false,
-    threshold: 0.2
+    threshold: 0.1
   });
-
-  const toolsData = [
-    { icon: FaReact, name: 'React', color: '#61DAFB' },
-    { icon: SiNextdotjs, name: 'Next.js', color: '#000000' },
-    { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
-    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-    { icon: SiPostgresql, name: 'PostgreSQL', color: '#336791' },
-    { icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
-    { icon: TbBrandThreejs, name: 'Three.js', color: '#000000' },
-    { icon: FaGitAlt, name: 'Git', color: '#F05032' },
-    { icon: FaDocker, name: 'Docker', color: '#2496ED' },
-    { icon: SiWebpack, name: 'Webpack', color: '#8DD6F9' },
-    { icon: SiVercel, name: 'Vercel', color: '#000000' },
-    { icon: FaFigma, name: 'Figma', color: '#F24E1E' }
-  ];
 
   return (
-    <section id="skills" className={styles.skills}>
-      <div className={styles.skillsWrapper}>
+    <section id="skills" className={styles.skillsSection}>
+      {/* Animated Background */}
+      <div className={styles.backgroundPattern} />
+      <div className={styles.gridOverlay} />
+
+      <div className={styles.container}>
+        {/* Header */}
         <motion.div
-          ref={skillsRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={skillsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className={styles.content}
+          ref={headerRef}
+          className={styles.header}
+          initial={{ opacity: 0, y: 30 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          <h2>Skills</h2>
-          <div className={styles.skillsContainer}>
-            <div className={styles.skillCategories}>
-              {skillCategories.map((category, index) => (
-                <motion.div
-                  key={category.title}
-                  className={styles.skillCategory}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={skillsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <h3 className={styles.categoryTitle}>{category.title}</h3>
-                  <div className={styles.skillList}>
-                    {category.skills.map((skill) => (
-                      <div key={skill.name} className={styles.skillItem}>
-                        <div className={styles.skillName}>
-                          <span className={styles.skillIcon}>
-                            <skill.icon size={20} color={skill.color} />
-                          </span>
-                          <span>{skill.name}</span>
-                        </div>
-                        <div className={styles.progressBar}>
-                          <motion.div
-                            className={styles.progressFill}
-                            initial={{ width: 0 }}
-                            animate={skillsInView ? { width: `${skill.level}%` } : { width: 0 }}
-                            transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
-                          />
-                        </div>
-                        <div className={styles.skillLevel}>{skill.level}%</div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <h2 className={styles.mainTitle}>Technical Expertise</h2>
+          <p className={styles.subtitle}>
+            Enterprise-grade skills across AI automation, full-stack development, and cloud infrastructure
+          </p>
         </motion.div>
 
-        <motion.div 
-          ref={toolsRef}
-          className={styles.toolsRibbon}
-          initial={{ opacity: 0, y: 50 }}
-          animate={toolsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        {/* Skill Categories */}
+        <div ref={categoriesRef} className={styles.categoriesGrid}>
+          {SKILL_CATEGORIES.map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              className={styles.categoryCard}
+              initial={{ opacity: 0, y: 40 }}
+              animate={categoriesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
+            >
+              {/* Category Header */}
+              <div className={styles.categoryHeader}>
+                <div
+                  className={styles.categoryIcon}
+                  style={{ background: category.gradient }}
+                >
+                  {category.icon}
+                </div>
+                <div className={styles.categoryTitleGroup}>
+                  <h3 className={styles.categoryTitle}>{category.title}</h3>
+                  <p className={styles.categorySubtitle}>{category.subtitle}</p>
+                </div>
+              </div>
+
+              {/* Skills Grid */}
+              <div className={styles.skillsGrid}>
+                {category.skills.map((skill, skillIndex) => {
+                  const expertiseConfig = EXPERTISE_CONFIG[skill.expertise];
+
+                  return (
+                    <motion.div
+                      key={skill.name}
+                      className={styles.skillCard}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={categoriesInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{
+                        duration: 0.4,
+                        delay: categoryIndex * 0.15 + skillIndex * 0.05
+                      }}
+                      whileHover={{
+                        y: -5,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <div className={styles.skillCardInner}>
+                        {/* Skill Icon */}
+                        <div
+                          className={styles.skillIconWrapper}
+                          style={{ color: skill.color }}
+                        >
+                          <skill.icon className={styles.skillIcon} />
+                        </div>
+
+                        {/* Skill Name */}
+                        <div className={styles.skillName}>{skill.name}</div>
+
+                        {/* Expertise Badge */}
+                        <div
+                          className={styles.expertiseBadge}
+                          style={{
+                            borderColor: expertiseConfig.color,
+                            color: expertiseConfig.color
+                          }}
+                        >
+                          {skill.expertise}
+                        </div>
+
+                        {/* Hover Glow Effect */}
+                        <div
+                          className={styles.skillGlow}
+                          style={{
+                            boxShadow: expertiseConfig.glow,
+                            borderColor: expertiseConfig.color
+                          }}
+                        />
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Category Gradient Border */}
+              <div
+                className={styles.categoryBorder}
+                style={{ background: category.gradient }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Expertise Legend */}
+        <motion.div
+          className={styles.expertiseLegend}
+          initial={{ opacity: 0, y: 20 }}
+          animate={categoriesInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <div className={styles.toolsTrack}>
-            {[...toolsData, ...toolsData].map((tool, index) => (
-              <motion.div 
-                key={`${tool.name}-${index}`}
-                className={styles.toolItem}
-                whileHover={{ 
-                  scale: 1.1,
-                  filter: 'brightness(1.2)',
-                  transition: { duration: 0.2 }
-                }}
-              >
-                <tool.icon style={{ color: tool.color }} />
-                <span>{tool.name}</span>
-              </motion.div>
+          <div className={styles.legendTitle}>Expertise Levels</div>
+          <div className={styles.legendItems}>
+            {Object.entries(EXPERTISE_CONFIG).map(([level, config]) => (
+              <div key={level} className={styles.legendItem}>
+                <div
+                  className={styles.legendDot}
+                  style={{
+                    backgroundColor: config.color,
+                    boxShadow: config.glow
+                  }}
+                />
+                <span style={{ color: config.color }}>{level}</span>
+              </div>
             ))}
           </div>
         </motion.div>

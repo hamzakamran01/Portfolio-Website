@@ -17,9 +17,9 @@ const Hero: React.FC = () => {
       <ReactLogo3D />
       <div ref={textRef} className="hero-content">
         <h1><span>Hi, I'm</span> Hamza Kamran</h1>
-        <h2>Crafting Next-Gen Web Experiences</h2>
+        <h2>Engineering Enterprise Solutions & AI-Powered Automation</h2>
         <p>
-          I'm a passionate web developer with over 2 years of experience, specializing in React.js and 3D web development using Three.js and GSAP. Let's build something extraordinary together!
+          Enterprise web developer and solutions architect with 2+ years architecting scalable platforms and AI automation workflows that transform SME operations. I deliver strategic technology solutions that drive measurable business growth.
         </p>
         <div className="hero-cta">
           <a href="#projects" className="cta-button">Explore My Work</a>
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
           <a href="mailto:hamzakamran843@gmail.com" className="social-link">
             <span className="social-icon email-icon">✉️</span>
             <span>Email</span>
-          </a>  
+          </a>
         </div>
       </div>
     </section>

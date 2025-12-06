@@ -1,0 +1,466 @@
+/* ============================================================================
+   MINOR PROJECTS CAROUSEL - Horizontal scrolling showcase
+   ============================================================================ */
+
+.section {
+  padding: 8rem 0;
+  background: #0D1B2A;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 70% 50%,
+    rgba(123, 0, 255, 0.03) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  position: relative;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #00E7FF 0%, #7B00FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #94A3B8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Controls */
+.controls {
+  position: absolute;
+  top: 0;
+  right: 4rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.controlButton {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.controlButton:hover {
+  background: rgba(0, 231, 255, 0.2);
+  border-color: #00E7FF;
+  transform: scale(1.1);
+}
+
+/* Scroll Container */
+.scrollContainer {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 2rem 0;
+  margin: 0 -4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  /* Custom Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 231, 255, 0.3) rgba(255, 255, 255, 0.05);
+}
+
+.scrollContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin: 0 4rem;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: rgba(0, 231, 255, 0.3);
+  border-radius: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 231, 255, 0.5);
+}
+
+/* Card */
+.card {
+  flex: 0 0 380px;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 231, 255, 0.4);
+  box-shadow: 0 20px 60px rgba(0, 231, 255, 0.2);
+}
+
+/* Image */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 27, 42, 0.9) 0%,
+    transparent 100%
+  );
+}
+
+/* Card Content */
+.cardContent {
+  padding: 1.5rem;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.category {
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 231, 255, 0.1);
+  border: 1px solid rgba(0, 231, 255, 0.3);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #00E7FF;
+  font-weight: 600;
+}
+
+/* Title */
+.cardTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Description */
+.cardDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tech Stack */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech {
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #E0E7FF;
+  transition: all 0.2s;
+}
+
+.card:hover .tech {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00E7FF;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.actionButton:hover {
+  background: rgba(0, 231, 255, 0.2);
+  border-color: #00E7FF;
+  transform: translateY(-2px);
+}
+
+.actionButton span {
+  font-size: 0.85rem;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  margin-top: 3rem;
+  text-align: center;
+  color: #94A3B8;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scrollLine {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00E7FF 50%,
+    transparent 100%
+  );
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1280px) {
+  .container {
+    padding: 0 3rem;
+  }
+
+  .controls {
+    right: 3rem;
+  }
+
+  .scrollContainer {
+    margin: 0 -3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .scrollContainer::-webkit-scrollbar-track {
+    margin: 0 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 0 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .controls {
+    position: static;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .scrollContainer {
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .scrollContainer::-webkit-scrollbar-track {
+    margin: 0 2rem;
+  }
+
+  .card {
+    flex: 0 0 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .scrollContainer {
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .scrollContainer::-webkit-scrollbar-track {
+    margin: 0 1.5rem;
+  }
+
+  .card {
+    flex: 0 0 280px;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollContainer {
+    scroll-behavior: auto;
+  }
+
+  .image,
+  .card,
+  .actionButton,
+  .tech,
+  .controlButton {
+    transition: none !important;
+  }
+
+  .scrollLine {
+    animation: none !important;
+  }
+
+  .card:hover .image {
+    transform: none !important;
+  }
+}
