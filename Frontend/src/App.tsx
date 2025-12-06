@@ -1,6 +1,5 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useSound } from './hooks/useSound';
 import { SoundToggle } from './components/ui/SoundToggle';
 import Navigation from './components/navigation';
@@ -12,8 +11,6 @@ import Projects from './components/Projects/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
 import Cursor from './components/ui/Cursor';
-import LoadingScreen from './components/ui/LoadingScreen';
-import { useLoadingStore } from './store/loadingStore';
 import './App.css';
 import PublicSpeaking from './components/sections/PublicSpeaking';
 import Testimonials from './components/Testimonials/Testimonials';
@@ -23,7 +20,6 @@ import Philosophy from './components/sections/Philosophy';
 const Skills = lazy(() => import('./components/sections/Skills'));
 
 function App() {
-  const { isLoading } = useLoadingStore();
   const { playClick, playHover } = useSound();
 
   // Preload Skills section when user scrolls near it
@@ -49,11 +45,9 @@ function App() {
       return () => observer.disconnect();
     };
 
-    if (!isLoading) {
-      const timer = setTimeout(preloadSkills, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
+    const timer = setTimeout(preloadSkills, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // Add click sound to all buttons and links
@@ -85,53 +79,23 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <AnimatePresence>
-          {isLoading ? (
-            <LoadingScreen />
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Cursor />
-              <Navigation />
-              <main>
-                <Hero />
-                <About />
-                <ZaaricFounder />
-                <Suspense fallback={
-                  <div style={{
-                    minHeight: '100vh',
-                    background: '#0D1B2A',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    <div style={{
-                      width: '50px',
-                      height: '50px',
-                      border: '3px solid rgba(0, 231, 255, 0.3)',
-                      borderTop: '3px solid #00E7FF',
-                      borderRadius: '50%',
-                      animation: 'spin 1s linear infinite'
-                    }} />
-                  </div>
-                }>
-                  <Skills />
-                </Suspense>
-                <Philosophy />
-                <Projects />
-                <QimamFellowship />
-                <PublicSpeaking />
-                <Contact />
-              </main>
-              <Footer />
-              <SoundToggle />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <Cursor />
+        <Navigation />
+        <main>
+          <Hero />
+          <About />
+          <ZaaricFounder />
+          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+            <Skills />
+          </Suspense>
+          <Philosophy />
+          <Projects />
+          <QimamFellowship />
+          <PublicSpeaking />
+          <Contact />
+        </main>
+        <Footer />
+        <SoundToggle />
       </div>
     </Router>
   );
