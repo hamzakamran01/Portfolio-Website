@@ -13,7 +13,6 @@ import Footer from './components/sections/Footer';
 import Cursor from './components/ui/Cursor';
 import './App.css';
 import PublicSpeaking from './components/sections/PublicSpeaking';
-import Testimonials from './components/Testimonials/Testimonials';
 import Philosophy from './components/sections/Philosophy';
 
 // Lazy load Skills section to reduce initial bundle size
