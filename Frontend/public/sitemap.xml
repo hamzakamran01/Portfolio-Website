@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://hamzakamran.tech/</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://hamzakamran.tech/assets/ceo_image.png</image:loc>
+      <image:title>Hamza Kamran — Enterprise AI Solutions Architect</image:title>
+      <image:caption>Hamza Kamran, Founder and CEO of Zaaric, Enterprise Solutions Architect and AI Automation Specialist</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hamzakamran.tech/assets/potrait1.jpg</image:loc>
+      <image:title>Hamza Kamran Portrait</image:title>
+      <image:caption>Professional portrait of Hamza Kamran</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hamzakamran.tech/assets/zaaric.png</image:loc>
+      <image:title>Zaaric Logo</image:title>
+      <image:caption>Zaaric — AI-Powered Enterprise Automation</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#about</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Zaaric Founder Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#zaaric-founder</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Skills Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#skills</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Projects Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#projects</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Qimam Fellowship Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#qimam-fellowship</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Public Speaking Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#public-speaking</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://hamzakamran.tech/#contact</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

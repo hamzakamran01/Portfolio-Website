@@ -1,0 +1,33 @@
+# https://hamzakamran.tech Robots.txt
+# Enterprise-Level Crawler Directives
+
+User-agent: *
+Allow: /
+
+# Allow all major crawlers full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Disallow non-essential paths
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://hamzakamran.tech/sitemap.xml
+
+# Host
+Host: https://hamzakamran.tech

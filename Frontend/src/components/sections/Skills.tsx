@@ -6,10 +6,9 @@ import {
 } from 'react-icons/fa';
 import {
   SiTypescript, SiNextdotjs, SiMongodb, SiExpress,
-  SiPostgresql, SiNestjs, SiGraphql, SiRedis, SiKubernetes,
+  SiPostgresql, SiNestjs, SiRedis, SiKubernetes,
   SiTerraform, SiVercel, SiOpenai, SiLangchain
 } from 'react-icons/si';
-import { TbBrandThreejs } from 'react-icons/tb';
 import styles from './Skills.module.css';
 import { useInView } from 'react-intersection-observer';
 
@@ -58,8 +57,6 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       { name: "Node.js", expertise: "Expert", icon: FaNodeJs, color: "#339933" },
       { name: "Nest.js", expertise: "Advanced", icon: SiNestjs, color: "#E0234E" },
       { name: "Express.js", expertise: "Expert", icon: SiExpress, color: "#000000" },
-      { name: "GraphQL", expertise: "Advanced", icon: SiGraphql, color: "#E535AB" },
-      { name: "Three.js", expertise: "Advanced", icon: TbBrandThreejs, color: "#000000" },
     ]
   },
   {
@@ -94,9 +91,9 @@ const SKILL_CATEGORIES: SkillCategory[] = [
 
 // Expertise level configuration
 const EXPERTISE_CONFIG = {
-  'Expert': { color: '#00E7FF', glow: '0 0 20px rgba(0, 231, 255, 0.5)', weight: 3 },
-  'Advanced': { color: '#7B00FF', glow: '0 0 20px rgba(123, 0, 255, 0.5)', weight: 2 },
-  'Proficient': { color: '#6366F1', glow: '0 0 20px rgba(99, 102, 241, 0.5)', weight: 1 }
+  'Expert': { color: '#00E7FF', weight: 3 },
+  'Advanced': { color: '#7B00FF', weight: 2 },
+  'Proficient': { color: '#6366F1', weight: 1 }
 };
 
 // --- Component ---
@@ -171,10 +168,6 @@ const Skills: React.FC = () => {
                         duration: 0.4,
                         delay: categoryIndex * 0.15 + skillIndex * 0.05
                       }}
-                      whileHover={{
-                        y: -5,
-                        transition: { duration: 0.2 }
-                      }}
                     >
                       <div className={styles.skillCardInner}>
                         {/* Skill Icon */}
@@ -198,15 +191,6 @@ const Skills: React.FC = () => {
                         >
                           {skill.expertise}
                         </div>
-
-                        {/* Hover Glow Effect */}
-                        <div
-                          className={styles.skillGlow}
-                          style={{
-                            boxShadow: expertiseConfig.glow,
-                            borderColor: expertiseConfig.color
-                          }}
-                        />
                       </div>
                     </motion.div>
                   );
@@ -236,8 +220,7 @@ const Skills: React.FC = () => {
                 <div
                   className={styles.legendDot}
                   style={{
-                    backgroundColor: config.color,
-                    boxShadow: config.glow
+                    backgroundColor: config.color
                   }}
                 />
                 <span style={{ color: config.color }}>{level}</span>

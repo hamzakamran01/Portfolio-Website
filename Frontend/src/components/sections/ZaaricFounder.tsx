@@ -1,17 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { FaRocket, FaBrain, FaChartLine, FaGlobe, FaLinkedin, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 import styles from './ZaaricFounder.module.css';
 
 // --- Types ---
-interface MissionGoal {
-    label: string;
-    target: string;
-    description: string;
-    icon: React.ReactNode;
-    color: string;
-}
-
 interface ContactLink {
     label: string;
     url: string;
@@ -20,47 +12,16 @@ interface ContactLink {
 }
 
 // --- Data ---
-const MISSION_GOALS: MissionGoal[] = [
-    {
-        label: 'Global Market Reach',
-        target: '50+ Countries',
-        description: 'Expanding AI solutions across international markets',
-        icon: <FaGlobe />,
-        color: '#00E7FF'
-    },
-    {
-        label: 'Enterprise Solutions',
-        target: '100+ Deployments',
-        description: 'Scaling intelligent automation for Fortune 500 companies',
-        icon: <FaBrain />,
-        color: '#7B00FF'
-    },
-    {
-        label: 'Efficiency Innovation',
-        target: '80% Optimization',
-        description: 'Revolutionizing business operations through AI-driven workflows',
-        icon: <FaChartLine />,
-        color: '#00E7FF'
-    },
-    {
-        label: 'Industry Leadership',
-        target: 'Top 15 AI Platform',
-        description: 'Becoming a recognized leader in enterprise AI automation',
-        icon: <FaRocket />,
-        color: '#7B00FF'
-    },
-];
-
 const CONTACT_LINKS: ContactLink[] = [
     {
         label: 'Visit Zaaric',
-        url: 'https://zaaric.com',
+        url: 'https://zaaric-ai.com',
         icon: <FaExternalLinkAlt />,
         type: 'primary'
     },
     {
         label: 'LinkedIn',
-        url: '#', // Placeholder as user will update
+        url: 'https://www.linkedin.com/in/hamza-kamran-7b1a85294/',
         icon: <FaLinkedin />,
         type: 'secondary'
     },
@@ -119,6 +80,10 @@ const ZaaricFounder: React.FC = () => {
         return () => observer.disconnect();
     }, []);
 
+    // Helper to get links by type
+    const primaryLink = CONTACT_LINKS.find(link => link.type === 'primary');
+    const secondaryLinks = CONTACT_LINKS.filter(link => link.type === 'secondary');
+
     return (
         <section id="zaaric-founder" className={styles.zaaricSection} ref={sectionRef}>
             {/* Animated Background */}
@@ -148,6 +113,8 @@ const ZaaricFounder: React.FC = () => {
                             className={styles.profileImageContainer}
                             onMouseMove={handleMouseMove}
                             onMouseLeave={handleMouseLeave}
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             style={{
                                 rotateX,
                                 rotateY,
@@ -166,11 +133,7 @@ const ZaaricFounder: React.FC = () => {
 
                         <div className={styles.profileInfo}>
                             <h3 className={styles.profileName}>Hamza Kamran</h3>
-                            <p className={styles.profileTitle}>Founder & CEO</p>
-                            <div className={styles.companyBadge}>
-                                <FaRocket />
-                                <span>ZAARIC</span>
-                            </div>
+                            <p className={styles.profileTitle}>Founder & CEO at <span className={styles.highlight}>Zaaric</span></p>
                         </div>
                     </motion.div>
 
@@ -184,72 +147,68 @@ const ZaaricFounder: React.FC = () => {
                         <div className={styles.visionCard}>
                             <h3>Company Vision</h3>
                             <p>
-                                Zaaric is an emerging AI-powered enterprise automation venture, poised to transform
-                                how businesses operate globally. We're building cutting-edge solutions that specialize
-                                in intelligent automation workflows, scalable cloud architectures, and AI-driven
-                                insights designed to empower organizations of all sizes.
+                                Zaaric is a next-generation AI enterprise automation venture redefining how organizations achieve efficiency and growth. We craft intelligent automation workflows, scalable cloud solutions, and AI-driven insights that transform complex operations into seamless, actionable outcomes.
                             </p>
                             <p>
-                                As we cultivate our initial client base and establish our footprint in the market,
-                                our mission is clear: bridge the gap between complex technology and practical
-                                business outcomes, helping SMEs and Fortune 500 enterprises unlock their full
-                                potential through innovative, enterprise-grade automation solutions.
+                                Our mission is simple yet bold: empower businesses—from agile SMEs to Fortune 500 leaders—to unlock their full potential with innovative, enterprise-grade automation that drives measurable impact, accelerates decision-making, and future-proofs operations in an increasingly digital world.
                             </p>
                         </div>
 
-                        {/* Strategic Goals Section */}
-                        <div className={styles.missionSection}>
-                            <h3 className={styles.missionTitle}>Strategic Mission & Goals</h3>
-                            <p className={styles.missionSubtitle}>
-                                Our roadmap to becoming a global leader in AI-powered enterprise automation
-                            </p>
-                        </div>
-
-                        {/* Mission Goals Grid */}
-                        <div className={styles.statsGrid}>
-                            {MISSION_GOALS.map((goal, index) => (
-                                <motion.div
-                                    key={goal.label}
-                                    className={styles.statCard}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                                    whileHover={{ scale: 1.05, y: -5 }}
-                                >
-                                    <div className={styles.statIcon} style={{ color: goal.color }}>
-                                        {goal.icon}
-                                    </div>
-                                    <div className={styles.statValue}>{goal.target}</div>
-                                    <div className={styles.statLabel}>{goal.label}</div>
-                                    <div className={styles.goalDescription}>{goal.description}</div>
-                                    <div className={styles.statGlow} style={{
-                                        boxShadow: `0 0 20px ${goal.color}40`
-                                    }} />
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Contact Links */}
-                        <div className={styles.contactSection}>
-                            <h4>Connect with Zaaric</h4>
-                            <div className={styles.contactLinks}>
-                                {CONTACT_LINKS.map((link) => (
-                                    <motion.a
-                                        key={link.label}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`${styles.contactLink} ${link.type === 'primary' ? styles.primaryLink : styles.secondaryLink
-                                            }`}
-                                        whileHover={{ scale: 1.02, y: -2 }}
-                                        whileTap={{ scale: 0.98 }}
-                                    >
-                                        {link.icon}
-                                        <span>{link.label}</span>
-                                    </motion.a>
-                                ))}
+                        {/* Logo & Links Side-by-Side Section */}
+                        <motion.div
+                            className={styles.bottomSection}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                            <div className={styles.logoWrapper}>
+                                <img
+                                    src="/assets/zaaric_logo.jpeg"
+                                    alt="Zaaric Logo"
+                                    className={styles.zaaricLogo}
+                                />
                             </div>
-                        </div>
+
+                            <div className={styles.linksWrapper}>
+                                <h4>Connect with Zaaric</h4>
+                                <div className={styles.contactContainer}>
+                                    {/* Primary Link (Full Width) */}
+                                    {primaryLink && (
+                                        <motion.a
+                                            key={primaryLink.label}
+                                            href={primaryLink.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${styles.contactLink} ${styles.primaryLink} ${styles.fullWidthLink}`}
+                                            whileHover={{ scale: 1.02, y: -2 }}
+                                            whileTap={{ scale: 0.98 }}
+                                        >
+                                            {primaryLink.icon}
+                                            <span>{primaryLink.label}</span>
+                                        </motion.a>
+                                    )}
+
+                                    {/* Secondary Links (Side by Side) */}
+                                    <div className={styles.secondaryLinksRow}>
+                                        {secondaryLinks.map((link) => (
+                                            <motion.a
+                                                key={link.label}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`${styles.contactLink} ${styles.secondaryLink}`}
+                                                whileHover={{ scale: 1.02, y: -2 }}
+                                                whileTap={{ scale: 0.98 }}
+                                            >
+                                                {link.icon}
+                                                <span>{link.label}</span>
+                                            </motion.a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
                     </motion.div>
                 </div>
             </div>

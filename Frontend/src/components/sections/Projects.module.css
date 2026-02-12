@@ -3,6 +3,9 @@
   background: #0D1B2A;
   min-height: 100vh;
   color: #E0E7FF;
+  margin-bottom: 0 !important;
+  max-width: none !important;
+  width: 100%;
 }
 
 .container {
@@ -17,11 +20,36 @@
 
 .header h2 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 3.5rem;
-  background: linear-gradient(135deg, #00E7FF 0%, #7B00FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  /* Keep font family explicitly if desired or inherited, About didn't have it but Projects did. I'll remove strict dependency if App.css handles it, but keeps style consistent with About's simplified look. */
+  font-size: 2.5rem;
+  /* Changed from 3.5rem */
+  color: #E0E7FF;
+  /* Solid color */
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+}
+
+.header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  /* Changed from -15px */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  /* Changed from 200px */
+  height: 3px;
+  /* Changed from 4px */
+  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  /* About style */
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .header p {
@@ -36,7 +64,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  auto-rows: 400px;
+  grid-auto-rows: 400px;
 }
 
 .card {
@@ -324,30 +352,36 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  background: #00E7FF;
+  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
   color: #0D1B2A;
   padding: 1rem;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 231, 255, 0.3);
+  border: none;
 }
 
 .linkButton:hover {
-  background: #7B00FF;
-  color: #fff;
+  background: linear-gradient(135deg, #00F0FF 0%, #00BBFF 100%);
+  color: #0D1B2A;
   transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 231, 255, 0.5);
 }
 
 .secondaryLink {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #E0E7FF;
+  box-shadow: none;
 }
 
 .secondaryLink:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 231, 255, 0.4);
+  color: #00E7FF;
+  box-shadow: 0 0 20px rgba(0, 231, 255, 0.2);
 }
 
 .ndaBadge {
@@ -384,7 +418,7 @@
 @media (max-width: 768px) {
   .bentoGrid {
     grid-template-columns: 1fr;
-    auto-rows: 450px;
+    grid-auto-rows: 450px;
   }
 
   .majorCard {

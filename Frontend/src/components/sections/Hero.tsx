@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import ReactLogo3D from '../3d/ReactLogo3D';
 import { gsap } from 'gsap';
-import './Hero.Module.css';
+import styles from './Hero.module.css';
 
 const LinkedInIcon = '/assets/linkedin.svg';
 
@@ -13,25 +13,25 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="hero">
+    <section id="hero" className={styles.hero}>
       <ReactLogo3D />
-      <div ref={textRef} className="hero-content">
+      <div ref={textRef} className={styles.heroContent}>
         <h1><span>Hi, I'm</span> Hamza Kamran</h1>
-        <h2>Engineering Enterprise Solutions & AI-Powered Automation</h2>
+        <h2>Engineering AI-Powered Enterprise Solutions</h2>
         <p>
-          Enterprise web developer and solutions architect with 2+ years architecting scalable platforms and AI automation workflows that transform SME operations. I deliver strategic technology solutions that drive measurable business growth.
+          Architecting scalable platforms and intelligent automation workflows that drive measurable business growth.
         </p>
-        <div className="hero-cta">
-          <a href="#projects" className="cta-button">Explore My Work</a>
-          <a href="#contact" className="cta-button secondary">Get in Touch</a>
+        <div className={styles.heroCta}>
+          <a href="#projects" className={styles.ctaButton}>Explore My Work</a>
+          <a href="#contact" className={`${styles.ctaButton} ${styles.secondary}`}>Get in Touch</a>
         </div>
-        <div className="hero-socials">
-          <a href="https://www.linkedin.com/in/hamza-kamran-7b1a85294/" target="_blank" rel="noopener noreferrer" className="social-link">
-            <img src={LinkedInIcon} alt="LinkedIn" className="social-icon" />
+        <div className={styles.heroSocials}>
+          <a href="https://www.linkedin.com/in/hamza-kamran-7b1a85294/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <img src={LinkedInIcon} alt="LinkedIn" className={styles.socialIcon} />
             <span>LinkedIn</span>
           </a>
-          <a href="mailto:hamzakamran843@gmail.com" className="social-link">
-            <span className="social-icon email-icon">✉️</span>
+          <a href="mailto:hamzakamran843@gmail.com" className={styles.socialLink}>
+            <span className={`${styles.socialIcon} ${styles.emailIcon}`}>✉️</span>
             <span>Email</span>
           </a>
         </div>

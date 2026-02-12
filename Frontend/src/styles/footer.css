@@ -1,43 +1,76 @@
 .footer {
-    background: #0D1B2A;
-    padding: 50px 20px;
-    border-top: 1px solid #00E7FF;
+  background: #0D1B2A;
+  padding: 50px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand h3 {
+  color: #00E7FF;
+  font-size: 1.5rem;
+}
+
+.footer-brand p {
+  color: #E0E7FF;
+}
+
+.footer-links,
+.footer-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a,
+.footer-socials a {
+  color: #E0E7FF;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  color: #7B00FF;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #94A3B8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.5rem;
   }
-  
+
   .footer-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .footer-brand h3 {
-    color: #00E7FF;
-    font-size: 1.5rem;
-  }
-  
-  .footer-brand p {
-    color: #E0E7FF;
-  }
-  
-  .footer-links, .footer-socials {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .footer-links a, .footer-socials a {
-    color: #E0E7FF;
-    text-decoration: none;
-  }
-  
-  .footer-links a:hover, .footer-socials a:hover {
-    color: #7B00FF;
-  }
-  
-  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
     text-align: center;
-    margin-top: 20px;
-    color: #E0E7FF;
   }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* Hide About (2nd) and Skills (4th) on mobile to reduce clutter */
+  .footer-links a:nth-child(2),
+  .footer-links a:nth-child(4) {
+    display: none;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}

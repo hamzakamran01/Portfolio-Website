@@ -1,8 +1,9 @@
 .publicSpeaking {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background: linear-gradient(to bottom, #0D1B2A, #0A1420);
+  margin-bottom: 0 !important;
 }
 
 .publicSpeaking::before {
@@ -12,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
     radial-gradient(circle at 90% 10%, rgba(0, 231, 255, 0.1) 0%, transparent 40%);
   pointer-events: none;
@@ -24,23 +25,27 @@
 }
 
 .header h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #E0E7FF;
   margin-bottom: 20px;
-  background-clip: text;
-  text-shadow: 0 0 20px rgba(0, 231, 255, 0.3);
   position: relative;
   display: inline-block;
+  letter-spacing: 2px;
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: border-box;
+  text-shadow: none;
 }
 
 .header h2::after {
-  font-size: 3rem;
-  color: #E0E7FF;
-  margin-bottom: 20px;
-  background-clip: text;
-  text-shadow: 0 0 20px rgba(0, 231, 255, 0.3);
-  position: relative;
-  display: inline-block;
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366F1, transparent);
 }
 
 .subtitle {
@@ -59,13 +64,12 @@
 }
 
 .eventCard {
-  background: rgba(13, 27, 42, 0.6);
+  background: #111520;
   border-radius: 20px;
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 156, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -76,7 +80,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #8A9CFF, transparent);
+  background: linear-gradient(90deg, transparent, #6366F1, transparent);
 }
 
 .eventImage {
@@ -104,12 +108,12 @@
   transform: scale(1.05);
 }
 
-.eventImage img[src*="parliamentary"]{
-  filter:brightness(1.1);
+.eventImage img[src*="parliamentary"] {
+  filter: brightness(1.1);
 }
 
 .eventCard:hover .eventImage img[src*="parliamentary"] {
-  transform: scale(1.05) ;
+  transform: scale(1.05);
 }
 
 .eventHeader {
@@ -127,14 +131,14 @@
 
 .date {
   font-size: 0.9rem;
-  color: #8A9CFF;
-  background: rgba(138, 156, 255, 0.1);
+  color: #00E7FF;
+  background: rgba(0, 231, 255, 0.1);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
 }
 
 .venue {
-  color: #8A9CFF;
+  color: #94A3B8;
   font-size: 1rem;
   margin-bottom: 1rem;
   font-style: italic;
@@ -162,7 +166,7 @@
 }
 
 .bullet {
-  color: #8A9CFF;
+  color: #00E7FF;
   font-size: 1.2rem;
   line-height: 1;
 }
@@ -201,10 +205,9 @@
 .statCard {
   text-align: center;
   padding: 1.5rem 2.5rem;
-  background: rgba(13, 27, 42, 0.6);
+  background: #111520;
   border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 156, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   min-width: 150px;
 }
 
@@ -212,10 +215,11 @@
   display: block;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #8A9CFF;
+  color: #00E7FF;
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #8A9CFF, #E0E7FF);
+  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -251,4 +255,4 @@
   .statNumber {
     font-size: 2rem;
   }
-} 
+}
