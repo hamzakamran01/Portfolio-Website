@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import ReactLogo3D from '../3d/ReactLogo3D';
 import { gsap } from 'gsap';
-import styles from './Hero.module.css';
+import styles from './HeroSection.module.css';
 
 const LinkedInIcon = '/assets/linkedin.svg';
 
