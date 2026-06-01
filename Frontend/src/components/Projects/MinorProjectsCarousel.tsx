@@ -163,15 +163,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
-export const MinorProjectsCarousel: React.FC<MinorProjectsCarouselProps> = ({
+interface ProjectTrackProps {
+  projects: Project[];
+  variant: 'spotlight' | 'catalog';
+  scrollAriaLabel: string;
+  hintText: string;
+  isInView: boolean;
+}
+
+const ProjectTrack: React.FC<ProjectTrackProps> = ({
   projects,
+  variant,
+  scrollAriaLabel,
+  hintText,
+  isInView,
 }) => {
-  const { ref, isInView } = useInView({ threshold: 0.15, triggerOnce: true });
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-
-  const spotlightProjects = projects.slice(0, SPOTLIGHT_COUNT);
-  const catalogProjects = projects.slice(SPOTLIGHT_COUNT);
 
   const updateScrollProgress = useCallback(() => {
     const el = scrollRef.current;
@@ -190,18 +198,90 @@ export const MinorProjectsCarousel: React.FC<MinorProjectsCarouselProps> = ({
       el.removeEventListener('scroll', updateScrollProgress);
       window.removeEventListener('resize', updateScrollProgress);
     };
-  }, [updateScrollProgress, spotlightProjects.length]);
+  }, [updateScrollProgress, projects.length]);
 
   const scroll = (direction: 'left' | 'right') => {
     const el = scrollRef.current;
     if (!el) return;
-    const card = el.querySelector<HTMLElement>(`[data-card]`);
-    const amount = card ? card.offsetWidth + 24 : 440;
+    const card = el.querySelector<HTMLElement>('[data-card]');
+    const amount = card ? card.offsetWidth + 16 : 320;
     el.scrollBy({
       left: direction === 'right' ? amount : -amount,
       behavior: 'smooth',
     });
   };
+
+  if (projects.length === 0) return null;
+
+  return (
+    <div className={styles.trackBlock}>
+      <div className={styles.scrollerShell} aria-label={scrollAriaLabel}>
+        <div className={styles.scrollViewport}>
+          <button
+            type="button"
+            className={`${styles.controlArrow} ${styles.leftArrow}`}
+            onClick={() => scroll('left')}
+            aria-label={`${scrollAriaLabel} — scroll left`}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            type="button"
+            className={`${styles.controlArrow} ${styles.rightArrow}`}
+            onClick={() => scroll('right')}
+            aria-label={`${scrollAriaLabel} — scroll right`}
+          >
+            <FaChevronRight />
+          </button>
+
+          <div className={styles.fadeLeft} aria-hidden="true" />
+          <div className={styles.fadeRight} aria-hidden="true" />
+
+          <motion.div
+            ref={scrollRef}
+            className={`${styles.scrollContainer} ${
+              variant === 'catalog' ? styles.catalogScroll : ''
+            }`}
+            variants={VARIANTS.container}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            {projects.map((project, index) => (
+              <div key={project.id} data-card className={styles.cardSnap}>
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  variant={variant}
+                  displayIndex={variant === 'spotlight' ? index : undefined}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      <div className={styles.progressTrack} aria-hidden="true">
+        <div
+          className={styles.progressFill}
+          style={{ transform: `scaleX(${scrollProgress})` }}
+        />
+      </div>
+
+      <p className={styles.scrollHint}>
+        <span className={styles.scrollHintDot} />
+        {hintText}
+      </p>
+    </div>
+  );
+};
+
+export const MinorProjectsCarousel: React.FC<MinorProjectsCarouselProps> = ({
+  projects,
+}) => {
+  const { ref, isInView } = useInView({ threshold: 0.15, triggerOnce: true });
+
+  const spotlightProjects = projects.slice(0, SPOTLIGHT_COUNT);
+  const catalogProjects = projects.slice(SPOTLIGHT_COUNT);
 
   return (
     <section ref={ref} className={styles.section} aria-label="Innovation lab projects">
@@ -224,59 +304,13 @@ export const MinorProjectsCarousel: React.FC<MinorProjectsCarouselProps> = ({
           </p>
         </motion.header>
 
-        <div className={styles.scrollerShell}>
-          <div className={styles.fadeLeft} aria-hidden="true" />
-          <div className={styles.fadeRight} aria-hidden="true" />
-
-          <button
-            type="button"
-            className={`${styles.controlArrow} ${styles.leftArrow}`}
-            onClick={() => scroll('left')}
-            aria-label="Scroll innovation lab left"
-          >
-            <FaChevronLeft />
-          </button>
-
-          <motion.div
-            ref={scrollRef}
-            className={styles.scrollContainer}
-            variants={VARIANTS.container}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-          >
-            {spotlightProjects.map((project, index) => (
-              <div key={project.id} data-card className={styles.cardSnap}>
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  variant="spotlight"
-                  displayIndex={index}
-                />
-              </div>
-            ))}
-          </motion.div>
-
-          <button
-            type="button"
-            className={`${styles.controlArrow} ${styles.rightArrow}`}
-            onClick={() => scroll('right')}
-            aria-label="Scroll innovation lab right"
-          >
-            <FaChevronRight />
-          </button>
-        </div>
-
-        <div className={styles.progressTrack} aria-hidden="true">
-          <div
-            className={styles.progressFill}
-            style={{ transform: `scaleX(${scrollProgress})` }}
-          />
-        </div>
-
-        <p className={styles.scrollHint}>
-          <span className={styles.scrollHintDot} />
-          Drag or use arrows to explore flagship builds
-        </p>
+        <ProjectTrack
+          projects={spotlightProjects}
+          variant="spotlight"
+          scrollAriaLabel="AI and enterprise project builds"
+          hintText="Swipe or use arrows to explore flagship builds"
+          isInView={isInView}
+        />
 
         {catalogProjects.length > 0 && (
           <div className={styles.catalogSection}>
@@ -294,21 +328,13 @@ export const MinorProjectsCarousel: React.FC<MinorProjectsCarouselProps> = ({
               </p>
             </motion.div>
 
-            <motion.div
-              className={styles.catalogGrid}
-              variants={VARIANTS.container}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-            >
-              {catalogProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  variant="catalog"
-                />
-              ))}
-            </motion.div>
+            <ProjectTrack
+              projects={catalogProjects}
+              variant="catalog"
+              scrollAriaLabel="Interactive and product systems"
+              hintText="Swipe or use arrows to explore interactive builds"
+              isInView={isInView}
+            />
           </div>
         )}
       </div>

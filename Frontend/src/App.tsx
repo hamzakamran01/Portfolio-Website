@@ -8,7 +8,6 @@ import NationalYouthSummit from './components/sections/NationalYouthSummit';
 import Projects from './components/Projects/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
-import Cursor from './components/ui/Cursor';
 import './App.css';
 import PublicSpeaking from './components/sections/PublicSpeaking';
 import Philosophy from './components/sections/Philosophy';
@@ -175,7 +174,7 @@ function App() {
   // Preload Skills section when user scrolls near it
   useEffect(() => {
     const preloadSkills = () => {
-      const skillsTrigger = document.getElementById('zaaric-founder');
+      const skillsTrigger = document.getElementById('about');
       if (!skillsTrigger) return;
 
       const observer = new IntersectionObserver(
@@ -201,7 +200,6 @@ function App() {
 
   return (
     <div className="app">
-      <Cursor />
       <Navigation />
       <main>
         <SEO
@@ -210,13 +208,13 @@ function App() {
           structuredData={STRUCTURED_DATA}
         />
         <Hero />
+        <Projects />
         <About />
         <ZaaricFounder />
         <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
           <Skills />
         </Suspense>
         <Philosophy />
-        <Projects />
         <QimamFellowship />
         <NationalYouthSummit />
         <PublicSpeaking />

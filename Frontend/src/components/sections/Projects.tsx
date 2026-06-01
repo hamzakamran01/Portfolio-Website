@@ -388,7 +388,6 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({ pro
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   const scrollLeft = () => {
     if (scrollerRef.current) {
@@ -440,11 +439,7 @@ const Projects: React.FC = () => {
             </div>
           </div>
 
-          <div
-            className={styles.scrollerWrapper}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+          <div className={styles.scrollerWrapper}>
             <div className={styles.catalogTrack} ref={scrollerRef}>
               {catalogProjects.map((project) => (
                 <CatalogProjectCard

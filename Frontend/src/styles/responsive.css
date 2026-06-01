@@ -1,0 +1,94 @@
+/* Site-wide responsive fixes */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Full-bleed sections should not be constrained by generic section rules */
+#hero,
+#projects,
+.projectsWrapper {
+  max-width: none !important;
+  width: 100%;
+}
+
+#projects section,
+.projectsWrapper section {
+  max-width: none !important;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Generic section spacing — mobile tuned */
+@media (max-width: 1024px) {
+  section:not(#hero) {
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  section:not(#hero) {
+    padding-top: clamp(3.5rem, 10vw, 5rem);
+    padding-bottom: clamp(3.5rem, 10vw, 5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  section h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    margin-bottom: 1.75rem !important;
+    letter-spacing: 1px;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section:not(#hero) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Touch-friendly controls */
+@media (max-width: 768px) {
+  button,
+  a[class*='Button'],
+  a[class*='ctaButton'],
+  a[class*='actionPrimary'],
+  a[class*='actionSecondary'],
+  .controlArrow {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Footer — always readable on narrow screens */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.25rem;
+  }
+
+  .footer-links a:nth-child(2),
+  .footer-links a:nth-child(4) {
+    display: inline;
+  }
+}
+
+/* Prevent horizontal scroll from wide children */
+.app,
+main {
+  overflow-x: hidden;
+  width: 100%;
+}

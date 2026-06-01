@@ -63,6 +63,7 @@
 
 .eyebrow {
   display: inline-block;
+  font-family: var(--font-display, 'Orbitron', sans-serif);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -97,13 +98,22 @@
   font-size: clamp(0.95rem, 1.8vw, 1.15rem);
   line-height: 1.75;
   color: #94A3B8;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 /* ── Horizontal scroller ────────────────────────────────────────────────── */
 
+.trackBlock {
+  margin-bottom: 2rem;
+}
+
 .scrollerShell {
   position: relative;
+}
+
+.scrollViewport {
+  position: relative;
+  overflow: hidden;
 }
 
 .fadeLeft,
@@ -118,48 +128,54 @@
 
 .fadeLeft {
   left: 0;
-  background: linear-gradient(90deg, #0D1B2A 0%, transparent 100%);
+  background: linear-gradient(90deg, #0d1b2a 0%, transparent 100%);
 }
 
 .fadeRight {
   right: 0;
-  background: linear-gradient(270deg, #0D1B2A 0%, transparent 100%);
+  background: linear-gradient(270deg, #0d1b2a 0%, transparent 100%);
 }
 
 .controlArrow {
   position: absolute;
-  top: 42%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 52px;
-  height: 52px;
+  z-index: 25;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: 1px solid rgba(0, 231, 255, 0.45);
   background: rgba(10, 15, 26, 0.92);
-  color: #E0E7FF;
-  font-size: 1.15rem;
+  color: #e0e7ff;
+  font-size: 0.85rem;
   cursor: pointer;
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .controlArrow:hover {
-  border-color: #00E7FF;
-  color: #00E7FF;
-  box-shadow: 0 0 28px rgba(0, 231, 255, 0.35);
-  transform: translateY(-50%) scale(1.06);
+  border-color: #00e7ff;
+  color: #00e7ff;
+  box-shadow: 0 0 20px rgba(0, 231, 255, 0.35);
 }
 
 .leftArrow {
   left: 0.5rem;
+  top: 42%;
+  transform: translateY(-50%);
 }
 
 .rightArrow {
   right: 0.5rem;
+  top: 42%;
+  transform: translateY(-50%);
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  transform: translateY(-50%) scale(1.05);
 }
 
 .scrollContainer {
@@ -169,7 +185,7 @@
   overflow-y: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  padding: 1.5rem clamp(3rem, 8vw, 4.5rem);
+  padding: 1.5rem clamp(0.5rem, 2vw, 1rem);
   margin: 0 -0.5rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -182,6 +198,10 @@
 .cardSnap {
   flex: 0 0 min(88vw, 440px);
   scroll-snap-align: center;
+}
+
+.catalogScroll .cardSnap {
+  flex: 0 0 min(88vw, 380px);
 }
 
 /* ── Spotlight cards ────────────────────────────────────────────────────── */
@@ -246,12 +266,6 @@
 }
 
 /* ── Catalog cards ──────────────────────────────────────────────────────── */
-
-.catalogGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
 
 .catalogCard {
   position: relative;
@@ -365,7 +379,7 @@
   letter-spacing: 0.04em;
   color: #E0E7FF;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 /* ── Card body ──────────────────────────────────────────────────────────── */
@@ -411,11 +425,11 @@
 }
 
 .cardSubtitle {
+  font-family: var(--font-display, 'Orbitron', sans-serif);
   font-size: 0.8rem;
   color: #94A3B8;
   margin-bottom: 0.65rem;
   line-height: 1.4;
-  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .cardDescription {
@@ -427,7 +441,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 .catalogCard .cardDescription {
@@ -481,6 +495,7 @@
 }
 
 .statLabel {
+  font-family: var(--font-body);
   font-size: 0.58rem;
   color: #64748B;
   text-transform: uppercase;
@@ -500,6 +515,7 @@
 
 .tech {
   padding: 0.3rem 0.6rem;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   color: #E0E7FF;
   background: rgba(255, 255, 255, 0.06);
@@ -563,7 +579,7 @@
 
 .progressTrack {
   height: 2px;
-  margin: 0.5rem clamp(3rem, 8vw, 4.5rem) 0;
+  margin: 0.75rem 0 0;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 2px;
   overflow: hidden;
@@ -586,7 +602,7 @@
   margin-top: 1rem;
   font-size: 0.8rem;
   color: #64748B;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 .scrollHintDot {
@@ -644,20 +660,18 @@
   font-size: 0.95rem;
   line-height: 1.65;
   color: #94A3B8;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
-  .catalogGrid {
-    grid-template-columns: 1fr;
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
   .cardSnap {
     flex: 0 0 min(85vw, 400px);
+  }
+
+  .catalogScroll .cardSnap {
+    flex: 0 0 min(85vw, 360px);
   }
 
   .spotlightCard {
@@ -671,21 +685,37 @@
   }
 
   .controlArrow {
-    width: 40px;
-    height: 40px;
-    font-size: 0.95rem;
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
   }
 
   .leftArrow {
     left: 0.25rem;
+    top: auto;
+    bottom: 0.5rem;
+    transform: none;
   }
 
   .rightArrow {
     right: 0.25rem;
+    top: auto;
+    bottom: 0.5rem;
+    transform: none;
+  }
+
+  .leftArrow:hover,
+  .rightArrow:hover {
+    transform: scale(1.05);
+  }
+
+  .fadeLeft,
+  .fadeRight {
+    width: 2rem;
   }
 
   .scrollContainer {
-    padding: 1rem 2.75rem;
+    padding: 1rem 0.25rem;
     gap: 1rem;
   }
 
@@ -693,12 +723,24 @@
     flex: 0 0 88vw;
   }
 
+  .catalogScroll .cardSnap {
+    flex: 0 0 88vw;
+  }
+
   .spotlightCard {
+    min-height: auto;
+  }
+
+  .catalogCard {
     min-height: auto;
   }
 
   .spotlightCard .imageWrapper {
     height: 200px;
+  }
+
+  .catalogCard .imageWrapper {
+    height: 180px;
   }
 
   .statsSpotlight {
@@ -713,11 +755,6 @@
   .catalogSection {
     margin-top: 3.5rem;
     padding-top: 3rem;
-  }
-
-  .fadeLeft,
-  .fadeRight {
-    width: 2rem;
   }
 }
 

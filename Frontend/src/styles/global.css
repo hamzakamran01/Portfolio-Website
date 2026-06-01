@@ -7,7 +7,6 @@
 body {
   background: #000000;
   color: #E0E7FF;
-  font-family: 'Orbitron', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -108,7 +107,6 @@ body {
   color: #E0E7FF;
   line-height: 1.6;
   margin-bottom: 30px;
-  font-family: 'Orbitron', sans-serif;
 }
 
 .hero-cta {

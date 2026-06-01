@@ -2,11 +2,12 @@
 // FEATURED PROJECT - Full-screen alternating layout for major projects
 // ============================================================================
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt, FaGithub, FaShieldAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaShieldAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Project } from '../../types';
 import { useInView } from '../../hooks/useInView';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { VARIANTS } from '../../utils/animations';
 import { ModernImageGrid } from './ModernImageGrid';
 import styles from './FeaturedProject.module.css';
@@ -15,15 +16,25 @@ interface FeaturedProjectProps {
   project: Project;
   layout: 'image-right' | 'image-left';
   index: number;
+  featuredBadge?: string;
 }
 
-export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layout, index }) => {
+export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
+  project,
+  layout,
+  index,
+  featuredBadge,
+}) => {
   const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const [detailsExpanded, setDetailsExpanded] = useState(false);
 
-  // Ensure images array is valid
   const allImages = project.images?.screenshots
     ? [project.images.hero, ...project.images.screenshots]
     : [project.images.hero];
+
+  const overviewText = project.overview || project.longDescription;
+  const showCollapsed = isMobile && !detailsExpanded;
 
   return (
     <section
@@ -32,7 +43,6 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
       aria-labelledby={`project-${project.id}`}
     >
       <div className={styles.container}>
-        {/* Content Panel */}
         <motion.div
           className={styles.content}
           variants={VARIANTS.slideUp}
@@ -40,13 +50,23 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
           animate={isInView ? 'visible' : 'hidden'}
           transition={{ delay: 0.2 }}
         >
-          {/* Project Number */}
           <div className={styles.projectNumber}>
             <span className={styles.numberLabel}>Featured Project</span>
             <span className={styles.number}>0{index + 1}</span>
           </div>
 
-          {/* Category Tags */}
+          {featuredBadge && (
+            <span
+              className={`${styles.featuredBadge} ${
+                featuredBadge.toLowerCase().includes('ai')
+                  ? styles.featuredBadgeAi
+                  : styles.featuredBadgeEnterprise
+              }`}
+            >
+              {featuredBadge}
+            </span>
+          )}
+
           <div className={styles.categories}>
             {project.category.map((cat) => (
               <span key={cat} className={styles.category}>
@@ -55,39 +75,58 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
             ))}
           </div>
 
-          {/* Title */}
           <h2 id={`project-${project.id}`} className={styles.title}>
             {project.title}
           </h2>
 
-          {/* Subtitle */}
           <p className={styles.subtitle}>{project.subtitle}</p>
 
-          {/* Divider */}
           <div className={styles.divider} />
 
-          {/* Description */}
-          <div className={styles.description}>
+          <div
+            className={`${styles.description} ${showCollapsed ? styles.descriptionClamped : ''}`}
+          >
             <h3>Overview</h3>
-            <p>{project.overview || project.longDescription}</p>
+            <p>{overviewText}</p>
           </div>
 
-          {/* Challenge & Solution */}
-          {project.challenge && (
-            <div className={styles.description}>
-              <h3>Challenge</h3>
-              <p>{project.challenge}</p>
+          {(!isMobile || detailsExpanded) && (
+            <div className={styles.detailsExtra}>
+              {project.challenge && (
+                <div className={styles.description}>
+                  <h3>Challenge</h3>
+                  <p>{project.challenge}</p>
+                </div>
+              )}
+
+              {project.solution && (
+                <div className={styles.description}>
+                  <h3>Solution</h3>
+                  <p>{project.solution}</p>
+                </div>
+              )}
             </div>
           )}
 
-          {project.solution && (
-            <div className={styles.description}>
-              <h3>Solution</h3>
-              <p>{project.solution}</p>
-            </div>
+          {isMobile && (
+            <button
+              type="button"
+              className={styles.showMoreButton}
+              onClick={() => setDetailsExpanded((open) => !open)}
+              aria-expanded={detailsExpanded}
+            >
+              {detailsExpanded ? (
+                <>
+                  Show less <FaChevronUp aria-hidden="true" />
+                </>
+              ) : (
+                <>
+                  Show more <FaChevronDown aria-hidden="true" />
+                </>
+              )}
+            </button>
           )}
 
-          {/* Stats */}
           {project.stats && project.stats.length > 0 && (
             <div className={styles.stats}>
               {project.stats.map((stat, idx) => (
@@ -100,7 +139,6 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
             </div>
           )}
 
-          {/* Tech Stack */}
           <div className={styles.techSection}>
             <h4>Technologies</h4>
             <div className={styles.techStack}>
@@ -112,7 +150,6 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
             </div>
           </div>
 
-          {/* Actions */}
           <div className={styles.actions}>
             {project.links.live && (
               <a
@@ -142,7 +179,6 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, layou
           </div>
         </motion.div>
 
-        {/* Image Panel - Modern Grid */}
         <motion.div
           className={styles.imagePanel}
           variants={VARIANTS.scale}

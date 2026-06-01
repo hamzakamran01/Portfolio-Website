@@ -2,9 +2,8 @@
   background: #000000;
   min-height: 100vh;
   color: #E0E7FF;
-  font-family: 'Orbitron', sans-serif;
   position: relative;
-  z-index: 1; /* Ensure the app container is above any background elements */
+  z-index: 1;
 }
 
 .main-content {
@@ -14,10 +13,10 @@
 }
 
 /* General Section Styling */
-section {
+section:not(#hero) {
   padding: 80px 20px;
-  margin-bottom: 40px; /* Space between sections */
-  max-width: 1600px; /* Limit content width */
+  margin-bottom: 40px;
+  max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -26,7 +25,8 @@ section h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #76ABAE; /* Use a secondary color for headings */
+  color: #76ABAE;
+  font-family: var(--font-display, 'Orbitron', sans-serif);
   text-transform: uppercase;
   letter-spacing: 2px;
 }

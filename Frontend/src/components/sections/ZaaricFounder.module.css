@@ -143,6 +143,7 @@
 }
 
 .profileTitle {
+    font-family: var(--font-display, 'Orbitron', sans-serif);
     font-size: 1.2rem;
     color: #94A3B8;
     margin-bottom: 1.5rem;
@@ -152,7 +153,6 @@
 .highlight {
     color: #00E7FF;
     font-weight: 600;
-    font-family: 'Orbitron', sans-serif;
 }
 
 /* --- Content Panel --- */
@@ -189,6 +189,7 @@
 }
 
 .visionCard p {
+    font-family: var(--font-body);
     color: #CBD5E1;
     line-height: 1.8;
     font-size: 1.05rem;

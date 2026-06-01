@@ -13,27 +13,43 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className={styles.hero}>
+    <section id="hero" className={styles.hero} aria-label="Introduction">
       <ReactLogo3D />
-      <div ref={textRef} className={styles.heroContent}>
-        <h1><span>Hi, I'm</span> Hamza Kamran</h1>
-        <h2>Engineering AI-Powered Enterprise Solutions</h2>
-        <p>
-          Architecting scalable platforms and intelligent automation workflows that drive measurable business growth.
-        </p>
-        <div className={styles.heroCta}>
-          <a href="#projects" className={styles.ctaButton}>Explore My Work</a>
-          <a href="#contact" className={`${styles.ctaButton} ${styles.secondary}`}>Get in Touch</a>
-        </div>
-        <div className={styles.heroSocials}>
-          <a href="https://www.linkedin.com/in/hamza-kamran-7b1a85294/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-            <img src={LinkedInIcon} alt="LinkedIn" className={styles.socialIcon} />
-            <span>LinkedIn</span>
-          </a>
-          <a href="mailto:hamzakamran843@gmail.com" className={styles.socialLink}>
-            <span className={`${styles.socialIcon} ${styles.emailIcon}`}>✉️</span>
-            <span>Email</span>
-          </a>
+      <div className={styles.heroInner}>
+        <div ref={textRef} className={styles.heroContent}>
+          <h1>
+            <span>Hi, I&apos;m</span> Hamza Kamran
+          </h1>
+          <h2>Engineering AI-Powered Enterprise Solutions</h2>
+          <p>
+            Architecting scalable platforms and intelligent automation workflows that drive
+            measurable business growth.
+          </p>
+          <div className={styles.heroCta}>
+            <a href="#projects" className={styles.ctaButton}>
+              Explore My Work
+            </a>
+            <a href="#contact" className={`${styles.ctaButton} ${styles.secondary}`}>
+              Get in Touch
+            </a>
+          </div>
+          <div className={styles.heroSocials}>
+            <a
+              href="https://www.linkedin.com/in/hamza-kamran-7b1a85294/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+            >
+              <img src={LinkedInIcon} alt="" className={styles.socialIcon} aria-hidden="true" />
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:hamzakamran843@gmail.com" className={styles.socialLink}>
+              <span className={`${styles.socialIcon} ${styles.emailIcon}`} aria-hidden="true">
+                ✉️
+              </span>
+              <span>Email</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -24,8 +24,8 @@ const Navigation: FC = () => {
 
   const navLinks = [
     { to: 'hero', label: 'Home' },
-    { to: 'about', label: 'About' },
     { to: 'projects', label: 'Projects' },
+    { to: 'about', label: 'About' },
     { to: 'skills', label: 'Skills' },
     { to: 'contact', label: 'Contact' },
   ];
@@ -41,8 +41,8 @@ const Navigation: FC = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
-        <a href="#home" className={styles.logo} onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>
-          Portfolio
+        <a href="#hero" className={styles.logo} onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
+          Hamza Kamran
         </a>
         {isMobile ? (
           <>

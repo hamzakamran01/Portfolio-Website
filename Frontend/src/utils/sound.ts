@@ -21,7 +21,7 @@ class SoundManager {
 
   private checkIfMobile(): boolean {
     // Check if device is mobile using user agent
-    const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
     
     // Regular expressions for mobile devices
     const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
@@ -32,7 +32,10 @@ class SoundManager {
   private initAudioContext() {
     try {
       // Create audio context
-      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        this.audioContext = new AudioCtx();
+      }
       console.log('Audio context initialized');
     } catch (error) {
       console.error('Error initializing audio context:', error);

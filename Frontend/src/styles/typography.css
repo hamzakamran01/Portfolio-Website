@@ -1,0 +1,58 @@
+/* Site-wide typography: Inter for reading, Orbitron for headings & buttons */
+
+:root {
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+body,
+.app {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+button,
+[type='button'],
+[type='submit'],
+[type='reset'] {
+  font-family: var(--font-display);
+}
+
+/* Body copy — low specificity so module heading styles still win */
+:where(p, li, blockquote, label, textarea, select, option) {
+  font-family: var(--font-body);
+}
+
+/* Subheadings implemented as classes (not always h3) */
+:where(
+  [class*='subtitle'],
+  [class*='Subtitle'],
+  [class*='subheading'],
+  [class*='cardSubtitle'],
+  [class*='profileTitle'],
+  [class*='innovationTitles'] h3
+) {
+  font-family: var(--font-display);
+}
+
+/* Primary CTAs */
+:where(
+  [class*='ctaButton'],
+  [class*='cta-button'],
+  [class*='primaryButton'],
+  [class*='secondaryButton'],
+  [class*='actionPrimary'],
+  [class*='actionSecondary'],
+  [class*='contactLink'],
+  [class*='primaryLink']
+) {
+  font-family: var(--font-display);
+}

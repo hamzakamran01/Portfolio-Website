@@ -74,6 +74,32 @@
   font-weight: 600;
 }
 
+.featuredBadge {
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+  padding: 0.45rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+
+.featuredBadgeEnterprise {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+
+.featuredBadgeAi {
+  color: #C4B5FD;
+  background: linear-gradient(135deg, rgba(123, 0, 255, 0.2), rgba(0, 231, 255, 0.12));
+  border: 1px solid rgba(123, 0, 255, 0.5);
+  box-shadow: 0 0 24px rgba(123, 0, 255, 0.15);
+}
+
 .number {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
@@ -98,6 +124,7 @@
   background: rgba(0, 231, 255, 0.1);
   border: 1px solid rgba(0, 231, 255, 0.3);
   border-radius: 6px;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -116,10 +143,11 @@
 }
 
 .subtitle {
+  font-family: var(--font-display, 'Orbitron', sans-serif);
   font-size: 1.5rem;
   color: #94A3B8;
   margin-bottom: 2rem;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.4;
 }
 
@@ -148,9 +176,48 @@
 }
 
 .description p {
+  font-family: var(--font-body);
   font-size: 1.1rem;
   line-height: 1.8;
   color: #CBD5E1;
+}
+
+.descriptionClamped p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.detailsExtra {
+  display: flex;
+  flex-direction: column;
+}
+
+.showMoreButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin: 0 0 1.5rem;
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-display, 'Orbitron', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #00e7ff;
+  background: rgba(0, 231, 255, 0.08);
+  border: 1px solid rgba(0, 231, 255, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.showMoreButton:hover {
+  background: rgba(0, 231, 255, 0.15);
+  border-color: #00e7ff;
 }
 
 /* Stats */
@@ -184,6 +251,7 @@
 }
 
 .statLabel {
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: #94A3B8;
   text-transform: uppercase;
@@ -192,31 +260,33 @@
 
 /* Tech Stack */
 .techSection {
-  margin: 2.5rem 0;
+  margin: 2rem 0;
 }
 
 .techSection h4 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  color: #94A3B8;
-  margin-bottom: 1rem;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-bottom: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
 }
 
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.45rem;
 }
 
 .tech {
-  padding: 0.6rem 1.2rem;
+  padding: 0.35rem 0.7rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #E0E7FF;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #e0e7ff;
+  line-height: 1.3;
   transition: all 0.2s;
 }
 
@@ -340,6 +410,10 @@
     padding: 0 2rem;
   }
 
+  .showMoreButton {
+    display: inline-flex;
+  }
+
   .title {
     font-size: 2.5rem;
   }
@@ -460,8 +534,8 @@
   }
 
   .tech {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
   }
 
   .primaryButton,

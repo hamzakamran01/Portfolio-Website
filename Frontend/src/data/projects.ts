@@ -13,20 +13,20 @@ export const projects: Project[] = [
   {
     id: 'digiqms',
     title: 'DigiQMS',
-    subtitle: 'Enterprise Digital Queueing & Analytics System',
-    tagline: 'Revolutionizing Queue Management with Intelligence',
-    description: 'A highly secure, seamless digital token generation and queuing system with advanced data analytics for enterprise automation.',
-    longDescription: 'DigiQMS is an enterprise-grade solution designed to revolutionize queue management. It automates the entire token generation process while providing deep, data-driven insights.',
-    overview: 'DigiQMS transforms traditional queue management into an intelligent, automated system that optimizes service delivery through real-time analytics and predictive insights. Built with security and scalability at its core, it serves thousands of users daily while maintaining 99.99% uptime.',
-    challenge: 'Organizations faced inefficient manual queue management, long wait times, and lack of actionable data to optimize their service delivery. The need was for a secure, scalable solution that could handle high volumes while providing deep insights.',
-    solution: 'Developed a full-stack enterprise platform featuring secure token generation, real-time queue monitoring via Socket.io, PostgreSQL for reliable data storage, Redis for caching, and comprehensive analytics dashboards built with Recharts. Implemented advanced security measures and automated service optimization algorithms.',
+    subtitle: 'AI-Powered Enterprise Queue Intelligence & Analytics',
+    tagline: 'Intelligent Queues. Predictive Operations. Real-Time Insight.',
+    description: 'AI-powered digital queueing platform with intelligent analytics, behavioral insights, and automated service optimization for enterprise operations.',
+    longDescription: 'DigiQMS AI is an enterprise-grade, AI-powered queue management system. It automates token generation and uses intelligent data analytics to surface patterns, predict bottlenecks, and recommend operational improvements.',
+    overview: 'DigiQMS AI transforms traditional queue management into an intelligent operations platform. AI-driven analytics dashboards visualize live queue health, user behavior, and service performance—turning raw operational data into decisions leaders can act on. Built for security and scale, it serves thousands of users daily with 99.99% uptime.',
+    challenge: 'Organizations faced inefficient manual queue management, long wait times, and no intelligent layer to interpret operational data or predict service bottlenecks before they impacted customers.',
+    solution: 'Built a full-stack enterprise platform with secure token generation, real-time monitoring via Socket.io, and AI-powered analytics dashboards (Recharts) that track behavior, performance, and trends. Added automated service optimization and predictive insights so managers can adjust staffing and flow proactively.',
     impact: 'Reduced average wait times by 45%, processes over 5,000 daily tokens across multiple service points, maintains 99.99% uptime, and provides actionable insights that have improved operational efficiency by 60%.',
     role: 'Full-Stack Developer & System Architect',
     timeline: '6 months (2024)',
 
-    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Socket.io', 'Recharts', 'Docker'],
-    category: ['Web Application', 'Enterprise', 'Real-time'],
-    tags: ['Queue Management', 'Analytics', 'Enterprise', 'Real-time', 'Secure'],
+    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Socket.io', 'Recharts', 'Docker', 'AI Analytics'],
+    category: ['Web Application', 'AI', 'Enterprise'],
+    tags: ['AI-Powered', 'Queue Management', 'Data Analytics', 'Enterprise', 'Real-time'],
 
     images: {
       thumbnail: {
@@ -89,11 +89,11 @@ export const projects: Project[] = [
     ],
 
     features: [
+      'AI-Powered Analytics & Predictive Operations Dashboard',
       'Secure Token Generation Pathway with Multi-factor Authentication',
       'Real-time Queue Monitoring with WebSocket Integration',
-      'Advanced Data Analytics & Visualization Dashboard',
-      'Comprehensive User Behavior Tracking & Heatmaps',
-      'Automated Service Optimization & Predictive Analytics',
+      'Intelligent User Behavior Tracking & Heatmaps',
+      'Automated Service Optimization Recommendations',
       'Multi-location Support with Centralized Management',
       'Mobile-responsive Interface for All Devices',
       'Role-based Access Control & Audit Logs',
@@ -109,11 +109,11 @@ export const projects: Project[] = [
   {
     id: 'united-by-art',
     title: 'United by Art',
-    subtitle: 'Enterprise Networking Platform for Creatives',
+    subtitle: 'US Client · Enterprise Creative Networking Platform',
     tagline: 'Connecting Creatives, Amplifying Talent',
-    description: 'MVP of a comprehensive networking platform for artists featuring communities, collaborations, and a talent marketplace.',
-    longDescription: 'United by Art is a sophisticated networking ecosystem tailored for the creative industry. A platform that facilitates seamless collaboration, portfolio showcases, and service exchange.',
-    overview: 'United by Art bridges the gap between creative professionals, providing tools for collaboration, community building, and talent monetization. The platform combines social networking features with a secure marketplace, enabling artists to showcase their work, connect with peers, and grow their creative businesses.',
+    description: 'US client MVP: enterprise-grade networking platform for artists with communities, collaborations, and a secure talent marketplace.',
+    longDescription: 'United by Art is a sophisticated networking ecosystem built for a US-based client in the creative industry—facilitating collaboration, portfolio showcases, and trusted service exchange at scale.',
+    overview: 'Delivered for a US client, United by Art bridges creative professionals with collaboration tools, community building, and monetization. The platform combines social networking with a secure marketplace so artists can showcase work, connect with peers, and grow their businesses.',
     challenge: 'Creative professionals lacked a dedicated platform that combined networking, collaboration tools, and a trusted marketplace for services. Existing solutions were either too generic or lacked the community features artists needed to thrive.',
     solution: 'Built a full-stack platform using React, Supabase for backend and real-time features, Zustand for state management, and Framer Motion for fluid animations. Implemented real-time messaging, community leaderboards, secure marketplace transactions, and portfolio showcase features optimized for creative content.',
     impact: 'Onboarded 1,200+ beta users, facilitated formation of 50+ creative communities, enabled hundreds of secure marketplace transactions, and created a vibrant ecosystem where artists can connect, collaborate, and monetize their skills.',
@@ -122,7 +122,7 @@ export const projects: Project[] = [
 
     techStack: ['React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Zustand', 'Framer Motion'],
     category: ['Web Application', 'Social Platform', 'Marketplace'],
-    tags: ['Social Network', 'Creative', 'Marketplace', 'Community', 'Real-time'],
+    tags: ['US Client', 'Social Network', 'Creative', 'Marketplace', 'Enterprise'],
 
     images: {
       thumbnail: {

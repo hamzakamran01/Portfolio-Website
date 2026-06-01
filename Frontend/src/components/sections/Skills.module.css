@@ -64,6 +64,7 @@
 }
 
 .subtitle {
+  font-family: var(--font-display, 'Orbitron', sans-serif);
   font-size: 1.25rem;
   color: #94A3B8;
   max-width: 700px;

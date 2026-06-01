@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import './styles/global.css';
+import './styles/typography.css';
+import './styles/responsive.css';
 
 // Check if the root element exists
 const rootElement = document.getElementById('root');
