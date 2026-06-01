@@ -205,35 +205,35 @@ export const projects: Project[] = [
   // ── New AI/Tech Projects (Innovation Lab) ──────────────────────────
   {
     id: 'gigledger',
-    title: 'GigLedger',
+    title: 'EarnSight',
     subtitle: 'Intelligent Income Intelligence for the Gig Economy',
     tagline: 'Financial Clarity for the Invisible Workforce',
     description: 'Real-time income tracking and anomaly detection platform built for gig workers using ML-based pattern recognition.',
-    longDescription: 'The gig economy runs on hustle but bleeds on invisibility. Drivers, freelancers, and daily-wage workers earn across multiple platforms with zero unified financial picture. GigLedger is a real-time income tracking and anomaly detection platform built specifically for gig workers, giving them what every salaried employee takes for granted: clarity on what they actually earned, what looks wrong, and what to do about it.',
-    overview: 'GigLedger ingests earnings data across sources, detects income anomalies using ML-based pattern recognition, flags irregularities like sudden drops, platform fee spikes, or missing payments, and surfaces them in a clean dashboard the worker can actually understand. Built under 24 hours at SOFTEC 2026 on a full-stack architecture spanning Next.js, FastAPI, Node/Express, and Neon PostgreSQL.',
+    longDescription: 'The gig economy runs on hustle but bleeds on invisibility. Drivers, freelancers, and daily-wage workers earn across multiple platforms with zero unified financial picture. EarnSight is a real-time income tracking and anomaly detection platform built specifically for gig workers, giving them what every salaried employee takes for granted: clarity on what they actually earned, what looks wrong, and what to do about it.',
+    overview: 'EarnSight ingests earnings data across sources, detects income anomalies using ML-based pattern recognition, flags irregularities like sudden drops, platform fee spikes, or missing payments, and surfaces them in a clean dashboard the worker can actually understand. Built on a full-stack architecture spanning Next.js, FastAPI, Node/Express, and Neon PostgreSQL.',
     challenge: 'Gig workers earn across multiple platforms with no unified financial picture. Sudden income drops, platform fee spikes, or missing payments go unnoticed because there is no system designed to give them visibility into their own earnings data.',
     solution: 'Built a full-stack real-time analytics platform ingesting multi-source earnings data, with an ML anomaly detection engine that flags irregularities automatically. Designed a clean, intuitive dashboard that surfaces actionable insights for non-technical users.',
-    impact: 'Delivered a working prototype in under 24 hours at SOFTEC 2026, demonstrating real-time anomaly detection across simulated gig platforms with instant visual feedback and risk flagging.',
+    impact: 'Demonstrated real-time anomaly detection across multi-platform earnings with instant visual feedback and automated risk flagging for non-technical users.',
     role: 'Full-Stack Developer & ML Engineer',
-    timeline: '<24 Hours (SOFTEC 2026)',
+    timeline: 'FinTech ML Platform (2026)',
 
     techStack: ['Next.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'Machine Learning', 'Real-time Analytics'],
     category: ['Web Application', 'FinTech', 'ML'],
-    tags: ['Hackathon', 'FinTech', 'Anomaly Detection', 'Gig Economy', 'ML'],
+    tags: ['FinTech', 'Anomaly Detection', 'Gig Economy', 'ML'],
 
     images: {
       thumbnail: {
-        url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
-        alt: 'GigLedger Dashboard',
+        url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'EarnSight financial analytics and income intelligence dashboard',
       },
       hero: {
-        url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
-        alt: 'GigLedger - Income Intelligence Platform',
+        url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'EarnSight - Income Intelligence Platform',
       },
       screenshots: [
         {
-          url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
-          alt: 'GigLedger Analytics',
+          url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop',
+          alt: 'EarnSight Analytics',
           caption: 'Real-time income analytics and anomaly detection dashboard',
         },
       ],
@@ -244,12 +244,18 @@ export const projects: Project[] = [
       github: undefined,
     },
 
+    stats: [
+      { label: 'Anomaly Engine', value: 'ML', icon: React.createElement(FaChartLine), color: '#10B981' },
+      { label: 'Income Sources', value: '4+', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Risk Alerts', value: 'Auto', icon: React.createElement(FaShieldAlt), color: '#F59E0B' },
+    ],
+
     features: [
       'Multi-Platform Data Ingestion Pipeline',
       'ML-Based Income Anomaly Detection',
       'Real-Time Earnings Visualizations',
       'Automated Risk Flagging & Alerts',
-      'Built in <24 Hours at SOFTEC 2026',
+      'Actionable Financial Insights Dashboard',
     ],
 
     isFeatured: false,
@@ -261,12 +267,12 @@ export const projects: Project[] = [
 
   {
     id: 'haqyab',
-    title: 'HaqYab',
+    title: 'LegalBridge AI',
     subtitle: 'Agentic Legal Access for Every Pakistani',
     tagline: 'The Law, Working for the People',
     description: 'Multi-agent AI pipeline bridging legal statutes and citizen action through NLP and RAG in Urdu & English.',
-    longDescription: 'Pakistan has laws that protect ordinary citizens. Most citizens never find out. HaqYab bridges that gap. A citizen describes their problem in plain Urdu or English. A multi-agent AI pipeline classifies the issue, retrieves the applicable Pakistani statute, drafts the exact legal document they need—whether a landlord notice, employer complaint, or FIR draft—and generates a step-by-step action plan in language any person can follow.',
-    overview: 'HaqYab is an agentic AI legal-access system. No lawyer. No fee. No wasta. Just the law, working for the people it was written to protect. It uses OpenAI Agents SDK with a RAG pipeline backed by pgvector to retrieve relevant statutes and generate actionable legal documents in both Urdu and English.',
+    longDescription: 'Pakistan has laws that protect ordinary citizens. Most citizens never find out. LegalBridge AI bridges that gap. A citizen describes their problem in plain Urdu or English. A multi-agent AI pipeline classifies the issue, retrieves the applicable Pakistani statute, drafts the exact legal document they need—whether a landlord notice, employer complaint, or FIR draft—and generates a step-by-step action plan in language any person can follow.',
+    overview: 'LegalBridge AI is an agentic legal-access system. No lawyer. No fee. No wasta. Just the law, working for the people it was written to protect. It uses OpenAI Agents SDK with a RAG pipeline backed by pgvector to retrieve relevant statutes and generate actionable legal documents in both Urdu and English.',
     challenge: 'Legal protections for Pakistani citizens are buried in English legal text, inaccessible without a lawyer, and useless without knowing which court, which document, and which step to take next.',
     solution: 'Built a multi-agent AI pipeline using OpenAI Agents SDK with RAG retrieval from pgvector. The system classifies legal issues, retrieves applicable statutes, auto-drafts legal documents, and generates step-by-step action plans in both Urdu and English.',
     impact: 'Democratized legal access for ordinary Pakistani citizens by eliminating the need for expensive legal counsel for common civil matters like tenant rights, employment disputes, and consumer fraud.',
@@ -279,17 +285,17 @@ export const projects: Project[] = [
 
     images: {
       thumbnail: {
-        url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
-        alt: 'HaqYab Legal AI',
+        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop',
+        alt: 'LegalBridge AI agentic legal workspace and document intelligence',
       },
       hero: {
-        url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
-        alt: 'HaqYab - Agentic Legal Access Platform',
+        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop',
+        alt: 'LegalBridge AI - Agentic Legal Access Platform',
       },
       screenshots: [
         {
-          url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
-          alt: 'HaqYab Legal Pipeline',
+          url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop',
+          alt: 'LegalBridge AI Legal Pipeline',
           caption: 'Multi-agent pipeline for legal document generation',
         },
       ],
@@ -299,6 +305,12 @@ export const projects: Project[] = [
       live: undefined,
       github: undefined,
     },
+
+    stats: [
+      { label: 'AI Agents', value: 'Multi', icon: React.createElement(FaRocket), color: '#8B5CF6' },
+      { label: 'Bilingual NLP', value: 'EN+UR', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Statute RAG', value: 'pgvector', icon: React.createElement(FaShieldAlt), color: '#10B981' },
+    ],
 
     features: [
       'Multi-Agent AI Classification Pipeline',
@@ -335,16 +347,16 @@ export const projects: Project[] = [
 
     images: {
       thumbnail: {
-        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
-        alt: 'RxFlow Pharmacy Platform',
+        url: '/assets/pharmacyProjectpic.webp',
+        alt: 'RxFlow HIPAA-compliant pharmacy commerce platform',
       },
       hero: {
-        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+        url: '/assets/pharmacyProjectpic.webp',
         alt: 'RxFlow - HIPAA Compliant Pharmacy Commerce',
       },
       screenshots: [
         {
-          url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+          url: '/assets/pharmacyProjectpic.webp',
           alt: 'RxFlow Commerce Interface',
           caption: 'Secure pharmacy e-commerce with HIPAA compliance',
         },
@@ -355,6 +367,12 @@ export const projects: Project[] = [
       live: undefined,
       github: undefined,
     },
+
+    stats: [
+      { label: 'Compliance', value: 'HIPAA', icon: React.createElement(FaShieldAlt), color: '#10B981' },
+      { label: 'Encryption', value: 'AWS KMS', icon: React.createElement(FaShieldAlt), color: '#00E7FF' },
+      { label: 'Delivery', value: '4 Mo', icon: React.createElement(FaClock), color: '#8B5CF6' },
+    ],
 
     features: [
       'End-to-End Secure E-Commerce Pipeline',
@@ -372,13 +390,13 @@ export const projects: Project[] = [
   },
 
   {
-    id: 'vitacore-ai',
-    title: 'VitaCore AI',
+    id: 'medicenter-ai',
+    title: 'mediCenterAI',
     subtitle: 'Your Complete Health Intelligence Partner',
     tagline: 'Medical Intelligence, Made Human',
     description: 'AI-powered medical assistant that digitizes health records and acts as a personal health intelligence partner.',
-    longDescription: 'Medical records are the most important data most people never understand. VitaCore AI changes that relationship entirely. It digitizes all medical invoices and health records through intelligent document processing, builds a unified health timeline the patient actually owns, and sits on top of it as an AI medical partner that knows your complete history.',
-    overview: 'Ask it anything. What do my last three blood tests show? Is this new prescription interacting with something I already take? What does this diagnosis actually mean? VitaCore responds in plain human language—no jargon, no condescension—the way a brilliant doctor friend would explain things if they had time. One-click health stats, trend visualizations, and simple actionable suggestions make it the first health tool built for the person, not the provider.',
+    longDescription: 'Medical records are the most important data most people never understand. mediCenterAI changes that relationship entirely. It digitizes all medical invoices and health records through intelligent document processing, builds a unified health timeline the patient actually owns, and sits on top of it as an AI medical partner that knows your complete history.',
+    overview: 'Ask it anything. What do my last three blood tests show? Is this new prescription interacting with something I already take? What does this diagnosis actually mean? mediCenterAI responds in plain human language—no jargon, no condescension—the way a brilliant doctor friend would explain things if they had time. One-click health stats, trend visualizations, and simple actionable suggestions make it the first health tool built for the person, not the provider.',
     challenge: 'People accumulate stacks of medical invoices, prescriptions, and lab reports that sit in a drawer until something goes wrong. No existing tool actually helps patients understand and own their health data.',
     solution: 'Built an intelligent document processing pipeline that digitizes and unifies all medical records into a single health timeline. Layered an AI medical partner on top that can answer natural language queries about the patient\'s full history, flag prescription interactions, and visualize health trends.',
     impact: 'Created the first truly patient-centric health intelligence tool that makes complex medical data accessible, understandable, and actionable for everyday people.',
@@ -391,17 +409,17 @@ export const projects: Project[] = [
 
     images: {
       thumbnail: {
-        url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
-        alt: 'VitaCore AI Health Platform',
+        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
+        alt: 'mediCenterAI clinical AI and digital health intelligence',
       },
       hero: {
-        url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
-        alt: 'VitaCore AI - Health Intelligence Partner',
+        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
+        alt: 'mediCenterAI - Health Intelligence Partner',
       },
       screenshots: [
         {
-          url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
-          alt: 'VitaCore Health Timeline',
+          url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
+          alt: 'mediCenterAI Health Timeline',
           caption: 'Unified health timeline with AI-powered insights',
         },
       ],
@@ -411,6 +429,12 @@ export const projects: Project[] = [
       live: undefined,
       github: undefined,
     },
+
+    stats: [
+      { label: 'Health Timeline', value: 'Unified', icon: React.createElement(FaChartLine), color: '#00E7FF' },
+      { label: 'AI Partner', value: 'NL Chat', icon: React.createElement(FaRocket), color: '#8B5CF6' },
+      { label: 'Doc Intelligence', value: 'OCR', icon: React.createElement(FaAward), color: '#10B981' },
+    ],
 
     features: [
       'Intelligent Document OCR & Digitization',
@@ -530,6 +554,12 @@ export const projects: Project[] = [
       github: 'https://github.com/MCodecreeper/Zaaric-Website.git',
     },
 
+    stats: [
+      { label: 'Lighthouse', value: '95+', icon: React.createElement(FaAward), color: '#10B981' },
+      { label: 'Motion', value: 'GSAP', icon: React.createElement(FaRocket), color: '#00E7FF' },
+      { label: 'Delivery', value: '3 Mo', icon: React.createElement(FaClock), color: '#8B5CF6' },
+    ],
+
     features: [
       'Complex GSAP Animation Sequences',
       'Scroll-triggered Animations & Parallax',
@@ -586,6 +616,12 @@ export const projects: Project[] = [
       live: undefined,
       github: 'https://github.com/MCodecreeper/Portfolio-Website.git',
     },
+
+    stats: [
+      { label: 'Rendering', value: 'WebGL', icon: React.createElement(FaAward), color: '#00E7FF' },
+      { label: 'Experience', value: '3D', icon: React.createElement(FaRocket), color: '#8B5CF6' },
+      { label: 'Build', value: '4 Mo', icon: React.createElement(FaClock), color: '#10B981' },
+    ],
 
     features: [
       'Fully Interactive 3D Environment',
