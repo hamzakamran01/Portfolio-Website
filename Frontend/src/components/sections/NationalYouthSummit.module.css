@@ -1,0 +1,742 @@
+/* ══════════════════════════════════════════════════════════════════════
+   National Youth Summit + Unified Gallery  —  CSS Module
+   Palette: Cyan (#00e7ff) on Black (#000) — matching site-wide theme
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Keyframes ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(0, 231, 255, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 231, 255, 0.35);
+    }
+}
+
+/* ─── Section Base ─────────────────────────────────────────────────── */
+.nysSummit {
+    position: relative;
+    padding: 100px 20px 120px;
+    background: #000000;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+    max-width: none !important;
+    width: 100%;
+}
+
+.nysSummit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(0, 231, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* ─── Default: visible ─────────────────────────────────────────────── */
+.nysCard,
+.gallerySection {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease-out;
+}
+
+/* ─── Scroll-triggered animations ──────────────────────────────────── */
+.inView .nysCard {
+    opacity: 0;
+    animation: fadeInUp 0.9s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.inView .gallerySection {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   COMPACT NYS CARD
+   ══════════════════════════════════════════════════════════════════════ */
+.nysCard {
+    max-width: 1400px;
+    margin: 0 auto 100px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: rgba(13, 27, 42, 0.4);
+    border: 1px solid rgba(0, 231, 255, 0.15);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: border-color 0.4s ease;
+}
+
+.nysCard:hover {
+    border-color: rgba(0, 231, 255, 0.3);
+}
+
+/* Card Image */
+.cardImage {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    object-position: center 20%;
+}
+
+.nysCard:hover .cardImage img {
+    transform: scale(1.04);
+}
+
+.cardImageOverlay {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+}
+
+.cardBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 231, 255, 0.3);
+    border-radius: 50px;
+    color: #00e7ff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.badgeDot {
+    width: 6px;
+    height: 6px;
+    background: #00e7ff;
+    border-radius: 50%;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Card Body */
+.cardBody {
+    padding: 45px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+}
+
+.cardHeader h2 {
+    font-size: 2.2rem;
+    color: #E0E7FF;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.cardHeader h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #00e7ff, transparent);
+}
+
+.cardSubtitle {
+    font-size: 0.95rem;
+    color: #00e7ff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 14px;
+}
+
+.cardDescription {
+    color: #e0e7ff;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.cardDescription strong {
+    color: #00e7ff;
+    font-weight: 600;
+}
+
+/* Summit Highlights (2x2 Grid) */
+.summitHighlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.highlightCompact {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: rgba(0, 231, 255, 0.04);
+    border: 1px solid rgba(0, 231, 255, 0.12);
+    padding: 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.highlightCompact:hover {
+    background: rgba(0, 231, 255, 0.08);
+    border-color: rgba(0, 231, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.highlightIcon {
+    font-size: 1.6rem;
+    margin-top: -2px;
+    flex-shrink: 0;
+}
+
+.highlightText h4 {
+    color: #E0E7FF;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.highlightText p {
+    color: #00e7ff;
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* Theme Tags */
+.themeTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.tag {
+    padding: 6px 16px;
+    background: rgba(0, 231, 255, 0.06);
+    border: 1px solid rgba(0, 231, 255, 0.18);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    color: #00e7ff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(0, 231, 255, 0.12);
+    border-color: rgba(0, 231, 255, 0.35);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   UNIFIED GALLERY
+   ══════════════════════════════════════════════════════════════════════ */
+.gallerySection {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.galleryHeader {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.galleryHeader h3 {
+    font-size: 2.2rem;
+    color: #E0E7FF;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-shadow: 0 0 20px rgba(0, 231, 255, 0.2);
+}
+
+.galleryHeader p {
+    font-size: 1.05rem;
+    color: #00e7ff;
+    opacity: 0.85;
+}
+
+/* ─── Flexible Masonry-like Grid using dense tracking ───────────────── */
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 18px;
+    grid-auto-flow: dense;
+}
+
+/* Dyanmic Layout Spans using the arrays */
+.gridSpan1x1 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.gridSpanWide {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.gridSpanTall {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gridSpan2x2 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.galleryItem {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.galleryItem:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 231, 255, 0.25);
+    z-index: 2;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.galleryImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.galleryImageContain {
+    object-fit: contain;
+    background: rgba(13, 27, 42, 0.6);
+    padding: 12px;
+}
+
+.nysGroupFrame .imageWrapper {
+    background: #050a10;
+}
+
+.nysGroupCustom {
+    object-position: center 25%;
+    transform: scale(0.9);
+}
+
+.nysCulturalNightFrame .imageWrapper {
+    background: #050a10;
+}
+
+.nysCulturalNightCustom {
+    object-position: center top;
+    transform: scale(1.03);
+}
+
+.galleryItem:hover .galleryImage {
+    transform: scale(1.1);
+}
+
+.galleryItemOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.25) 40%,
+            rgba(0, 0, 0, 0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px 20px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.galleryItem:hover .galleryItemOverlay {
+    opacity: 1;
+}
+
+.photoLabel {
+    align-self: flex-start;
+    padding: 5px 14px;
+    background: rgba(0, 231, 255, 0.15);
+    border: 1px solid rgba(0, 231, 255, 0.3);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: #00e7ff;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.photoInfo {
+    margin-top: auto;
+}
+
+.photoInfo h4 {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.viewIcon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #00e7ff;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 8px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 231, 255, 0.2);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   IMAGE MODAL
+   ══════════════════════════════════════════════════════════════════════ */
+.imageModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.modalContent {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 231, 255, 0.25);
+    border: 2px solid rgba(0, 231, 255, 0.3);
+}
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.closeButton:hover {
+    background: rgba(0, 231, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.modalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE — ≤1200px
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+    .nysCard {
+        max-width: 1000px;
+        grid-template-columns: 1fr;
+    }
+
+    .cardImage {
+        min-height: 400px;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
+    }
+
+    /* Force very wide / tall blocks to adapt to avoid breaking the grid */
+    .gridSpan2x2 {
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+
+    .gridSpanWide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gridSpanTall {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE — ≤768px
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .nysSummit {
+        padding: 70px 18px 90px;
+    }
+
+    .nysCard {
+        margin-bottom: 70px;
+    }
+
+    .cardImage {
+        min-height: 280px;
+    }
+
+    .cardBody {
+        padding: 28px 24px;
+        gap: 18px;
+    }
+
+    .cardHeader h2 {
+        font-size: 1.8rem;
+    }
+
+    .cardSubtitle {
+        font-size: 0.82rem;
+    }
+
+    .cardDescription {
+        font-size: 0.92rem;
+    }
+
+    .summitHighlights {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .galleryHeader h3 {
+        font-size: 1.8rem;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 150px;
+    }
+
+    /* Compress spans for dense 2-column mobile view */
+    .gridSpan2x2 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .gridSpanWide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gridSpanTall {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE — ≤480px
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+    .nysSummit {
+        padding: 50px 14px 70px;
+    }
+
+    .nysCard {
+        border-radius: 18px;
+        margin-bottom: 50px;
+    }
+
+    .cardImage {
+        min-height: 220px;
+    }
+
+    .cardBody {
+        padding: 22px 18px;
+        gap: 16px;
+    }
+
+    .cardHeader h2 {
+        font-size: 1.5rem;
+    }
+
+    .cardSubtitle {
+        font-size: 0.75rem;
+        margin-top: 10px;
+    }
+
+    .cardDescription {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .highlightCompact {
+        padding: 12px;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .highlightIcon {
+        font-size: 1.35rem;
+    }
+
+    .highlightText h4 {
+        font-size: 0.9rem;
+    }
+
+    .highlightText p {
+        font-size: 0.75rem;
+    }
+
+    .themeTags {
+        gap: 6px;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    .galleryHeader {
+        margin-bottom: 30px;
+    }
+
+    .galleryHeader h3 {
+        font-size: 1.5rem;
+    }
+
+    .galleryHeader p {
+        font-size: 0.88rem;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 120px;
+        gap: 10px;
+    }
+
+    /* Adapt grid spans purely to fit 2 mobile columns elegantly */
+    .gridSpan2x2 {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gridSpanWide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gridSpanTall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gridSpan1x1 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .galleryItemOverlay {
+        padding: 10px;
+    }
+
+    .photoLabel {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+    }
+
+    .photoInfo h4 {
+        font-size: 0.85rem;
+    }
+
+    .viewIcon {
+        padding: 5px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .viewIcon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .cardBadge {
+        font-size: 0.68rem;
+        padding: 6px 14px;
+    }
+}

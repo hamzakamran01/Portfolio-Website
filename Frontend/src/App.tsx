@@ -4,6 +4,7 @@ import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import ZaaricFounder from './components/sections/ZaaricFounder';
 import QimamFellowship from './components/sections/QimamFellowship';
+import NationalYouthSummit from './components/sections/NationalYouthSummit';
 import Projects from './components/Projects/Projects';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
@@ -64,6 +65,7 @@ const STRUCTURED_DATA = [
     },
     "award": [
       "Qimam Fellowship — Selected as 1 of only 38 from 11,000+ applicants across Pakistan",
+      "National Youth Summit Quetta 2025 — Selected by Government of Punjab as Provincial Delegate",
       "Parliamentary Debates Nationals — LUMS 2024"
     ],
     "address": {
@@ -216,6 +218,7 @@ function App() {
         <Philosophy />
         <Projects />
         <QimamFellowship />
+        <NationalYouthSummit />
         <PublicSpeaking />
         <Contact />
       </main>

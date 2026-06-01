@@ -202,6 +202,231 @@ export const projects: Project[] = [
     createdAt: '2024-06-01',
   },
 
+  // ── New AI/Tech Projects (Innovation Lab) ──────────────────────────
+  {
+    id: 'gigledger',
+    title: 'GigLedger',
+    subtitle: 'Intelligent Income Intelligence for the Gig Economy',
+    tagline: 'Financial Clarity for the Invisible Workforce',
+    description: 'Real-time income tracking and anomaly detection platform built for gig workers using ML-based pattern recognition.',
+    longDescription: 'The gig economy runs on hustle but bleeds on invisibility. Drivers, freelancers, and daily-wage workers earn across multiple platforms with zero unified financial picture. GigLedger is a real-time income tracking and anomaly detection platform built specifically for gig workers, giving them what every salaried employee takes for granted: clarity on what they actually earned, what looks wrong, and what to do about it.',
+    overview: 'GigLedger ingests earnings data across sources, detects income anomalies using ML-based pattern recognition, flags irregularities like sudden drops, platform fee spikes, or missing payments, and surfaces them in a clean dashboard the worker can actually understand. Built under 24 hours at SOFTEC 2026 on a full-stack architecture spanning Next.js, FastAPI, Node/Express, and Neon PostgreSQL.',
+    challenge: 'Gig workers earn across multiple platforms with no unified financial picture. Sudden income drops, platform fee spikes, or missing payments go unnoticed because there is no system designed to give them visibility into their own earnings data.',
+    solution: 'Built a full-stack real-time analytics platform ingesting multi-source earnings data, with an ML anomaly detection engine that flags irregularities automatically. Designed a clean, intuitive dashboard that surfaces actionable insights for non-technical users.',
+    impact: 'Delivered a working prototype in under 24 hours at SOFTEC 2026, demonstrating real-time anomaly detection across simulated gig platforms with instant visual feedback and risk flagging.',
+    role: 'Full-Stack Developer & ML Engineer',
+    timeline: '<24 Hours (SOFTEC 2026)',
+
+    techStack: ['Next.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'Machine Learning', 'Real-time Analytics'],
+    category: ['Web Application', 'FinTech', 'ML'],
+    tags: ['Hackathon', 'FinTech', 'Anomaly Detection', 'Gig Economy', 'ML'],
+
+    images: {
+      thumbnail: {
+        url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'GigLedger Dashboard',
+      },
+      hero: {
+        url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'GigLedger - Income Intelligence Platform',
+      },
+      screenshots: [
+        {
+          url: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2000&auto=format&fit=crop',
+          alt: 'GigLedger Analytics',
+          caption: 'Real-time income analytics and anomaly detection dashboard',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    features: [
+      'Multi-Platform Data Ingestion Pipeline',
+      'ML-Based Income Anomaly Detection',
+      'Real-Time Earnings Visualizations',
+      'Automated Risk Flagging & Alerts',
+      'Built in <24 Hours at SOFTEC 2026',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 3,
+    createdAt: '2026-01-01',
+  },
+
+  {
+    id: 'haqyab',
+    title: 'HaqYab',
+    subtitle: 'Agentic Legal Access for Every Pakistani',
+    tagline: 'The Law, Working for the People',
+    description: 'Multi-agent AI pipeline bridging legal statutes and citizen action through NLP and RAG in Urdu & English.',
+    longDescription: 'Pakistan has laws that protect ordinary citizens. Most citizens never find out. HaqYab bridges that gap. A citizen describes their problem in plain Urdu or English. A multi-agent AI pipeline classifies the issue, retrieves the applicable Pakistani statute, drafts the exact legal document they need—whether a landlord notice, employer complaint, or FIR draft—and generates a step-by-step action plan in language any person can follow.',
+    overview: 'HaqYab is an agentic AI legal-access system. No lawyer. No fee. No wasta. Just the law, working for the people it was written to protect. It uses OpenAI Agents SDK with a RAG pipeline backed by pgvector to retrieve relevant statutes and generate actionable legal documents in both Urdu and English.',
+    challenge: 'Legal protections for Pakistani citizens are buried in English legal text, inaccessible without a lawyer, and useless without knowing which court, which document, and which step to take next.',
+    solution: 'Built a multi-agent AI pipeline using OpenAI Agents SDK with RAG retrieval from pgvector. The system classifies legal issues, retrieves applicable statutes, auto-drafts legal documents, and generates step-by-step action plans in both Urdu and English.',
+    impact: 'Democratized legal access for ordinary Pakistani citizens by eliminating the need for expensive legal counsel for common civil matters like tenant rights, employment disputes, and consumer fraud.',
+    role: 'AI Engineer & Full-Stack Developer',
+    timeline: '3 weeks (2026)',
+
+    techStack: ['OpenAI Agents SDK', 'RAG', 'pgvector', 'Next.js', 'FastAPI', 'Python', 'Urdu NLP'],
+    category: ['AI', 'Legal Tech', 'NLP'],
+    tags: ['Agentic AI', 'Legal Tech', 'RAG', 'Urdu NLP', 'Social Impact'],
+
+    images: {
+      thumbnail: {
+        url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'HaqYab Legal AI',
+      },
+      hero: {
+        url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
+        alt: 'HaqYab - Agentic Legal Access Platform',
+      },
+      screenshots: [
+        {
+          url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2000&auto=format&fit=crop',
+          alt: 'HaqYab Legal Pipeline',
+          caption: 'Multi-agent pipeline for legal document generation',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    features: [
+      'Multi-Agent AI Classification Pipeline',
+      'Bilingual Urdu/English NLP Support',
+      'Automated Legal Document Generation',
+      'pgvector RAG Statute Retrieval',
+      'Step-by-Step Citizen Action Plans',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 4,
+    createdAt: '2026-02-01',
+  },
+
+  {
+    id: 'rxflow',
+    title: 'RxFlow',
+    subtitle: 'HIPAA-Compliant Pharmacy Commerce Platform',
+    tagline: 'Where Healthcare Meets Secure Commerce',
+    description: 'Full-stack pharmacy platform combining end-to-end e-commerce with strictly regulated HIPAA healthcare data protocols.',
+    longDescription: 'Built for the US healthcare market where compliance is not optional and data integrity is everything. RxFlow is a full-stack pharmacy platform combining end-to-end medicine e-commerce with HIPAA-compliant data intake for both patients and vendors. Patients browse, order, and manage prescriptions through a clean consumer interface. On the backend, vendor onboarding, inventory management, and patient health records follow strict HIPAA data handling protocols including encrypted storage, access controls, and audit trails.',
+    overview: 'The result is a platform that operates at the intersection of healthcare and commerce without compromising either—the exact standard US pharmacy clients require before trusting any external system with patient data.',
+    challenge: 'The US healthcare market demands absolute HIPAA compliance. Any system handling patient data must implement encrypted storage, strict access controls, and comprehensive audit trails while maintaining a seamless e-commerce experience.',
+    solution: 'Built a dual-interface platform: a clean consumer-facing e-commerce front and a strictly regulated backend with AWS KMS encryption, role-based access controls, vendor onboarding workflows, and complete audit trail logging for every data access event.',
+    impact: 'Delivered a production-ready pharmacy platform meeting the full HIPAA compliance standard required for US healthcare market deployment.',
+    role: 'Full-Stack Developer & Security Architect',
+    timeline: '4 months (2025)',
+
+    techStack: ['React', 'Node.js', 'PostgreSQL', 'AWS KMS', 'HIPAA Compliance', 'Stripe', 'REST APIs'],
+    category: ['Web Application', 'Healthcare', 'E-Commerce'],
+    tags: ['HIPAA', 'Healthcare', 'E-Commerce', 'Security', 'Compliance'],
+
+    images: {
+      thumbnail: {
+        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+        alt: 'RxFlow Pharmacy Platform',
+      },
+      hero: {
+        url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+        alt: 'RxFlow - HIPAA Compliant Pharmacy Commerce',
+      },
+      screenshots: [
+        {
+          url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop',
+          alt: 'RxFlow Commerce Interface',
+          caption: 'Secure pharmacy e-commerce with HIPAA compliance',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    features: [
+      'End-to-End Secure E-Commerce Pipeline',
+      'HIPAA-Compliant Data Architecture',
+      'AWS KMS Encrypted Patient Storage',
+      'Vendor Onboarding & Inventory Portal',
+      'Comprehensive Access Controls & Audit Trails',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 5,
+    createdAt: '2025-03-01',
+  },
+
+  {
+    id: 'vitacore-ai',
+    title: 'VitaCore AI',
+    subtitle: 'Your Complete Health Intelligence Partner',
+    tagline: 'Medical Intelligence, Made Human',
+    description: 'AI-powered medical assistant that digitizes health records and acts as a personal health intelligence partner.',
+    longDescription: 'Medical records are the most important data most people never understand. VitaCore AI changes that relationship entirely. It digitizes all medical invoices and health records through intelligent document processing, builds a unified health timeline the patient actually owns, and sits on top of it as an AI medical partner that knows your complete history.',
+    overview: 'Ask it anything. What do my last three blood tests show? Is this new prescription interacting with something I already take? What does this diagnosis actually mean? VitaCore responds in plain human language—no jargon, no condescension—the way a brilliant doctor friend would explain things if they had time. One-click health stats, trend visualizations, and simple actionable suggestions make it the first health tool built for the person, not the provider.',
+    challenge: 'People accumulate stacks of medical invoices, prescriptions, and lab reports that sit in a drawer until something goes wrong. No existing tool actually helps patients understand and own their health data.',
+    solution: 'Built an intelligent document processing pipeline that digitizes and unifies all medical records into a single health timeline. Layered an AI medical partner on top that can answer natural language queries about the patient\'s full history, flag prescription interactions, and visualize health trends.',
+    impact: 'Created the first truly patient-centric health intelligence tool that makes complex medical data accessible, understandable, and actionable for everyday people.',
+    role: 'AI Engineer & Full-Stack Developer',
+    timeline: '5 weeks (2026)',
+
+    techStack: ['Next.js', 'Python', 'OpenAI API', 'Document Intelligence', 'PostgreSQL', 'Health Records Processing'],
+    category: ['AI', 'Healthcare', 'Document Processing'],
+    tags: ['AI', 'Health Tech', 'Document Intelligence', 'NLP', 'Patient Data'],
+
+    images: {
+      thumbnail: {
+        url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
+        alt: 'VitaCore AI Health Platform',
+      },
+      hero: {
+        url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
+        alt: 'VitaCore AI - Health Intelligence Partner',
+      },
+      screenshots: [
+        {
+          url: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=2000&auto=format&fit=crop',
+          alt: 'VitaCore Health Timeline',
+          caption: 'Unified health timeline with AI-powered insights',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    features: [
+      'Intelligent Document OCR & Digitization',
+      'Unified Patient Health Timeline',
+      'AI-Powered Natural Language Medical Queries',
+      'Cross-Prescription Interaction Detection',
+      'Real-Time Health Trend Visualizations',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 6,
+    createdAt: '2026-03-01',
+  },
+
   {
     id: '3d-chair-visualizer',
     title: '3D Chair Visualizer',
@@ -260,7 +485,7 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 3,
+    order: 7,
     createdAt: '2024-03-01',
   },
 
@@ -317,7 +542,7 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 4,
+    order: 8,
     createdAt: '2024-01-01',
   },
 
@@ -374,7 +599,7 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 5,
+    order: 9,
     createdAt: '2023-09-01',
   },
 ];

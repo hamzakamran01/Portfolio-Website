@@ -20,35 +20,25 @@
 
 .header h2 {
   font-family: 'Orbitron', sans-serif;
-  /* Keep font family explicitly if desired or inherited, About didn't have it but Projects did. I'll remove strict dependency if App.css handles it, but keeps style consistent with About's simplified look. */
   font-size: 2.5rem;
-  /* Changed from 3.5rem */
   color: #E0E7FF;
-  /* Solid color */
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
   position: relative;
   display: inline-block;
   background: none;
   -webkit-text-fill-color: initial;
-  background-clip: border-box;
-  -webkit-background-clip: border-box;
 }
 
 .header h2::after {
   content: '';
   position: absolute;
   bottom: -10px;
-  /* Changed from -15px */
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
-  /* Changed from 200px */
   height: 3px;
-  /* Changed from 4px */
   background: linear-gradient(90deg, transparent, #6366F1, transparent);
-  /* About style */
-  box-shadow: none;
   border-radius: 0;
 }
 
@@ -59,12 +49,14 @@
   margin: 0 auto;
 }
 
-/* --- Bento Grid --- */
-.bentoGrid {
+/* --- Featured Grid (The Crown Jewels) --- */
+.featuredGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  grid-auto-rows: 400px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  grid-auto-rows: 550px;
+  /* Made slightly taller to demand attention */
+  margin-bottom: 6rem;
 }
 
 .card {
@@ -77,6 +69,7 @@
   transition: all 0.3s ease;
   perspective: 1000px;
   min-height: 400px;
+  height: 100%;
 }
 
 .card:hover {
@@ -86,7 +79,8 @@
 }
 
 .majorCard {
-  grid-column: span 2;
+  grid-column: span 1;
+  /* In a 2-col layout, they each take 1 full column */
 }
 
 .cardImageContainer {
@@ -111,7 +105,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13, 27, 42, 0.95) 0%, rgba(13, 27, 42, 0.4) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(13, 27, 42, 0.95) 0%, rgba(13, 27, 42, 0.5) 45%, transparent 100%);
 }
 
 .cardContent {
@@ -119,27 +113,186 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 2rem;
+  padding: 2.5rem;
   z-index: 2;
 }
 
 .cardTitle {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 4px 20px rgba(0, 231, 255, 0.3);
 }
 
 .cardSubtitle {
   color: #00E7FF;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .cardDescription {
   color: #CBD5E1;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.techTags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.techTag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 231, 255, 0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: #E0E7FF;
+  backdrop-filter: blur(5px);
+  font-weight: 500;
+}
+
+/* --- Innovation Lab / Scroller --- */
+.innovationLabSection {
+  margin-top: 5rem;
+  padding-top: 5rem;
+  border-top: 1px solid rgba(0, 231, 255, 0.1);
+  position: relative;
+}
+
+.innovationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.innovationTitles h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #E0E7FF;
+  margin-bottom: 0.5rem;
+}
+
+.innovationTitles p {
+  color: #94A3B8;
+  font-size: 1.05rem;
+}
+
+.scrollControls {
+  display: flex;
+  gap: 1rem;
+}
+
+.scrollBtn {
+  background: rgba(0, 231, 255, 0.1);
+  border: 1px solid rgba(0, 231, 255, 0.3);
+  color: #00E7FF;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scrollBtn:hover {
+  background: rgba(0, 231, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 231, 255, 0.4);
+}
+
+.scrollerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.catalogTrack {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+  /* Give room for box shadow / hover lift */
+  /* Hide scrollbar for a clean native look */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.catalogTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.catalogCard {
+  min-width: 380px;
+  max-width: 380px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.catalogCard:hover {
+  border-color: rgba(0, 231, 255, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 231, 255, 0.1);
+}
+
+.catalogImageContainer {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.catalogImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.catalogCard:hover .catalogImage {
+  transform: scale(1.08);
+}
+
+.catalogOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, transparent 100%);
+}
+
+.catalogContent {
+  padding: 1.5rem;
+}
+
+.catalogTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.catalogDescription {
+  color: #94A3B8;
+  font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
   display: -webkit-box;
@@ -148,19 +301,19 @@
   overflow: hidden;
 }
 
-.techTags {
+.catalogTechTags {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.techTag {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  color: #E0E7FF;
-  backdrop-filter: blur(5px);
+.catalogTechTag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #CBD5E1;
 }
 
 /* --- Modal --- */
@@ -209,7 +362,8 @@
 }
 
 .closeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 231, 255, 0.8);
+  color: #000;
 }
 
 .modalImageContainer {
@@ -365,7 +519,6 @@
 
 .linkButton:hover {
   background: linear-gradient(135deg, #00F0FF 0%, #00BBFF 100%);
-  color: #0D1B2A;
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(0, 231, 255, 0.5);
 }
@@ -399,8 +552,19 @@
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
-  .bentoGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .featuredGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 500px;
+  }
+
+  .innovationHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .catalogCard {
+    min-width: 320px;
   }
 
   .modalBody {
@@ -416,17 +580,28 @@
 }
 
 @media (max-width: 768px) {
-  .bentoGrid {
-    grid-template-columns: 1fr;
+  .featuredGrid {
     grid-auto-rows: 450px;
   }
 
-  .majorCard {
-    grid-column: span 1;
+  .header h2 {
+    font-size: 2.2rem;
   }
 
-  .header h2 {
-    font-size: 2.5rem;
+  .cardContent {
+    padding: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.8rem;
+  }
+
+  .innovationTitles h3 {
+    font-size: 1.6rem;
+  }
+
+  .catalogCard {
+    min-width: 280px;
   }
 
   .modalContent {
