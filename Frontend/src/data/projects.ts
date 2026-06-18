@@ -11,6 +11,98 @@ import { FaChartLine, FaShieldAlt, FaUsers, FaRocket, FaClock, FaAward } from 'r
  */
 export const projects: Project[] = [
   {
+    id: 'ai-health-dost',
+    title: 'AI HealthDost',
+    subtitle: 'AI-Powered Personal Health Memory Platform',
+    tagline: 'Your Complete Health History, One AI Away',
+    description: 'AI-powered personal health memory platform for Pakistani patients that digitizes fragmented medical records and enables intelligent health queries in Urdu or English.',
+    longDescription: 'AI HealthDost is an AI-powered personal health memory platform for Pakistani patients, built on a Next.js and Supabase (PostgreSQL + pgvector) stack within a Turborepo monorepo, that solves the fundamental problem of fragmented, paper-based medical records across Pakistan\'s disconnected healthcare facilities.',
+    overview: 'Patients upload any health document—lab reports, prescriptions, discharge summaries, or hybrid mixed-format documents common in Pakistani clinics. These pass through a multi-stage ingestion pipeline that classifies document type, extracts structured data (biomarker values, medicine names, dosages, dates), embeds content using OpenAI\'s text-embedding-3-small, and stores it in pgvector with rich metadata for hybrid retrieval weighting both semantic similarity and recency.',
+    challenge: 'Pakistan\'s healthcare facilities operate in silos with fragmented, paper-based medical records. Patients struggle to maintain comprehensive health histories, and healthcare providers lack access to complete patient data across different facilities, leading to redundant tests, medication errors, and poor continuity of care.',
+    solution: 'Built a full-stack AI-powered platform using Next.js and Supabase with PostgreSQL + pgvector. Implemented a multi-stage document ingestion pipeline with classification, structured data extraction, and OpenAI embeddings. Created an AI layer using OpenAI Agents SDK that enables patients to query health history in Urdu or English, get AI-simplified lab report explanations, track biomarker trends, and understand prescriptions in plain language. Positioned as a B2B patient intelligence layer for healthcare networks using CNIC as the master patient identifier.',
+    impact: 'Digitized fragmented medical records into a unified, queryable health memory. Enabled patients to understand their health data in their native language through AI. Provided healthcare networks with a persistent patient intelligence layer to improve care coordination and reduce medical errors.',
+    role: 'Full-Stack Developer & AI Engineer',
+    timeline: '4 months (2025)',
+
+    techStack: ['Next.js', 'Supabase', 'PostgreSQL', 'pgvector', 'OpenAI Agents SDK', 'text-embedding-3-small', 'Turborepo', 'Document Intelligence', 'RAG'],
+    category: ['Web Application', 'AI', 'Healthcare'],
+    tags: ['AI-Powered', 'Health Tech', 'RAG', 'Urdu NLP', 'Enterprise', 'Document Processing'],
+
+    images: {
+      thumbnail: {
+        url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+        alt: 'AI HealthDost Platform',
+      },
+      hero: {
+        url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+        alt: 'AI HealthDost - Personal Health Memory Platform',
+        caption: 'AI-powered health intelligence platform for Pakistani patients',
+      },
+      screenshots: [
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+          alt: 'Dashboard Overview',
+          caption: 'Comprehensive health dashboard with AI-powered insights',
+        },
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023609.png',
+          alt: 'Document Upload Interface',
+          caption: 'Multi-format document ingestion pipeline',
+        },
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023627.png',
+          alt: 'AI Health Query',
+          caption: 'Natural language health queries in Urdu and English',
+        },
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023702.png',
+          alt: 'Biomarker Trends',
+          caption: 'Longitudinal health trend visualization',
+        },
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023724.png',
+          alt: 'Prescription Intelligence',
+          caption: 'AI-simplified prescription explanations',
+        },
+        {
+          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023755.png',
+          alt: 'Health Timeline',
+          caption: 'Unified health timeline with intelligent search',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    stats: [
+      { label: 'Document Types', value: '15+', icon: React.createElement(FaRocket), color: '#10B981' },
+      { label: 'AI Queries', value: 'NL', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Languages', value: 'UR+EN', icon: React.createElement(FaShieldAlt), color: '#8B5CF6' },
+    ],
+
+    features: [
+      'Multi-Stage Document Ingestion Pipeline',
+      'Structured Data Extraction (Biomarkers, Medicines, Dosages)',
+      'OpenAI text-embedding-3-small Vector Embeddings',
+      'pgvector Hybrid Retrieval (Semantic + Recency)',
+      'Bilingual Urdu/English AI Health Queries',
+      'AI-Simplified Lab Report Explanations',
+      'Longitudinal Biomarker Trend Tracking',
+      'CNIC-Based Patient Record Linkage',
+      'B2B Healthcare Network Integration',
+    ],
+
+    isFeatured: true,
+    isMajor: true,
+    isNDA: false,
+    order: 0,
+    createdAt: '2025-01-01',
+  },
+
+  {
     id: 'digiqms',
     title: 'DigiQMS',
     subtitle: 'AI-Powered Enterprise Queue Intelligence & Analytics',

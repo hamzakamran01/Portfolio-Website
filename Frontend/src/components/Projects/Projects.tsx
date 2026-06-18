@@ -9,9 +9,10 @@ import { getAllProjects } from '../../data/projects';
 import { Project } from '../../types';
 import styles from './Projects.module.css';
 
-/** Featured slot 1: US client · slot 2: AI-powered enterprise analytics */
-const FEATURED_PROJECT_IDS = ['united-by-art', 'digiqms'] as const;
+/** Featured slot 1: AI HealthDost · slot 2: US client · slot 3: AI-powered enterprise analytics */
+const FEATURED_PROJECT_IDS = ['ai-health-dost', 'united-by-art', 'digiqms'] as const;
 const FEATURED_BADGES: Record<(typeof FEATURED_PROJECT_IDS)[number], string> = {
+  'ai-health-dost': 'AI-Powered',
   'united-by-art': 'US Enterprise Client',
   digiqms: 'AI-Powered',
 };

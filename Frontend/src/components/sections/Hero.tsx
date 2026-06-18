@@ -21,10 +21,6 @@ const Hero: React.FC = () => {
             <span>Hi, I&apos;m</span> Hamza Kamran
           </h1>
           <h2>Engineering AI-Powered Enterprise Solutions</h2>
-          <p>
-            Architecting scalable platforms and intelligent automation workflows that drive
-            measurable business growth.
-          </p>
           <div className={styles.heroCta}>
             <a href="#projects" className={styles.ctaButton}>
               Explore My Work
