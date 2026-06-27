@@ -1,0 +1,17 @@
+:root {
+  --bg-base: #080808;
+  --bg-surface: #0f0f0f;
+  --bg-elevated: #161616;
+  --text-primary: #e8e6e0;
+  --text-secondary: #888580;
+  --text-muted: #3d3b38;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #7c3aed;
+  --accent-cyan-dim: rgba(0, 212, 255, 0.12);
+  --accent-purple-dim: rgba(124, 58, 237, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}

@@ -1,6 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import Navigation from './components/navigation';
-import Hero from './components/sections/Hero';
+import HeroSection from './components/hero/HeroSection';
+import { useLenis } from './hooks/useLenis';
 import About from './components/sections/About';
 import ZaaricFounder from './components/sections/ZaaricFounder';
 import QimamFellowship from './components/sections/QimamFellowship';
@@ -171,6 +172,8 @@ const STRUCTURED_DATA = [
 ];
 
 function App() {
+  useLenis();
+
   // Preload Skills section when user scrolls near it
   useEffect(() => {
     const preloadSkills = () => {
@@ -207,7 +210,7 @@ function App() {
           description="Hamza Kamran — Enterprise Solutions Architect, AI-Powered Automation Specialist, and Founder & CEO of Zaaric. Specializing in scalable cloud architectures, agentic AI systems, and enterprise digital transformation. 2+ years architecting platforms and AI automation workflows that transform SME operations."
           structuredData={STRUCTURED_DATA}
         />
-        <Hero />
+        <HeroSection />
         <Projects />
         <About />
         <ZaaricFounder />

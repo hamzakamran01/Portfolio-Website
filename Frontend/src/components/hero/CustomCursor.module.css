@@ -1,0 +1,38 @@
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e8e6e0;
+  pointer-events: none;
+  z-index: 10001;
+  will-change: transform;
+}
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.03);
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+}
+
+:global(html.signal-cursor-active),
+:global(html.signal-cursor-active *) {
+  cursor: none !important;
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}

@@ -73,8 +73,7 @@ export const projects: Project[] = [
     },
 
     links: {
-      live: undefined,
-      github: undefined,
+      live: 'https://ai-health-memory.vercel.app',
     },
 
     stats: [

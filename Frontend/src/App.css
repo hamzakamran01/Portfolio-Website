@@ -1,50 +1,58 @@
+/* ── App Layout ──────────────────────────────────────────────────────── */
 .app {
-  background: #000000;
   min-height: 100vh;
-  color: #E0E7FF;
+  color: #e8e6e0;
   position: relative;
-  z-index: 1;
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
-.main-content {
-  position: relative;
-  z-index: 2; /* Ensure all sections are above the 3D background */
-  padding: 20px; /* Add some padding around main content */
-}
-
-/* General Section Styling */
+/* All non-hero sections should sit above the fixed particle canvas */
 section:not(#hero) {
-  padding: 80px 20px;
-  margin-bottom: 40px;
-  max-width: 1600px;
+  position: relative;
+  z-index: 2;
+}
+
+/* About section */
+.about {
+  position: relative;
+  padding: 120px 20px;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* ── Section defaults (exclude hero which manages its own layout) ─────── */
+section:not(#hero) {
+  padding: 80px clamp(20px, 5vw, 80px);
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
 
-section h2 {
+section:not(#hero) h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 40px;
   color: #76ABAE;
-  font-family: var(--font-display, 'Orbitron', sans-serif);
+  font-family: var(--font-display, 'Syne', sans-serif);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* Projects Section Styling */
-
-
+/* ── Project Card (legacy, kept for backward compat) ─────────────────── */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 30px; /* Space between cards */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-/* Project Card Styling */
 .project-card {
-  background-color: #172A3A; /* Darker background for cards */
+  background-color: #172A3A;
   border-radius: 10px;
-  overflow: hidden; /* Ensure content respects border radius */
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -53,21 +61,21 @@ section h2 {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3); /* Enhanced shadow on hover */
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
 }
 
 .project-card-canvas-container {
-  height: 200px; /* Fixed height for the 3D canvas */
+  height: 200px;
   width: 100%;
-  background-color: #0d1b2a; /* Match app background or choose another */
-  display: flex; /* Center canvas if renderer size is smaller */
+  background-color: #0d1b2a;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .project-card-content {
   padding: 20px;
-  flex-grow: 1; /* Allows content to fill remaining space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -76,22 +84,22 @@ section h2 {
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.4rem;
-  color: #E0E7FF; /* Card title color */
+  color: #E0E7FF;
 }
 
 .project-card-content p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #b0bec5; /* Lighter text color for description */
-  flex-grow: 1; /* Push link to the bottom */
+  color: #b0bec5;
+  flex-grow: 1;
   margin-bottom: 15px;
 }
 
 .project-card-link {
   display: inline-block;
-  margin-top: auto; /* Pushes link to the bottom */
+  margin-top: auto;
   padding: 8px 15px;
-  background-color: #007bff; /* Link background color */
+  background-color: #007bff;
   color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
@@ -100,27 +108,31 @@ section h2 {
 }
 
 .project-card-link:hover {
-  background-color: #0056b3; /* Darker background on hover */
+  background-color: #0056b3;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 992px) {
   .project-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  section h2 {
+  section:not(#hero) h2 {
     font-size: 2rem;
   }
+
   .project-grid {
-    grid-template-columns: 1fr; /* 1 column */
+    grid-template-columns: 1fr;
   }
 }
 
-/* Spinner animation for lazy loading */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

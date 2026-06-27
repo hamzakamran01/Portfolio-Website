@@ -23,10 +23,8 @@ const Navigation: FC = () => {
   }, []);
 
   const navLinks = [
-    { to: 'hero', label: 'Home' },
-    { to: 'projects', label: 'Projects' },
+    { to: 'projects', label: 'Work' },
     { to: 'about', label: 'About' },
-    { to: 'skills', label: 'Skills' },
     { to: 'contact', label: 'Contact' },
   ];
 
@@ -35,15 +33,23 @@ const Navigation: FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setSidebarOpen(false); // Close sidebar on mobile
+    setSidebarOpen(false);
   };
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
-        <a href="#hero" className={styles.logo} onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}>
-          Hamza Kamran
+        <a
+          href="#hero"
+          className={styles.logo}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('hero');
+          }}
+        >
+          HK
         </a>
+
         {isMobile ? (
           <>
             <button
@@ -69,26 +75,52 @@ const Navigation: FC = () => {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="#contact"
+                    className={styles.sidebarCta}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection('contact');
+                    }}
+                  >
+                    Get In Touch ↗
+                  </a>
+                </li>
               </ul>
             </div>
           </>
         ) : (
-          <ul className={styles.navLinks}>
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <a
-                  href={`#${link.to}`}
-                  className={styles.navLink}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.to);
-                  }}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.desktopNav}>
+            <ul className={styles.navLinks}>
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <a
+                    href={`#${link.to}`}
+                    className={styles.navLink}
+                    data-cursor="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.to);
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              className={styles.navCta}
+              data-cursor="button"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('contact');
+              }}
+            >
+              Get In Touch <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         )}
       </div>
     </nav>
