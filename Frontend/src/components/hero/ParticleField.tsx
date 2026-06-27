@@ -86,7 +86,6 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ className }) => {
     const cursor = { x: -9999, y: -9999, vx: 0, vy: 0, speed: 0 };
     let lastCursorX = -9999;
     let lastCursorY = -9999;
-    let lastMoveTime = 0;
 
     // ── 1. DORMANT FIELD ──
     const DORMANT_COUNT = 300;
@@ -227,7 +226,6 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ className }) => {
       const dx = cursor.x - lastCursorX;
       const dy = cursor.y - lastCursorY;
       cursor.speed = Math.hypot(dx, dy);
-      lastMoveTime = performance.now();
 
       // Spawn trail
       const spawnCount = Math.min(Math.floor(cursor.speed / 12), 5);
