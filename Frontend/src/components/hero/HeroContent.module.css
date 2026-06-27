@@ -306,10 +306,22 @@
   .content {
     padding: 24px;
     padding-top: 100px;
+    height: 110dvh;
+    /* Increased mobile height slightly as requested */
+  }
+
+  .nameBlock {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .nameLine {
-    font-size: clamp(48px, 12vw, 72px);
+    font-size: clamp(32px, 10vw, 56px);
+    /* Reduced font size to fit smaller mobiles */
+    letter-spacing: -0.01em;
+    white-space: normal;
+    line-height: 1.1;
   }
 
   .bottomArea {

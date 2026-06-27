@@ -179,7 +179,7 @@ const HeroSection: React.FC = () => {
   return (
     <section id="hero" ref={sectionRef} className={styles.hero} aria-label="Introduction">
       {/* Layer 0: WebGL particle field */}
-      <ParticleField className={styles.particles} />
+      {!isMobile && <ParticleField className={styles.particles} />}
 
       {/* Layer 1: Radial vignette */}
       <div className={styles.vignette} aria-hidden="true" />
