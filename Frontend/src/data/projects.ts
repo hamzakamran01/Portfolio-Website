@@ -30,44 +30,39 @@ export const projects: Project[] = [
 
     images: {
       thumbnail: {
-        url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+        url: '/assets/AI HealthDost/home.png',
         alt: 'AI HealthDost Platform',
       },
       hero: {
-        url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+        url: '/assets/AI HealthDost/home.png',
         alt: 'AI HealthDost - Personal Health Memory Platform',
         caption: 'AI-powered health intelligence platform for Pakistani patients',
       },
       screenshots: [
         {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023535.png',
+          url: '/assets/AI HealthDost/home.png',
           alt: 'Dashboard Overview',
           caption: 'Comprehensive health dashboard with AI-powered insights',
         },
         {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023609.png',
-          alt: 'Document Upload Interface',
-          caption: 'Multi-format document ingestion pipeline',
-        },
-        {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023627.png',
+          url: '/assets/AI HealthDost/chat.png',
           alt: 'AI Health Query',
           caption: 'Natural language health queries in Urdu and English',
         },
         {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023702.png',
+          url: '/assets/AI HealthDost/profile.png',
+          alt: 'Patient Profile',
+          caption: 'Unified patient health profile with medical history',
+        },
+        {
+          url: '/assets/AI HealthDost/trendGraph.png',
           alt: 'Biomarker Trends',
-          caption: 'Longitudinal health trend visualization',
+          caption: 'Longitudinal biomarker trend visualization and tracking',
         },
         {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023724.png',
-          alt: 'Prescription Intelligence',
-          caption: 'AI-simplified prescription explanations',
-        },
-        {
-          url: '/assets/AI HealthDost/Screenshot 2026-06-19 023755.png',
-          alt: 'Health Timeline',
-          caption: 'Unified health timeline with intelligent search',
+          url: '/assets/AI HealthDost/trends.png',
+          alt: 'Health Trends Overview',
+          caption: 'Comprehensive health trends and analytics dashboard',
         },
       ],
     },
