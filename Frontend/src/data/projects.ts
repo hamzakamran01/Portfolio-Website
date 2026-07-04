@@ -517,7 +517,7 @@ export const projects: Project[] = [
     },
 
     links: {
-      live: 'https://zaaric.com',
+      live: 'https://zaaric-ai.com',
       github: 'https://github.com/MCodecreeper/Zaaric-Website.git',
     },
 

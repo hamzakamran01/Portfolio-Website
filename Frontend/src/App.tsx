@@ -217,9 +217,9 @@ function App() {
         <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
           <Skills />
         </Suspense>
-        <Philosophy />
         <QimamFellowship />
         <NationalYouthSummit />
+        <Philosophy />
         <PublicSpeaking />
         <Contact />
       </main>

@@ -169,7 +169,7 @@ const catalogProjects: Project[] = [
     description: 'High-performance agency website with stunning animations and seamless UI.',
     longDescription: 'A cutting-edge corporate website for Zaaric, featuring complex GSAP animations, a modern design language, and a highly optimized performance score.',
     techStack: ['React', 'GSAP', 'Tailwind', 'Framer Motion'],
-    liveLink: 'https://zaaric.com',
+    liveLink: 'https://zaaric-ai.com',
     githubLink: 'https://github.com/MCodecreeper/Zaaric-Website.git',
     image: '/assets/zaaric.png',
   },
