@@ -6,6 +6,10 @@
   "installCommand": "npm install",
   "rewrites": [
     {
+      "source": "/project-detail.html",
+      "destination": "/project-detail.html"
+    },
+    {
       "source": "/((?!assets/).*)",
       "destination": "/index.html"
     }

@@ -27,6 +27,10 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: process.env.NODE_ENV !== 'production',
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        'project-detail': resolve(__dirname, 'project-detail.html'),
+      },
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
