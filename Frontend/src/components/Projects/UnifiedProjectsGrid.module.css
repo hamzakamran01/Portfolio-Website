@@ -499,6 +499,10 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
+
+  .cardActions {
+    flex-direction: column;
+  }
 }
 
 /* ── Reduced Motion ───────────────────────────────────────────────────── */

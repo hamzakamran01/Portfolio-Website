@@ -350,7 +350,7 @@
   padding: 1rem 1.5rem;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
   font-size: 0.875rem;
-  color: #9a9690;
+  color: #ffffff;
   backdrop-filter: blur(8px);
 }
 
@@ -477,6 +477,7 @@
 
 /* ── Reduced Motion ───────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+
   .backButton,
   .primaryButton,
   .secondaryButton,

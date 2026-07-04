@@ -64,6 +64,11 @@ export const projects: Project[] = [
           alt: 'Health Trends Overview',
           caption: 'Comprehensive health trends and analytics dashboard',
         },
+        {
+          url: '/assets/AI HealthDost/Record-Vault.png',
+          alt: 'Record Vault',
+          caption: 'Encrypted storage for patient medical documents and lab reports',
+        },
       ],
     },
 
@@ -202,7 +207,7 @@ export const projects: Project[] = [
     overview: 'Delivered for a US client, United by Art bridges creative professionals with collaboration tools, community building, and monetization. The platform combines social networking with a secure marketplace so artists can showcase work, connect with peers, and grow their businesses.',
     challenge: 'Creative professionals lacked a dedicated platform that combined networking, collaboration tools, and a trusted marketplace for services. Existing solutions were either too generic or lacked the community features artists needed to thrive.',
     solution: 'Built a full-stack platform using React, Supabase for backend and real-time features, Zustand for state management, and Framer Motion for fluid animations. Implemented real-time messaging, community leaderboards, secure marketplace transactions, and portfolio showcase features optimized for creative content.',
-    impact: 'Onboarded 1,200+ beta users, facilitated formation of 50+ creative communities, enabled hundreds of secure marketplace transactions, and created a vibrant ecosystem where artists can connect, collaborate, and monetize their skills.',
+    impact: 'Onboarded 200+ beta users, facilitated formation of 50+ creative communities, enabled hundreds of secure marketplace transactions, and created a vibrant ecosystem where artists can connect, collaborate, and monetize their skills.',
     role: 'Frontend Developer & Database Expert',
     timeline: '8 months (2024)',
 
@@ -265,7 +270,7 @@ export const projects: Project[] = [
     },
 
     stats: [
-      { label: 'Beta Users', value: '1.2k+', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Beta Users', value: '200+', icon: React.createElement(FaUsers), color: '#00E7FF' },
       { label: 'Communities', value: '50+', icon: React.createElement(FaRocket), color: '#F59E0B' },
       { label: 'Marketplace Tx', value: 'Secure', icon: React.createElement(FaShieldAlt), color: '#10B981' },
     ],
