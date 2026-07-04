@@ -6,7 +6,7 @@ import About from './components/sections/About';
 import ZaaricFounder from './components/sections/ZaaricFounder';
 import QimamFellowship from './components/sections/QimamFellowship';
 import NationalYouthSummit from './components/sections/NationalYouthSummit';
-import Projects from './components/Projects/Projects';
+import Projects from './components/Projects/UnifiedProjectsGrid';
 import Contact from './components/sections/Contact';
 import Footer from './components/sections/Footer';
 import './App.css';

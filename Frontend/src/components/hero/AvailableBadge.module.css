@@ -44,6 +44,7 @@
 }
 
 @keyframes pulseDot {
+
   0%,
   100% {
     opacity: 1;
@@ -52,6 +53,7 @@
       0 0 8px rgba(34, 197, 94, 0.8),
       0 0 16px rgba(34, 197, 94, 0.4);
   }
+
   50% {
     opacity: 0.6;
     transform: scale(1.15);
@@ -68,5 +70,18 @@
 
   .dot {
     animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .badge {
+    padding: 0.35rem 0.75rem;
+    font-size: 9px;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
   }
 }

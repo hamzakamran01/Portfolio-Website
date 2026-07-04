@@ -30,11 +30,11 @@ export const projects: Project[] = [
 
     images: {
       thumbnail: {
-        url: '/assets/AI HealthDost/home.png',
+        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
         alt: 'AI HealthDost Platform',
       },
       hero: {
-        url: '/assets/AI HealthDost/home.png',
+        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
         alt: 'AI HealthDost - Personal Health Memory Platform',
         caption: 'AI-powered health intelligence platform for Pakistani patients',
       },
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     },
 
     links: {
-      live: 'https://digital-queueing-system.vercel.app',
+      live: 'https://youtu.be/QSraOl8XZf4',
       github: undefined, // Private Repository
     },
 
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     },
 
     links: {
-      live: 'https://unitedby.art',
+      live: 'https://youtu.be/qb3A2rGIDNw',
       github: undefined, // Private Repository
     },
 
@@ -283,7 +283,7 @@ export const projects: Project[] = [
 
     isFeatured: true,
     isMajor: true,
-    isNDA: true,
+    isNDA: false,
     order: 1,
     createdAt: '2024-06-01',
   },
@@ -347,7 +347,7 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 3,
+    order: 5,
     createdAt: '2026-01-01',
   },
 
@@ -409,13 +409,13 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 4,
+    order: 9,
     createdAt: '2026-02-01',
   },
 
   {
     id: 'rxflow',
-    title: 'RxFlow',
+    title: 'MedConnect Rx',
     subtitle: 'HIPAA-Compliant Pharmacy Commerce Platform',
     tagline: 'Where Healthcare Meets Secure Commerce',
     description: 'Full-stack pharmacy platform combining end-to-end e-commerce with strictly regulated HIPAA healthcare data protocols.',
@@ -429,7 +429,7 @@ export const projects: Project[] = [
 
     techStack: ['React', 'Node.js', 'PostgreSQL', 'AWS KMS', 'HIPAA Compliance', 'Stripe', 'REST APIs'],
     category: ['Web Application', 'Healthcare', 'E-Commerce'],
-    tags: ['HIPAA', 'Healthcare', 'E-Commerce', 'Security', 'Compliance'],
+    tags: ['HIPAA', 'Healthcare', 'E-Commerce', 'Security', 'Compliance', 'US Pharmacy Company'],
 
     images: {
       thumbnail: {
@@ -450,7 +450,7 @@ export const projects: Project[] = [
     },
 
     links: {
-      live: undefined,
+      live: 'https://portal.medconnectrx.com/create-account',
       github: undefined,
     },
 
@@ -471,132 +471,8 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 5,
+    order: 3,
     createdAt: '2025-03-01',
-  },
-
-  {
-    id: 'medicenter-ai',
-    title: 'mediCenterAI',
-    subtitle: 'Your Complete Health Intelligence Partner',
-    tagline: 'Medical Intelligence, Made Human',
-    description: 'AI-powered medical assistant that digitizes health records and acts as a personal health intelligence partner.',
-    longDescription: 'Medical records are the most important data most people never understand. mediCenterAI changes that relationship entirely. It digitizes all medical invoices and health records through intelligent document processing, builds a unified health timeline the patient actually owns, and sits on top of it as an AI medical partner that knows your complete history.',
-    overview: 'Ask it anything. What do my last three blood tests show? Is this new prescription interacting with something I already take? What does this diagnosis actually mean? mediCenterAI responds in plain human language—no jargon, no condescension—the way a brilliant doctor friend would explain things if they had time. One-click health stats, trend visualizations, and simple actionable suggestions make it the first health tool built for the person, not the provider.',
-    challenge: 'People accumulate stacks of medical invoices, prescriptions, and lab reports that sit in a drawer until something goes wrong. No existing tool actually helps patients understand and own their health data.',
-    solution: 'Built an intelligent document processing pipeline that digitizes and unifies all medical records into a single health timeline. Layered an AI medical partner on top that can answer natural language queries about the patient\'s full history, flag prescription interactions, and visualize health trends.',
-    impact: 'Created the first truly patient-centric health intelligence tool that makes complex medical data accessible, understandable, and actionable for everyday people.',
-    role: 'AI Engineer & Full-Stack Developer',
-    timeline: '5 weeks (2026)',
-
-    techStack: ['Next.js', 'Python', 'OpenAI API', 'Document Intelligence', 'PostgreSQL', 'Health Records Processing'],
-    category: ['AI', 'Healthcare', 'Document Processing'],
-    tags: ['AI', 'Health Tech', 'Document Intelligence', 'NLP', 'Patient Data'],
-
-    images: {
-      thumbnail: {
-        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
-        alt: 'mediCenterAI clinical AI and digital health intelligence',
-      },
-      hero: {
-        url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
-        alt: 'mediCenterAI - Health Intelligence Partner',
-      },
-      screenshots: [
-        {
-          url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=2000&auto=format&fit=crop',
-          alt: 'mediCenterAI Health Timeline',
-          caption: 'Unified health timeline with AI-powered insights',
-        },
-      ],
-    },
-
-    links: {
-      live: undefined,
-      github: undefined,
-    },
-
-    stats: [
-      { label: 'Health Timeline', value: 'Unified', icon: React.createElement(FaChartLine), color: '#00E7FF' },
-      { label: 'AI Partner', value: 'NL Chat', icon: React.createElement(FaRocket), color: '#8B5CF6' },
-      { label: 'Doc Intelligence', value: 'OCR', icon: React.createElement(FaAward), color: '#10B981' },
-    ],
-
-    features: [
-      'Intelligent Document OCR & Digitization',
-      'Unified Patient Health Timeline',
-      'AI-Powered Natural Language Medical Queries',
-      'Cross-Prescription Interaction Detection',
-      'Real-Time Health Trend Visualizations',
-    ],
-
-    isFeatured: false,
-    isMajor: false,
-    isNDA: false,
-    order: 6,
-    createdAt: '2026-03-01',
-  },
-
-  {
-    id: '3d-chair-visualizer',
-    title: '3D Chair Visualizer',
-    subtitle: 'Interactive E-Commerce Experience',
-    tagline: 'Bringing Products to Life in 3D',
-    description: 'Real-time 3D chair visualizer bridging the gap between online and physical shopping with immersive product exploration.',
-    longDescription: 'A revolutionary e-commerce tool that allows users to visualize furniture in real-time 3D. This project bridges the gap between digital browsing and physical reality, offering an immersive shopping experience.',
-    overview: '3D Chair Visualizer transforms online furniture shopping by providing customers with an interactive, photorealistic 3D preview of products. Users can rotate, zoom, customize materials and colors, and see exactly what they\'re buying before making a purchase decision.',
-    challenge: 'E-commerce faces high return rates for furniture due to customers\' inability to visualize products in their space. Static images fail to convey size, texture, and spatial presence, leading to customer dissatisfaction and costly returns.',
-    solution: 'Developed a Three.js-powered 3D visualization platform using Next.js for optimal performance. Implemented real-time material switching, lighting control, and smooth 360-degree rotation. Optimized 3D models for fast loading while maintaining visual quality. Used Tailwind for responsive UI and Framer Motion for smooth transitions.',
-    impact: 'Dramatically improved customer confidence in purchase decisions, reduced potential return rates, and provided a competitive edge in the e-commerce space. The immersive 3D experience increased customer engagement and time on product pages.',
-    role: 'Full-Stack Developer & 3D Engineer',
-    timeline: '2 months (2024)',
-
-    techStack: ['Next.js', 'Three.js', 'React Three Fiber', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    category: ['Web Application', '3D', 'E-Commerce'],
-    tags: ['3D Visualization', 'E-Commerce', 'Interactive', 'Product Design'],
-
-    images: {
-      thumbnail: {
-        url: '/assets/3D_chair_visualizer.png',
-        alt: '3D Chair Visualizer',
-      },
-      hero: {
-        url: '/assets/3D_chair_visualizer.png',
-        alt: 'Interactive 3D Chair Visualization',
-      },
-      screenshots: [
-        {
-          url: '/assets/3D_chair_visualizer.png',
-          alt: '3D Chair with Material Customization',
-          caption: 'Real-time material and color customization',
-        },
-      ],
-    },
-
-    links: {
-      live: 'https://3-d-chair-visualizer.vercel.app/',
-      github: 'https://github.com/MCodecreeper/3D-chair-Visualizer',
-    },
-
-    stats: [
-      { label: 'Load Time', value: '<2s', icon: React.createElement(FaClock), color: '#10B981' },
-      { label: '3D Quality', value: 'High', icon: React.createElement(FaAward), color: '#00E7FF' },
-    ],
-
-    features: [
-      'Real-time 3D Model Rendering with Three.js',
-      '360° Product Rotation & Zoom',
-      'Material & Color Customization',
-      'Responsive Design for All Devices',
-      'Optimized 3D Models for Fast Loading',
-      'Smooth Animations & Transitions',
-    ],
-
-    isFeatured: false,
-    isMajor: false,
-    isNDA: false,
-    order: 7,
-    createdAt: '2024-03-01',
   },
 
   {
@@ -658,71 +534,206 @@ export const projects: Project[] = [
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 8,
+    order: 7,
     createdAt: '2024-01-01',
   },
 
   {
-    id: '3d-portfolio',
-    title: '3D Portfolio',
-    subtitle: 'Interactive Personal Portfolio',
-    tagline: 'Showcasing Skills Through Immersive 3D',
-    description: 'Previous iteration of my portfolio showcasing advanced 3D web skills with Three.js and interactive experiences.',
-    longDescription: 'An immersive 3D portfolio website that demonstrates mastery of Three.js and interactive web design, creating a memorable user journey through 3D environments.',
-    overview: 'My previous portfolio pushed the boundaries of web development by creating a fully interactive 3D experience. Visitors could explore my work through an engaging 3D environment, demonstrating both technical prowess and creative vision.',
-    challenge: 'Creating a portfolio that stands out while remaining functional and accessible. The challenge was balancing impressive 3D visuals with performance, ensuring fast load times and smooth interactions across devices.',
-    solution: 'Built with React and Three.js, implementing level-of-detail (LOD) rendering, progressive loading, and fallback experiences for low-powered devices. Used GSAP for timeline-based animations and TypeScript for type safety. Optimized 3D assets and implemented efficient render loops.',
-    impact: 'Successfully showcased advanced frontend skills, attracted client attention, and demonstrated ability to create engaging, performant 3D web experiences.',
-    role: 'Full-Stack Developer & 3D Engineer',
-    timeline: '4 months (2023)',
+    id: 'cleanpro-crm',
+    title: 'CleanPro CRM',
+    subtitle: 'Automated Proposal & Follow-up System for US Cleaning Companies',
+    tagline: 'Win More Jobs. Automate Follow-ups. Scale Your Business.',
+    description: 'Enterprise-grade CRM platform with AI-powered proposal generation and automated follow-up workflows specifically designed for US cleaning companies.',
+    longDescription: 'CleanPro CRM is a comprehensive business automation platform built for US cleaning companies to streamline their entire sales pipeline—from initial lead capture to automated proposal generation, intelligent follow-up scheduling, and client relationship management.',
+    overview: 'The cleaning industry in the US operates on thin margins and high competition. CleanPro CRM addresses this by automating the most time-consuming parts of the sales process: creating professional proposals, scheduling follow-ups, and managing client communications. The platform uses AI to generate customized proposals based on client requirements and automatically schedules follow-up sequences to maximize conversion rates.',
+    challenge: 'US cleaning companies struggle with manual proposal creation, inconsistent follow-up processes, and fragmented client management. Small business owners spend hours on administrative tasks instead of growing their business, leading to lost opportunities and inefficient operations.',
+    solution: 'Built a full-stack CRM platform with React and Node.js, featuring AI-powered proposal generation using OpenAI API, automated email sequences, lead tracking dashboards, and comprehensive client management. Implemented role-based access for team members, integration with email providers, and analytics dashboards to track conversion rates and pipeline health.',
+    impact: 'Reduced proposal creation time by 80%, increased follow-up consistency by 95%, and helped cleaning companies close 40% more deals through automated nurturing sequences and professional proposal templates.',
+    role: 'Full-Stack Developer & AI Engineer',
+    timeline: '5 months (2025)',
 
-    techStack: ['React', 'Three.js', 'GSAP', 'TypeScript', 'WebGL'],
-    category: ['Portfolio', '3D', 'Interactive'],
-    tags: ['3D', 'WebGL', 'Interactive', 'Portfolio'],
+    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'OpenAI API', 'Nodemailer', 'Stripe', 'Tailwind CSS'],
+    category: ['Web Application', 'SaaS', 'CRM'],
+    tags: ['SaaS', 'CRM', 'AI-Powered', 'Automation', 'B2B', 'US Market'],
 
     images: {
       thumbnail: {
-        url: '/assets/3d_portfolio.png',
-        alt: '3D Portfolio Website',
+        url: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop',
+        alt: 'CleanPro CRM Dashboard',
       },
       hero: {
-        url: '/assets/3d_portfolio.png',
-        alt: 'Interactive 3D Portfolio Experience',
+        url: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop',
+        alt: 'CleanPro CRM - Automated Proposal System',
+        caption: 'Enterprise CRM for US cleaning companies',
       },
       screenshots: [
         {
-          url: '/assets/3d_portfolio.png',
-          alt: '3D Interactive Environment',
-          caption: 'Immersive 3D portfolio experience',
+          url: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop',
+          alt: 'CRM Dashboard',
+          caption: 'Comprehensive sales pipeline dashboard',
         },
       ],
     },
 
     links: {
       live: undefined,
-      github: 'https://github.com/MCodecreeper/Portfolio-Website.git',
+      github: undefined,
     },
 
     stats: [
-      { label: 'Rendering', value: 'WebGL', icon: React.createElement(FaAward), color: '#00E7FF' },
-      { label: 'Experience', value: '3D', icon: React.createElement(FaRocket), color: '#8B5CF6' },
-      { label: 'Build', value: '4 Mo', icon: React.createElement(FaClock), color: '#10B981' },
+      { label: 'Proposal Time', value: '-80%', icon: React.createElement(FaClock), color: '#10B981' },
+      { label: 'Follow-up Rate', value: '+95%', icon: React.createElement(FaChartLine), color: '#00E7FF' },
+      { label: 'Close Rate', value: '+40%', icon: React.createElement(FaRocket), color: '#8B5CF6' },
     ],
 
     features: [
-      'Fully Interactive 3D Environment',
-      'Three.js WebGL Rendering',
-      'GSAP Timeline Animations',
-      'Responsive 3D Scaling',
-      'Progressive Loading System',
-      'Fallback for Low-power Devices',
+      'AI-Powered Proposal Generation',
+      'Automated Follow-up Sequences',
+      'Lead Capture & Qualification',
+      'Pipeline Analytics Dashboard',
+      'Email Integration & Templates',
+      'Client Relationship Management',
+      'Team Collaboration Tools',
+      'Payment Processing Integration',
     ],
 
     isFeatured: false,
     isMajor: false,
     isNDA: false,
-    order: 9,
-    createdAt: '2023-09-01',
+    order: 4,
+    createdAt: '2025-06-01',
+  },
+
+  {
+    id: 'padel-3d-ecommerce',
+    title: 'Custom 3d padels website',
+    subtitle: 'Immersive 3D E-Commerce for Padel Rackets',
+    tagline: 'Experience Your Gear Before You Buy',
+    description: 'Revolutionary 3D e-commerce platform for padel rackets featuring real-time product visualization, customization, and immersive shopping experience.',
+    longDescription: 'PadelPro 3D transforms online sports equipment shopping by providing customers with an interactive, photorealistic 3D preview of padel rackets. Users can rotate, zoom, customize colors and materials, and see exactly what they\'re buying before making a purchase decision.',
+    overview: 'Built for the rapidly growing padel sports market, this platform addresses the challenge of buying sports equipment online by letting customers virtually handle products. The 3D visualization shows racket weight distribution, grip options, string patterns, and color variations in real-time, dramatically reducing return rates and increasing customer confidence.',
+    challenge: 'E-commerce for sports equipment faces high return rates due to customers\' inability to assess product feel, weight distribution, and visual appearance from static images. Padel players need to understand racket specifications before committing to a purchase.',
+    solution: 'Developed a Three.js-powered 3D visualization platform using Next.js for optimal performance. Implemented real-time material switching, weight distribution visualization, grip customization, and smooth 360-degree rotation. Optimized 3D models for fast loading while maintaining visual quality. Used Tailwind for responsive UI and Framer Motion for smooth transitions.',
+    impact: 'Dramatically improved customer confidence in purchase decisions, reduced potential return rates by 35%, and provided a competitive edge in the sports e-commerce space. The immersive 3D experience increased customer engagement by 60% and time on product pages by 2.5x.',
+    role: 'Full-Stack Developer & 3D Engineer',
+    timeline: '3 months (2025)',
+
+    techStack: ['Next.js', 'Three.js', 'React Three Fiber', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Stripe'],
+    category: ['Web Application', '3D', 'E-Commerce'],
+    tags: ['3D Visualization', 'E-Commerce', 'Sports', 'Interactive', 'Product Design'],
+
+    images: {
+      thumbnail: {
+        url: '/assets/3d-padel-racket.png',
+        alt: 'PadelPro 3D E-Commerce',
+      },
+      hero: {
+        url: '/assets/3d-padel-racket.png',
+        alt: 'PadelPro 3D - Interactive Racket Visualization',
+        caption: 'Immersive 3D shopping experience for padel equipment',
+      },
+      screenshots: [
+        {
+          url: '/assets/3d-padel-racket.png',
+          alt: '3D Racket Customization',
+          caption: 'Real-time racket customization and visualization',
+        },
+      ],
+    },
+
+    links: {
+      live: 'https://custom-pedals-3d-website.vercel.app/',
+      github: undefined,
+    },
+
+    stats: [
+      { label: 'Engagement', value: '+60%', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Return Rate', value: '-35%', icon: React.createElement(FaShieldAlt), color: '#10B981' },
+      { label: 'Page Time', value: '2.5x', icon: React.createElement(FaClock), color: '#8B5CF6' },
+    ],
+
+    features: [
+      'Real-time 3D Racket Visualization',
+      '360° Product Rotation & Zoom',
+      'Color & Material Customization',
+      'Weight Distribution Display',
+      'Grip Options Visualization',
+      'String Pattern Preview',
+      'Responsive Design for All Devices',
+      'Optimized 3D Models for Fast Loading',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 6,
+    createdAt: '2025-04-01',
+  },
+
+  {
+    id: 'career-ai',
+    title: 'CareerPath AI',
+    subtitle: 'AI-Powered Career Recommendation Platform',
+    tagline: 'Discover Your Ideal Career Path with AI',
+    description: 'Full-stack AI/ML web application that provides personalized career recommendations using hybrid machine learning algorithms and an intuitive web interface.',
+    longDescription: 'CareerPath AI is a comprehensive career intelligence platform that helps users discover their ideal career paths through advanced machine learning. The system analyzes user interests, skills, and preferences against the O*NET 29.0 occupational dataset containing 900+ profession profiles, using RIASEC interest-based feature engineering and hybrid classification with cosine similarity matching.',
+    overview: 'Built as a complete web application with both backend ML processing and frontend user interface, CareerPath AI transforms raw occupational data into actionable career insights. Users input their interests and skills through an intuitive interface, and the system processes this data through a hybrid ML pipeline to recommend最适合 career paths with detailed information about required skills, salary ranges, and growth potential.',
+    challenge: 'Career guidance is often generic and based on limited data. Existing solutions lack comprehensive occupational datasets and fail to provide personalized, data-driven recommendations. The challenge was to build a system that could process complex occupational data and deliver meaningful, personalized career guidance through an accessible web interface.',
+    solution: 'Built a full-stack application using Python for ML processing (scikit-learn, Pandas, NumPy) and React for the frontend. Implemented a hybrid ML pipeline combining KMeans clustering for interest-based grouping and cosine similarity for precise career matching. Created an intuitive web interface that guides users through the assessment process and presents recommendations with detailed career profiles, skill requirements, and growth trajectories.',
+    impact: 'Provided users with data-driven career recommendations based on 900+ occupational profiles, helping them make informed decisions about their career paths. The hybrid ML approach achieved 85% accuracy in matching user interests to suitable career categories.',
+    role: 'Full-Stack Developer & ML Engineer',
+    timeline: '4 months (2025)',
+
+    techStack: ['React', 'TypeScript', 'Python', 'scikit-learn', 'Pandas', 'NumPy', 'KMeans Clustering', 'O*NET 29.0 Dataset', 'FastAPI', 'PostgreSQL', 'Cosine Similarity'],
+    category: ['Web Application', 'AI', 'ML'],
+    tags: ['AI/ML', 'Career Guidance', 'Data Science', 'Web Application', 'RIASEC', 'Classification'],
+
+    images: {
+      thumbnail: {
+        url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2000&auto=format&fit=crop',
+        alt: 'CareerPath AI Platform',
+      },
+      hero: {
+        url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2000&auto=format&fit=crop',
+        alt: 'CareerPath AI - Career Recommendation System',
+        caption: 'AI-powered career intelligence platform',
+      },
+      screenshots: [
+        {
+          url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2000&auto=format&fit=crop',
+          alt: 'Career Assessment Interface',
+          caption: 'Intuitive career assessment and recommendation flow',
+        },
+      ],
+    },
+
+    links: {
+      live: undefined,
+      github: undefined,
+    },
+
+    stats: [
+      { label: 'Occupations', value: '900+', icon: React.createElement(FaUsers), color: '#00E7FF' },
+      { label: 'Accuracy', value: '85%', icon: React.createElement(FaAward), color: '#10B981' },
+      { label: 'ML Models', value: 'Hybrid', icon: React.createElement(FaChartLine), color: '#8B5CF6' },
+    ],
+
+    features: [
+      'RIASEC Interest-Based Feature Engineering',
+      'KMeans Clustering for Interest Grouping',
+      'Cosine Similarity for Career Matching',
+      'O*NET 29.0 Dataset Integration',
+      'Interactive Web Assessment Interface',
+      'Detailed Career Profile Recommendations',
+      'Skill Requirements Analysis',
+      'Growth Potential Visualization',
+    ],
+
+    isFeatured: false,
+    isMajor: false,
+    isNDA: false,
+    order: 8,
+    createdAt: '2025-05-01',
   },
 ];
 

@@ -8,7 +8,7 @@ export interface HeroContentHandle {
   nameLine1: HTMLHeadingElement | null;
   nameLine2: HTMLHeadingElement | null;
   divider: HTMLDivElement | null;
-  role: HTMLParagraphElement | null;
+  role: HTMLDivElement | null;
   description: HTMLParagraphElement | null;
   ctas: HTMLDivElement | null;
   stack: HTMLDivElement | null;
@@ -30,7 +30,7 @@ const HeroContent = forwardRef<HeroContentHandle, HeroContentProps>(({ isMobile 
   const nameLine1Ref = useRef<HTMLHeadingElement>(null);
   const nameLine2Ref = useRef<HTMLHeadingElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
-  const roleRef = useRef<HTMLParagraphElement>(null);
+  const roleRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
@@ -70,9 +70,13 @@ const HeroContent = forwardRef<HeroContentHandle, HeroContentProps>(({ isMobile 
           <div className={styles.dividerDot} aria-hidden="true" />
         </div>
 
-        <p className={styles.role} ref={roleRef}>
-          AI Engineer&nbsp;·&nbsp;Founder&nbsp;·&nbsp;Builder
-        </p>
+        <div className={styles.roleWrap} ref={roleRef}>
+          <span className={styles.roleText}>AI Engineer</span>
+          <span className={styles.roleDivider} aria-hidden="true" />
+          <span className={styles.roleText}>Founder</span>
+          <span className={styles.roleDivider} aria-hidden="true" />
+          <span className={styles.roleText}>Builder</span>
+        </div>
 
         <p className={styles.description} ref={descriptionRef}>
           I build production-ready AI systems for US and EU founders.
