@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // three (~1 MB) loads as an async chunk so it never blocks the hero's first paint.
 const ParticleField = lazy(() => import('./ParticleField'));
-import CustomCursor from './CustomCursor';
 import HeroContent, { HeroContentHandle } from './HeroContent';
 import ScrollIndicator from './ScrollIndicator';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -206,7 +205,6 @@ const HeroSection: React.FC = () => {
       <div className={`${styles.cornerAccent} ${styles.bottomRight}`} aria-hidden="true" />
 
       {/* Layer 5: Content + cursor */}
-      <CustomCursor />
       <HeroContent ref={contentRef} isMobile={isMobile} />
       <ScrollIndicator />
     </section>

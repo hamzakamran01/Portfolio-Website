@@ -1,13 +1,19 @@
 /* ── Content wrapper ─────────────────────────────────────────────────── */
 .content {
-  position: absolute;
-  inset: 0;
+  /* Was position:absolute + inset:0, so the content could not contribute any
+     height and simply got clipped by the hero's overflow. In normal flow it
+     still sits above the particle canvas (which is position:fixed) via z-index,
+     but the hero can now grow to fit it. */
+  position: relative;
+  width: 100%;
   z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: var(--space-6);
   padding: clamp(40px, 6vw, 100px);
-  padding-top: 140px;
+  /* Was a hardcoded 140px that did not track the navbar height token. */
+  padding-top: calc(var(--nav-h) + var(--space-8));
   pointer-events: none;
   /* Subtle content glow */
   background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(0, 212, 255, 0.02) 0%, transparent 60%);
@@ -21,44 +27,6 @@
 /* ── Top Area ─────────────────────────────────────────────────────────── */
 .topArea {
   flex-shrink: 0;
-}
-
-/* ── Left Edge Marker ─────────────────────────────────────────────────── */
-.edgeMarker {
-  position: absolute;
-  left: clamp(16px, 2.5vw, 32px);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  z-index: 11;
-}
-
-.edgeYear {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--text-tertiary);
-  letter-spacing: 0.15em;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
-.edgeLine {
-  width: 1px;
-  height: clamp(60px, 8vh, 100px);
-  background: linear-gradient(180deg, var(--text-tertiary) 0%, transparent 100%);
-}
-
-.edgeLabel {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  color: var(--accent);
-  letter-spacing: 0.2em;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  opacity: 0.5;
 }
 
 /* ── Center Area ──────────────────────────────────────────────────────── */
@@ -360,9 +328,12 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .content {
-    padding: 24px;
-    padding-top: 140px;
-    height: 100dvh;
+    padding: var(--space-5) var(--space-5) var(--space-8);
+    /* A fixed height here reintroduced the clipping the desktop rule just
+       lost: badge + headline + divider + role + copy + 2 stacked CTAs + proof
+       row + stack tags does not fit 100dvh on a 667px phone. */
+    padding-top: calc(var(--nav-h) + var(--space-6));
+    min-height: 100dvh;
   }
 
   .nameBlock {

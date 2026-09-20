@@ -1,10 +1,17 @@
 /* ── Hero Section ─────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  /* 100vw is wider than the viewport whenever a scrollbar is present; that was
+     only hidden by three separate overflow-x:hidden rules. 100% is correct. */
+  width: 100%;
+  /* Was a FIXED height with overflow:hidden, so on short viewports (landscape
+     phones, small laptops) the bottom of the hero -- stack tags, proof row --
+     was silently cut off with no way to reach it. min-height lets the hero
+     grow instead of clipping. */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  overflow-x: clip;
   /* Premium multi-layered gradient background */
   background:
     /* Base deep gradient */

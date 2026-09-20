@@ -26,8 +26,11 @@
   font-family: var(--font-body);
 }
 
-/* Non-hero sections sit above the fixed WebGL canvas. */
-:where(main > section) {
+/* Non-hero sections sit above the fixed WebGL canvas.
+   #hero is deliberately EXCLUDED: giving it a z-index makes it a stacking
+   context, which traps anything fixed-positioned inside it (the custom cursor)
+   underneath every later section. */
+:where(main > section:not(#hero)) {
   position: relative;
   z-index: 2;
 }

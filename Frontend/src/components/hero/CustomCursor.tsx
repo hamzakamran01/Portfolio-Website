@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import gsap from 'gsap';
 import styles from './CustomCursor.module.css';
@@ -178,11 +179,26 @@ const CustomCursor: React.FC = () => {
 
   if (!enabled) return null;
 
-  return (
+  /*
+   * Portalled to <body>.
+   *
+   * The cursor is position:fixed with z-index 10001, but it used to be
+   * rendered INSIDE <section id="hero">. Any z-index on that section turns it
+   * into a stacking context, and a stacking context clamps its descendants'
+   * z-index to the parent's own level -- so every later section painted over
+   * the cursor regardless of how high its z-index was. A transform on any
+   * ancestor (GSAP puts them on hero children) would break it further, since
+   * that also re-bases position:fixed.
+   *
+   * Rendering into document.body puts it outside <main> entirely, so no
+   * section's stacking context or transform can ever capture it again.
+   */
+  return createPortal(
     <>
       <div ref={dotRef} className={styles.dot} aria-hidden="true" />
       <div ref={ringRef} className={styles.ring} aria-hidden="true" />
-    </>
+    </>,
+    document.body
   );
 };
 

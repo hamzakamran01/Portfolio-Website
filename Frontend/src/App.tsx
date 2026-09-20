@@ -15,6 +15,7 @@ import Philosophy from './components/sections/Philosophy';
 import { MotionConfig } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './components/ui/ErrorFallback';
+import CustomCursor from './components/hero/CustomCursor';
 
 // Lazy load Skills section to reduce initial bundle size
 const Skills = lazy(() => import('./components/sections/Skills'));
@@ -59,6 +60,10 @@ function App() {
         <a className="skip-link" href="#main">
           Skip to content
         </a>
+
+        {/* Global UI. Lives outside <main> so no section stacking context
+            can capture the fixed-position cursor. */}
+        <CustomCursor />
 
         <Navigation />
 
