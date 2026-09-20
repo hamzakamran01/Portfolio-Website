@@ -1,13 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, lazy, Suspense } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ParticleField from './ParticleField';
+// three (~1 MB) loads as an async chunk so it never blocks the hero's first paint.
+const ParticleField = lazy(() => import('./ParticleField'));
 import CustomCursor from './CustomCursor';
 import HeroContent, { HeroContentHandle } from './HeroContent';
 import ScrollIndicator from './ScrollIndicator';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import styles from './HeroSection.module.css';
-import './HeroTokens.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,13 +15,13 @@ const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HeroContentHandle>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const prefersReduced = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   useEffect(() => {
     const section = sectionRef.current;
     const content = contentRef.current;
     if (!section || !content) return;
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const particleEl = section.querySelector('[data-particle-field]') as HTMLElement | null;
     const scrollIndicator = section.querySelector('[data-hero-scroll]') as HTMLElement | null;
     const dividerDot = section.querySelector('[class*="dividerDot"]') as HTMLElement | null;
@@ -123,6 +123,11 @@ const HeroSection: React.FC = () => {
         );
       }
 
+      // t=1400ms Proof row
+      if (statsEl) {
+        tl.fromTo(statsEl, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 1.4);
+      }
+
       // t=1500ms Stack tags
       if (content.stack) {
         const tags = content.stack.querySelectorAll('[data-hero-tag]');
@@ -174,12 +179,16 @@ const HeroSection: React.FC = () => {
       ctx.revert();
       gsap.killTweensOf(section.querySelectorAll('*'));
     };
-  }, [isMobile]);
+  }, [isMobile, prefersReduced]);
 
   return (
     <section id="hero" ref={sectionRef} className={styles.hero} aria-label="Introduction">
       {/* Layer 0: WebGL particle field */}
-      {!isMobile && <ParticleField className={styles.particles} />}
+      {!isMobile && !prefersReduced && (
+        <Suspense fallback={null}>
+          <ParticleField className={styles.particles} />
+        </Suspense>
+      )}
 
       {/* Layer 1: Radial vignette */}
       <div className={styles.vignette} aria-hidden="true" />

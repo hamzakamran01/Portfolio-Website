@@ -1,138 +1,74 @@
-/* ── App Layout ──────────────────────────────────────────────────────── */
+/* ============================================================================
+   App shell layout.
+   ----------------------------------------------------------------------------
+   The previous version of this file contained:
+
+     section:not(#hero)    { padding; max-width; margin }
+     section:not(#hero) h2 { font-size: var(--fs-3xl); color: var(--accent); ... }
+
+   `:not(#hero)` contributes ID specificity — (1,0,1) and (1,0,2) — so these
+   beat every CSS Module class (0,1,0). The result was that section containers
+   and every section heading on the site were controlled from here, silently
+   overriding each module's own declarations, and painting all headings a teal
+   that existed on exactly one line and in no token file. Nine modules had
+   grown `max-width: none !important` patches to fight it; five had not, and
+   were quietly rendering at the wrong width.
+
+   Everything below is wrapped in `:where()`, which has ZERO specificity.
+   These are now genuine defaults that any module class overrides normally.
+   ========================================================================= */
+
 .app {
   min-height: 100vh;
-  color: #e8e6e0;
+  min-height: 100dvh;
+  color: var(--text-primary);
   position: relative;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: var(--font-body);
 }
 
-/* All non-hero sections should sit above the fixed particle canvas */
-section:not(#hero) {
+/* Non-hero sections sit above the fixed WebGL canvas. */
+:where(main > section) {
   position: relative;
   z-index: 2;
 }
 
-/* About section */
-.about {
-  position: relative;
-  padding: 120px 20px;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 2;
+/* Default section container. Two widths exist in the system, not six. */
+:where(main > section:not(#hero)) {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-block: var(--section-y);
+  padding-inline: var(--gutter);
 }
 
-/* ── Section defaults (exclude hero which manages its own layout) ─────── */
-section:not(#hero) {
-  padding: 80px clamp(20px, 5vw, 80px);
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+/* Anchor targets must clear the fixed navbar. There was previously no
+   scroll-margin anywhere in the codebase, so every in-page jump landed with
+   the heading tucked underneath the nav. */
+:where(section[id], [id]) {
+  scroll-margin-top: calc(var(--nav-h) + var(--space-4));
 }
 
-section:not(#hero) h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #76ABAE;
-  font-family: var(--font-display, 'Syne', sans-serif);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+/* Default section heading. index.css resets h1-h6 to inherit, so without a
+   default here any section that does not style its own h2 renders at body
+   size. */
+:where(main > section) h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
 }
 
-/* ── Project Card (legacy, kept for backward compat) ─────────────────── */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+:where(main > section) h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  color: var(--text-primary);
 }
 
-.project-card {
-  background-color: #172A3A;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
-}
-
-.project-card-canvas-container {
-  height: 200px;
-  width: 100%;
-  background-color: #0d1b2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-card-content {
-  padding: 20px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-card-content h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-  color: #E0E7FF;
-}
-
-.project-card-content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #b0bec5;
-  flex-grow: 1;
-  margin-bottom: 15px;
-}
-
-.project-card-link {
-  display: inline-block;
-  margin-top: auto;
-  padding: 8px 15px;
-  background-color: #007bff;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.project-card-link:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 992px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  section:not(#hero) h2 {
-    font-size: 2rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+:where(main > section) p {
+  color: var(--text-secondary);
+  line-height: var(--lh-normal);
 }

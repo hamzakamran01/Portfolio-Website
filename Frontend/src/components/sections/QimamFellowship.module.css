@@ -62,7 +62,7 @@
 /* Base section styling */
 .qimamFellowship {
   position: relative;
-  padding: 120px 20px;
+  padding: var(--section-y) var(--gutter);
   min-height: 100vh;
   overflow: hidden;
   margin-bottom: 0 !important;
@@ -77,7 +77,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 30% 70%, rgba(0, 231, 255, 0.08) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 70%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -147,8 +147,8 @@
 }
 
 .fellowshipHeader h2 {
-  font-size: 2.5rem;
-  color: #E0E7FF;
+  font-size: var(--fs-3xl);
+  color: var(--text-primary);
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -167,12 +167,12 @@
   transform: translateX(-50%);
   width: 150px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  color: #00e7ff;
+  font-size: var(--fs-xl);
+  color: var(--accent);
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -180,7 +180,7 @@
 
 /* Fellowship Content */
 .fellowshipContent {
-  max-width: 1400px;
+  max-width: var(--container-wide);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -192,10 +192,10 @@
 /* Fellowship Image */
 .fellowshipImage {
   position: relative;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 231, 255, 0.2);
-  border: 2px solid rgba(0, 231, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+  border: 2px solid rgba(0, 212, 255, 0.3);
 }
 
 .awardImage {
@@ -219,25 +219,25 @@
 .successRate {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  border: 2px solid #00e7ff;
-  border-radius: 15px;
+  border: 2px solid var(--accent);
+  border-radius: var(--r-md);
   padding: 15px 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 231, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
 }
 
 .rateNumber {
   display: block;
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
-  color: #00e7ff;
-  text-shadow: 0 0 20px rgba(0, 231, 255, 0.5);
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
 .rateText {
   display: block;
-  font-size: 0.9rem;
-  color: #e0e7ff;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
   margin-top: 5px;
 }
 
@@ -249,7 +249,7 @@
 }
 
 .fellowshipDetails h3 {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   color: #ffffff;
   margin-bottom: 20px;
   font-weight: 600;
@@ -263,25 +263,25 @@
   left: 0;
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, #00e7ff, transparent);
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .fellowshipDetails p {
-  color: #e0e7ff;
+  color: var(--text-primary);
   line-height: 1.7;
-  font-size: 1.1rem;
+  font-size: var(--fs-base);
 }
 
 .fellowshipDetails strong {
-  color: #00e7ff;
+  color: var(--accent);
   font-weight: 600;
 }
 
 /* Selection Highlight */
 .selectionHighlight {
-  background: rgba(0, 231, 255, 0.05);
-  border: 1px solid rgba(0, 231, 255, 0.2);
-  border-radius: 15px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: var(--r-md);
   padding: 25px;
   backdrop-filter: blur(10px);
 }
@@ -299,32 +299,32 @@
   gap: 20px;
   padding: 20px;
   background: rgba(13, 27, 42, 0.6);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 231, 255, 0.1);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(0, 212, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .highlightItem:hover {
-  border-color: rgba(0, 231, 255, 0.3);
+  border-color: rgba(0, 212, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 231, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
 }
 
 .highlightIcon {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   flex-shrink: 0;
 }
 
 .highlightContent h4 {
-  color: #00e7ff;
-  font-size: 1.2rem;
+  color: var(--accent);
+  font-size: var(--fs-lg);
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .highlightContent p {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--fs-base);
 }
 
 /* Leaders Grid */
@@ -336,38 +336,38 @@
 
 .leaderCard {
   background: rgba(13, 27, 42, 0.8);
-  border: 1px solid rgba(0, 231, 255, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: var(--r-md);
   padding: 20px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
 .leaderCard:hover {
-  border-color: rgba(0, 231, 255, 0.3);
+  border-color: rgba(0, 212, 255, 0.3);
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0, 231, 255, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
 }
 
 .leaderCard h4 {
-  color: #00e7ff;
-  font-size: 1.1rem;
+  color: var(--accent);
+  font-size: var(--fs-base);
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .leaderCard p {
-  color: #e0e7ff;
-  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
   margin: 0;
   opacity: 0.9;
 }
 
 /* Impact Section */
 .impact {
-  background: linear-gradient(135deg, rgba(0, 231, 255, 0.05), rgba(0, 231, 255, 0.02));
-  border: 1px solid rgba(0, 231, 255, 0.2);
-  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 212, 255, 0.02));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: var(--r-md);
   padding: 25px;
   position: relative;
   overflow: hidden;
@@ -380,7 +380,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 231, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
   transition: 0.5s;
 }
 
@@ -390,7 +390,7 @@
 
 /* Photo Gallery */
 .photoGallery {
-  max-width: 1400px;
+  max-width: var(--container-wide);
   margin: 0 auto;
   padding: 40px 0;
 }
@@ -401,15 +401,15 @@
 }
 
 .galleryHeader h3 {
-  font-size: 2.5rem;
-  color: #E0E7FF;
+  font-size: var(--fs-3xl);
+  color: var(--text-primary);
   margin-bottom: 15px;
-  text-shadow: 0 0 20px rgba(0, 231, 255, 0.3);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .galleryHeader p {
-  font-size: 1.2rem;
-  color: #00e7ff;
+  font-size: var(--fs-lg);
+  color: var(--accent);
   opacity: 0.9;
 }
 
@@ -425,13 +425,13 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: var(--r-md);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .galleryItem:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 231, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
 }
 
 .imageWrapper {
@@ -476,22 +476,22 @@
 
 .photoInfo h4 {
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: var(--fs-base);
   margin-bottom: 8px;
   font-weight: 600;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .photoInfo p {
-  color: #e0e7ff;
-  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .viewIcon {
   align-self: flex-end;
-  color: #00e7ff;
+  color: var(--accent);
   background: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
   padding: 8px;
@@ -560,10 +560,10 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 231, 255, 0.3);
-  border: 2px solid rgba(0, 231, 255, 0.3);
+  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.3);
+  border: 2px solid rgba(0, 212, 255, 0.3);
 }
 
 .closeButton {
@@ -585,7 +585,7 @@
 }
 
 .closeButton:hover {
-  background: rgba(0, 231, 255, 0.8);
+  background: rgba(0, 212, 255, 0.8);
   transform: scale(1.1);
 }
 
@@ -603,7 +603,7 @@
   }
 
   .fellowshipHeader h2 {
-    font-size: 3rem;
+    font-size: var(--fs-3xl);
   }
 
   .galleryGrid {
@@ -659,7 +659,7 @@
   }
 
   .fellowshipHeader h2 {
-    font-size: 2.5rem;
+    font-size: var(--fs-3xl);
     margin-bottom: 15px;
   }
 
@@ -668,7 +668,7 @@
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: var(--fs-lg);
   }
 
   .fellowshipContent {
@@ -686,12 +686,12 @@
   }
 
   .fellowshipDetails h3 {
-    font-size: 1.6rem;
+    font-size: var(--fs-xl);
     margin-bottom: 15px;
   }
 
   .fellowshipDetails p {
-    font-size: 1rem;
+    font-size: var(--fs-base);
     line-height: 1.6;
   }
 
@@ -706,15 +706,15 @@
   }
 
   .highlightIcon {
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
   }
 
   .highlightContent h4 {
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
   }
 
   .highlightContent p {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   .leadersGrid {
@@ -727,11 +727,11 @@
   }
 
   .leaderCard h4 {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .leaderCard p {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
 
   .galleryGrid {
@@ -746,11 +746,11 @@
   }
 
   .galleryHeader h3 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 
   .galleryHeader p {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   /* Mobile grid layout - maintain structure with smaller sizes */
@@ -799,11 +799,11 @@
   }
 
   .photoInfo h4 {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .photoInfo p {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 
   .viewIcon {
@@ -822,7 +822,7 @@
   }
 
   .fellowshipHeader h2 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
     margin-bottom: 12px;
   }
 
@@ -831,7 +831,7 @@
   }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .fellowshipContent {
@@ -848,12 +848,12 @@
   }
 
   .fellowshipDetails h3 {
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
     margin-bottom: 12px;
   }
 
   .fellowshipDetails p {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     line-height: 1.5;
   }
 
@@ -868,15 +868,15 @@
   }
 
   .highlightIcon {
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
   }
 
   .highlightContent h4 {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .highlightContent p {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
 
   .leaderCard {
@@ -884,11 +884,11 @@
   }
 
   .leaderCard h4 {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
   }
 
   .leaderCard p {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 
   .galleryGrid {
@@ -903,11 +903,11 @@
   }
 
   .galleryHeader h3 {
-    font-size: 1.8rem;
+    font-size: var(--fs-2xl);
   }
 
   .galleryHeader p {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   .imageOverlay {
@@ -915,12 +915,12 @@
   }
 
   .photoInfo h4 {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     margin-bottom: 6px;
   }
 
   .photoInfo p {
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
   }
 
   .viewIcon {
@@ -937,10 +937,10 @@
   }
 
   .rateNumber {
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
   }
 
   .rateText {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 }

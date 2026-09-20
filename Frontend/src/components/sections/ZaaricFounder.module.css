@@ -1,7 +1,7 @@
 .zaaricSection {
-    padding: 8rem 2rem;
+    padding: var(--section-y) var(--gutter);
     min-height: 100vh;
-    color: #E0E7FF;
+    color: var(--text-primary);
     position: relative;
     overflow: hidden;
     margin-bottom: 0 !important;
@@ -13,14 +13,14 @@
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 20% 30%, rgba(0, 231, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(123, 0, 255, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
     opacity: 0.6;
     z-index: 0;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: var(--container-wide);
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -33,9 +33,9 @@
 }
 
 .header h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
-    color: #E0E7FF;
+    font-family: var(--font-display);
+    font-size: var(--fs-3xl);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
     position: relative;
@@ -54,12 +54,12 @@
     transform: translateX(-50%);
     width: 150px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, #6366F1, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .header p {
-    font-size: 1.2rem;
-    color: #94A3B8;
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto;
 }
@@ -92,19 +92,19 @@
     position: relative;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
-    border-radius: 24px;
-    border: 2px solid rgba(0, 231, 255, 0.3);
+    border-radius: var(--r-lg);
+    border: 2px solid rgba(0, 212, 255, 0.3);
     overflow: hidden;
     box-shadow:
-        0 0 40px rgba(0, 231, 255, 0.2),
+        0 0 40px rgba(0, 212, 255, 0.2),
         inset 0 0 60px rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
 }
 
 .glassFrame:hover {
-    border-color: rgba(0, 231, 255, 0.6);
+    border-color: rgba(0, 212, 255, 0.6);
     box-shadow:
-        0 0 60px rgba(0, 231, 255, 0.4),
+        0 0 60px rgba(0, 212, 255, 0.4),
         inset 0 0 80px rgba(255, 255, 255, 0.08);
 }
 
@@ -119,7 +119,7 @@
 .imageGlow {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0, 231, 255, 0.1) 0%, rgba(123, 0, 255, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
@@ -135,22 +135,22 @@
 }
 
 .profileName {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    color: #fff;
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .profileTitle {
-    font-family: var(--font-display, 'Orbitron', sans-serif);
-    font-size: 1.2rem;
-    color: #94A3B8;
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
 
 .highlight {
-    color: #00E7FF;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -165,23 +165,23 @@
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: var(--r-lg);
     padding: 2.5rem;
     transition: all 0.3s ease;
 }
 
 .visionCard:hover {
     background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(0, 231, 255, 0.3);
-    box-shadow: 0 0 30px rgba(0, 231, 255, 0.15);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
 }
 
 .visionCard h3 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8rem;
-    color: #fff;
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #00E7FF 0%, #7B00FF 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -189,9 +189,9 @@
 
 .visionCard p {
     font-family: var(--font-body);
-    color: #CBD5E1;
+    color: var(--text-secondary);
     line-height: 1.8;
-    font-size: 1.05rem;
+    font-size: var(--fs-base);
     margin-bottom: 1.2rem;
 }
 
@@ -205,7 +205,7 @@
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 24px;
+    border-radius: var(--r-lg);
     padding: 2rem;
     gap: 3rem;
     backdrop-filter: blur(10px);
@@ -223,7 +223,7 @@
 .zaaricLogo {
     max-width: 160px;
     height: auto;
-    border-radius: 12px;
+    border-radius: var(--r-md);
 }
 
 .zaaricLogo:hover {
@@ -238,11 +238,11 @@
 }
 
 .linksWrapper h4 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.3rem;
-    color: #fff;
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #00E7FF 0%, #7B00FF 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -268,43 +268,43 @@
     justify-content: center;
     gap: 0.8rem;
     padding: 1rem 1.5rem;
-    border-radius: 12px;
+    border-radius: var(--r-md);
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     white-space: nowrap;
 }
 
 .fullWidthLink {
     width: 100%;
     padding: 1.2rem;
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
 }
 
 .primaryLink {
-    background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
-    color: #0D1B2A;
-    box-shadow: 0 4px 15px rgba(0, 231, 255, 0.3);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+    color: var(--bg-surface);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
 }
 
 .primaryLink:hover {
-    background: linear-gradient(135deg, #00F0FF 0%, #00BBFF 100%);
-    box-shadow: 0 6px 25px rgba(0, 231, 255, 0.5);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+    box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
     transform: translateY(-2px);
 }
 
 .secondaryLink {
     background: rgba(255, 255, 255, 0.05);
-    color: #E0E7FF;
+    color: var(--text-primary);
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .secondaryLink:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(0, 231, 255, 0.4);
-    color: #00E7FF;
-    box-shadow: 0 0 20px rgba(0, 231, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.4);
+    color: var(--accent);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 /* --- Responsive --- */
@@ -356,11 +356,11 @@
     }
 
     .header h2 {
-        font-size: 2rem;
+        font-size: var(--fs-2xl);
     }
 
     .header p {
-        font-size: 1rem;
+        font-size: var(--fs-base);
     }
 
     .profilePanel {
@@ -368,7 +368,7 @@
     }
 
     .profileName {
-        font-size: 1.6rem;
+        font-size: var(--fs-xl);
     }
 
     .visionCard {
@@ -376,11 +376,11 @@
     }
 
     .visionCard h3 {
-        font-size: 1.4rem;
+        font-size: var(--fs-xl);
     }
 
     .visionCard p {
-        font-size: 0.95rem;
+        font-size: var(--fs-sm);
         line-height: 1.7;
     }
 
@@ -394,18 +394,18 @@
     }
 
     .linksWrapper h4 {
-        font-size: 1.1rem;
+        font-size: var(--fs-base);
         margin-bottom: 1rem;
     }
 
     .contactLink {
         padding: 0.8rem 1rem;
-        font-size: 0.85rem;
+        font-size: var(--fs-sm);
     }
 
     .fullWidthLink {
         padding: 1rem;
-        font-size: 1rem;
+        font-size: var(--fs-base);
     }
 }
 
@@ -419,11 +419,11 @@
     }
 
     .header h2 {
-        font-size: 1.7rem;
+        font-size: var(--fs-xl);
     }
 
     .header p {
-        font-size: 0.9rem;
+        font-size: var(--fs-sm);
     }
 
     .profilePanel {
@@ -431,11 +431,11 @@
     }
 
     .profileName {
-        font-size: 1.4rem;
+        font-size: var(--fs-xl);
     }
 
     .profileTitle {
-        font-size: 1rem;
+        font-size: var(--fs-base);
     }
 
     .visionCard {
@@ -443,11 +443,11 @@
     }
 
     .visionCard h3 {
-        font-size: 1.2rem;
+        font-size: var(--fs-lg);
     }
 
     .visionCard p {
-        font-size: 0.9rem;
+        font-size: var(--fs-sm);
         line-height: 1.6;
     }
 
@@ -460,17 +460,17 @@
     }
 
     .linksWrapper h4 {
-        font-size: 1rem;
+        font-size: var(--fs-base);
     }
 
     .contactLink {
         padding: 0.7rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: var(--fs-xs);
         gap: 0.5rem;
     }
 
     .fullWidthLink {
         padding: 0.85rem;
-        font-size: 0.9rem;
+        font-size: var(--fs-sm);
     }
 }

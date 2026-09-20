@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
-import { motion, Variants } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import OrbitingTimeline from '../3d/OrbitingTimeLine';
+import React, { useEffect, useRef, useState, useCallback, lazy, Suspense } from 'react';
+import { motion, Variants, useReducedMotion } from 'framer-motion';
+
+// three + @react-three (~1 MB) load as an async chunk, not on first paint.
+const AboutCanvas = lazy(() => import('../3d/AboutCanvas'));
 import styles from './About.module.css';
 
 const profileImage = '/assets/potrait1.jpg';
@@ -10,12 +10,13 @@ const profileImage = '/assets/potrait1.jpg';
 interface Stat {
   value: number;
   label: string;
+  suffix: string;
 }
 
 const STATS: Stat[] = [
-  { value: 2, label: 'Years of Experience' },
-  { value: 15, label: 'Enterprise Solutions Delivered' },
-  { value: 70, label: 'Avg. Efficiency Gain (%)' }
+  { value: 2, label: 'Years of Experience', suffix: '+' },
+  { value: 15, label: 'Enterprise Solutions Delivered', suffix: '+' },
+  { value: 70, label: 'Avg. Efficiency Gain', suffix: '%' }
 ];
 
 const ANIMATION_CONFIG = {
@@ -48,6 +49,8 @@ const itemVariants: Variants = {
 };
 
 const About: React.FC = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const hasAnimated = useRef(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -65,7 +68,7 @@ const About: React.FC = () => {
     return () => observer.disconnect();
   }, [handleIntersection]);
 
-  const animateNumber = useCallback((element: Element, targetValue: number) => {
+  const animateNumber = useCallback((element: Element, targetValue: number, suffix: string) => {
     let current = 0;
     const increment = targetValue / (ANIMATION_CONFIG.duration / ANIMATION_CONFIG.stepTime);
 
@@ -75,7 +78,7 @@ const About: React.FC = () => {
         current = targetValue;
         clearInterval(timer);
       }
-      element.textContent = Math.floor(current).toString() + '+';
+      element.textContent = Math.floor(current).toString() + suffix;
     }, ANIMATION_CONFIG.stepTime);
 
     return timer;
@@ -87,21 +90,18 @@ const About: React.FC = () => {
 
     const statsElements = statsSection.querySelectorAll(`.${styles.stat} h3`);
     const timers: NodeJS.Timeout[] = [];
-
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {
+        // Counters run once. Previously every scroll-out reset them to a bare
+        // "0" (no suffix) and every scroll-in replayed the whole count-up.
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
           statsElements.forEach((el, index) => {
-            const timer = animateNumber(el, STATS[index].value);
+            const timer = animateNumber(el, STATS[index].value, STATS[index].suffix);
             timers.push(timer);
           });
-        } else {
-          statsElements.forEach((el) => {
-            el.textContent = '0';
-          });
-          timers.forEach(timer => clearInterval(timer));
-          timers.length = 0;
+          observer.disconnect();
         }
       },
       { threshold: 0.5 }
@@ -114,19 +114,6 @@ const About: React.FC = () => {
     };
   }, [animateNumber]);
 
-  const canvasConfig = useMemo(() => ({
-    camera: {
-      position: [0, 0, 20] as [number, number, number],
-      fov: 45
-    },
-    lights: {
-      ambient: { intensity: 0.5 },
-      point: {
-        position: [10, 10, 10] as [number, number, number],
-        intensity: 1
-      }
-    }
-  }), []);
 
   return (
     <section id="about" className={styles.about} ref={sectionRef}>
@@ -138,13 +125,12 @@ const About: React.FC = () => {
         About Me
       </motion.h2>
 
-      <div className={styles.modelContainer}>
-        <Canvas camera={canvasConfig.camera}>
-          <ambientLight {...canvasConfig.lights.ambient} />
-          <pointLight {...canvasConfig.lights.point} />
-          <OrbitingTimeline />
-          <OrbitControls enableZoom={false} />
-        </Canvas>
+      <div className={styles.modelContainer} aria-hidden="true">
+        {isVisible && !prefersReducedMotion && (
+          <Suspense fallback={null}>
+            <AboutCanvas />
+          </Suspense>
+        )}
       </div>
 
       <motion.div

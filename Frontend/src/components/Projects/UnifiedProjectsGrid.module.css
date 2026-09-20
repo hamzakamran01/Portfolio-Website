@@ -5,7 +5,7 @@
 .section {
   position: relative;
   padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 4vw, 3rem);
-  max-width: 1600px;
+  max-width: var(--container-wide);
   margin: 0 auto;
   overflow: hidden;
 }
@@ -30,26 +30,26 @@
   padding: 0.5rem 1rem;
   background: rgba(0, 212, 255, 0.08);
   border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 100px;
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00d4ff;
+  color: var(--accent);
   backdrop-filter: blur(8px);
 }
 
 .title {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #ffffff;
   text-align: center;
-  background: linear-gradient(180deg, #ffffff 0%, #e8e6e0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, var(--text-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,9 +57,9 @@
 
 .subtitle {
   max-width: 600px;
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-size: var(--fs-base);
   line-height: 1.7;
-  color: #9a9690;
+  color: var(--text-secondary);
   text-align: center;
 }
 
@@ -80,11 +80,11 @@
   padding: 0.75rem 1.25rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 500;
-  color: #9a9690;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(8px);
@@ -93,14 +93,14 @@
 .filterButton:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(0, 212, 255, 0.3);
-  color: #e8e6e0;
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
 .filterButtonActive {
   background: rgba(0, 212, 255, 0.12);
   border-color: rgba(0, 212, 255, 0.4);
-  color: #00d4ff;
+  color: var(--accent);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
 }
 
@@ -112,15 +112,15 @@
   height: 20px;
   padding: 0 6px;
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 100px;
-  font-size: 0.7rem;
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
   font-weight: 600;
-  color: #6b6964;
+  color: var(--text-tertiary);
 }
 
 .filterButtonActive .filterCount {
   background: rgba(0, 212, 255, 0.2);
-  color: #00d4ff;
+  color: var(--accent);
 }
 
 /* ── Projects Grid ───────────────────────────────────────────────────── */
@@ -158,7 +158,7 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -205,12 +205,12 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
 }
 
 .placeholderText {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
   font-weight: 700;
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
@@ -235,13 +235,13 @@
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #00d4ff;
+  color: var(--accent);
   z-index: 2;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -249,7 +249,7 @@
 .card:hover .categoryBadge {
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.1);
-  color: #0a0a0a;
+  color: var(--bg-base);
 }
 
 /* ── Card Content ────────────────────────────────────────────────────── */
@@ -268,8 +268,8 @@
 }
 
 .cardTitle {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -278,24 +278,24 @@
 }
 
 .card:hover .cardTitle {
-  color: #0a0a0a;
+  color: var(--bg-base);
 }
 
 .cardSubtitle {
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   line-height: 1.5;
-  color: #6b6964;
+  color: var(--text-tertiary);
   transition: color 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card:hover .cardSubtitle {
-  color: #4a4844;
+  color: var(--text-tertiary);
 }
 
 .cardDescription {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   line-height: 1.6;
-  color: #9a9690;
+  color: var(--text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -306,7 +306,7 @@
 }
 
 .card:hover .cardDescription {
-  color: #4a4844;
+  color: var(--text-tertiary);
 }
 
 /* ── Tech Stack Tags ──────────────────────────────────────────────────── */
@@ -322,19 +322,19 @@
   padding: 0.35rem 0.75rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: #9a9690;
+  color: var(--text-secondary);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card:hover .techTag {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.1);
-  color: #0a0a0a;
+  color: var(--bg-base);
 }
 
 /* ── Action Buttons ─────────────────────────────────────────────────────── */
@@ -354,11 +354,11 @@
   padding: 0.875rem 1.25rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 600;
-  color: #e8e6e0;
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(8px);
@@ -367,7 +367,7 @@
 .card:hover .viewButton {
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.15);
-  color: #0a0a0a;
+  color: var(--bg-base);
 }
 
 .viewButton:hover {
@@ -391,32 +391,32 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.25rem;
-  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
   border: none;
-  border-radius: 12px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 700;
-  color: #0A0F1A;
+  color: var(--bg-surface);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  box-shadow: 0 8px 24px rgba(0, 231, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
   letter-spacing: 0.02em;
 }
 
 .card:hover .demoButton {
-  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
-  color: #0A0F1A;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+  color: var(--bg-surface);
   border: none;
-  box-shadow: 0 8px 24px rgba(0, 231, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
 }
 
 .demoButton:hover,
 .card:hover .demoButton:hover {
-  background: linear-gradient(135deg, #00F0FF 0%, #00BBFF 100%);
-  box-shadow: 0 12px 32px rgba(0, 231, 255, 0.45);
-  color: #0A0F1A;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+  box-shadow: 0 12px 32px rgba(0, 212, 255, 0.45);
+  color: var(--bg-surface);
   transform: translateY(-2px);
 }
 
@@ -432,7 +432,7 @@
 .hoverGlow {
   position: absolute;
   inset: -1px;
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   background: linear-gradient(135deg,
       rgba(255, 255, 255, 0.05) 0%,
       rgba(255, 255, 255, 0.02) 100%);
@@ -453,8 +453,8 @@
 }
 
 .noResults p {
-  font-size: 1.125rem;
-  color: #6b6964;
+  font-size: var(--fs-lg);
+  color: var(--text-tertiary);
 }
 
 /* ── Responsive Adjustments ────────────────────────────────────────────── */
@@ -475,14 +475,14 @@
 
   .filterButton {
     padding: 0.4rem 0.7rem;
-    font-size: 0.7rem;
-    border-radius: 8px;
+    font-size: var(--fs-xs);
+    border-radius: var(--r-md);
   }
 
   .filterCount {
     min-width: 16px;
     height: 16px;
-    font-size: 0.6rem;
+    font-size: var(--fs-xs);
     padding: 0 4px;
   }
 
@@ -491,11 +491,11 @@
   }
 
   .cardTitle {
-    font-size: 1.125rem;
+    font-size: var(--fs-lg);
   }
 
   .cardDescription {
-    font-size: 0.875rem;
+    font-size: var(--fs-sm);
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
@@ -523,4 +523,39 @@
   .card:hover .image {
     transform: none;
   }
+}
+/* ── Card metrics ─────────────────────────────────────────────────────── */
+/* The data model has always carried stats/challenge/solution/impact; the grid
+   rendered none of it, so the strongest proof on the site sat behind a click. */
+.cardStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cardStat {
+  min-width: 0;
+}
+
+.cardStatValue {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.cardStatLabel {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.3;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  overflow-wrap: anywhere;
 }

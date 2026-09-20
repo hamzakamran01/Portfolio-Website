@@ -1,0 +1,11 @@
+{
+  "name": "Hamza Kamran — AI Engineer & Founder",
+  "short_name": "Hamza Kamran",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08090C",
+  "theme_color": "#08090C",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

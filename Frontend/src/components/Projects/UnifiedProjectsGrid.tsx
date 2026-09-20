@@ -42,7 +42,7 @@ const UnifiedProjectsGrid: React.FC = () => {
   }, [allProjects]);
 
   return (
-    <section id="projects" className={styles.section}>
+    <section id="projects" className={styles.section} aria-labelledby="work-heading">
       {/* Section Header */}
       <div className={styles.header}>
         <motion.div
@@ -53,7 +53,7 @@ const UnifiedProjectsGrid: React.FC = () => {
           className={styles.headerContent}
         >
           <div className={styles.eyebrow}>Portfolio</div>
-          <h2 className={styles.title}>Selected Work</h2>
+          <h2 id="work-heading" className={styles.title}>Selected Work</h2>
           <p className={styles.subtitle}>
             Enterprise-grade solutions built for scale, precision, and impact
           </p>
@@ -72,6 +72,7 @@ const UnifiedProjectsGrid: React.FC = () => {
           <button
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
+            aria-pressed={selectedCategory === category.id}
             className={`${styles.filterButton} ${selectedCategory === category.id ? styles.filterButtonActive : ''
               }`}
           >
@@ -143,6 +144,17 @@ const UnifiedProjectsGrid: React.FC = () => {
                   {project.description}
                 </p>
 
+                {project.stats && project.stats.length > 0 && (
+                  <dl className={styles.cardStats}>
+                    {project.stats.slice(0, 3).map(stat => (
+                      <div key={stat.label} className={styles.cardStat}>
+                        <dt className={styles.cardStatValue}>{stat.value}</dt>
+                        <dd className={styles.cardStatLabel}>{stat.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
                 {/* Tech Stack Tags */}
                 <div className={styles.techStack}>
                   {project.techStack.slice(0, 4).map((tech) => (
@@ -159,14 +171,11 @@ const UnifiedProjectsGrid: React.FC = () => {
 
                 {/* CTA Buttons */}
                 <div className={styles.cardActions}>
-                  <motion.button
+                  <motion.a
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={styles.viewButton}
-                    onClick={() => {
-                      // Navigate to project detail page using query parameter
-                      window.location.href = `/project-detail.html?id=${project.id}`;
-                    }}
+                    href={`/project-detail.html?id=${project.id}`}
                   >
                     <span>View Details</span>
                     <svg
@@ -185,7 +194,7 @@ const UnifiedProjectsGrid: React.FC = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </motion.button>
+                  </motion.a>
 
                   {project.links?.live && (
                     <motion.a
@@ -197,7 +206,9 @@ const UnifiedProjectsGrid: React.FC = () => {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <span>Live Demo</span>
+                      <span>
+                        {project.links.live.includes('youtu') ? 'Watch demo' : 'Live site'}
+                      </span>
                       <svg
                         className={styles.demoIcon}
                         width="16"

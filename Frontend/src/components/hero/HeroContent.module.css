@@ -37,9 +37,9 @@
 }
 
 .edgeYear {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 10px;
-  color: var(--text-muted, #3d3b38);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
   letter-spacing: 0.15em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -48,13 +48,13 @@
 .edgeLine {
   width: 1px;
   height: clamp(60px, 8vh, 100px);
-  background: linear-gradient(180deg, var(--text-muted, #3d3b38) 0%, transparent 100%);
+  background: linear-gradient(180deg, var(--text-tertiary) 0%, transparent 100%);
 }
 
 .edgeLabel {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 8px;
-  color: var(--accent-cyan, #00d4ff);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent);
   letter-spacing: 0.2em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -84,7 +84,7 @@
   align-items: flex-start;
   text-align: left;
   /* Premium ambient glow behind the name */
-  filter: drop-shadow(0 0 80px rgba(0, 212, 255, 0.08)) drop-shadow(0 0 40px rgba(99, 102, 241, 0.04));
+  filter: drop-shadow(0 0 80px rgba(0, 212, 255, 0.08)) drop-shadow(0 0 40px rgba(167, 139, 250, 0.04));
   position: relative;
 }
 
@@ -96,7 +96,7 @@
   left: -10%;
   right: -10%;
   bottom: -20%;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, transparent 50%, rgba(99, 102, 241, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, transparent 50%, rgba(167, 139, 250, 0.05) 100%);
   filter: blur(60px);
   opacity: 0.5;
   z-index: -1;
@@ -104,7 +104,7 @@
 
 .nameLine {
   display: block;
-  font-family: var(--font-display, 'Syne', sans-serif);
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(40px, 8vw, 100px);
   line-height: 0.9;
@@ -114,7 +114,7 @@
   /* Premium text shadow with depth */
   text-shadow:
     0 0 100px rgba(0, 212, 255, 0.15),
-    0 0 60px rgba(99, 102, 241, 0.1),
+    0 0 60px rgba(167, 139, 250, 0.1),
     0 4px 60px rgba(0, 0, 0, 0.6);
   position: relative;
 }
@@ -141,7 +141,7 @@
   background: linear-gradient(90deg,
       var(--border-default, rgba(255, 255, 255, 0.08)) 0%,
       rgba(0, 212, 255, 0.4) 50%,
-      rgba(99, 102, 241, 0.3) 100%);
+      rgba(167, 139, 250, 0.3) 100%);
   clip-path: inset(0 100% 0 0);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
@@ -150,7 +150,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent-cyan, #00d4ff);
+  background: var(--accent);
   box-shadow:
     0 0 12px rgba(0, 212, 255, 1),
     0 0 24px rgba(0, 212, 255, 0.6),
@@ -193,12 +193,12 @@
 }
 
 .roleText {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: var(--fs-sm);
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #e8e6e0;
+  color: var(--text-primary);
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -214,11 +214,11 @@
 .description {
   margin: 24px 0 0;
   max-width: 520px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: var(--fs-lg);
   line-height: 1.7;
-  color: var(--text-secondary, #a8a49c);
+  color: var(--text-secondary);
   opacity: 0;
   transform: translateY(20px);
   /* Premium text styling */
@@ -242,11 +242,11 @@
   gap: 0.5rem;
   padding: 16px 36px;
   border: 1px solid var(--border-default, rgba(255, 255, 255, 0.12));
-  border-radius: 3px;
+  border-radius: var(--r-sm);
   background: rgba(0, 212, 255, 0.03);
-  color: #e8e6e0;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 500;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -258,7 +258,7 @@
 
 .primaryCta:hover {
   border-color: rgba(0, 212, 255, 0.6);
-  color: #00d4ff;
+  color: var(--accent);
   background: rgba(0, 212, 255, 0.08);
   box-shadow:
     0 0 30px rgba(0, 212, 255, 0.15),
@@ -281,9 +281,9 @@
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--text-secondary, #9a9690);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 15px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 400;
   /* Premium underline effect */
   text-decoration: none;
@@ -297,18 +297,64 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(99, 102, 241, 0.6) 100%);
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(167, 139, 250, 0.6) 100%);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .secondaryCta:hover {
-  color: #e8e6e0;
+  color: var(--text-primary);
 }
 
 .secondaryCta:hover::after {
   width: 100%;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* PROOF ROW ──────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════ */
+/* Base rules for .stats / .stat existed only inside media queries — the
+   markup they styled had been removed. Restored here alongside the JSX. */
+.stats {
+  display: flex;
+  align-items: stretch;
+  margin-top: var(--space-6);
+  opacity: 0;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-4);
+  max-width: 34rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 var(--space-5);
+  border-left: 1px solid var(--border-subtle);
+}
+
+.stat:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.statLabel {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
 /* ═══════════════════════════════════════════════════════════════════════ */
 /* MOBILE ─────────────────────────────────────────────────────────────── */
 /* ═══════════════════════════════════════════════════════════════════════ */

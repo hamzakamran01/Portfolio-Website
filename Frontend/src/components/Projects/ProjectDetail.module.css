@@ -6,9 +6,9 @@
   position: relative;
   min-height: 100vh;
   padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
-  max-width: 1200px;
+  max-width: var(--container-content);
   margin: 0 auto;
-  color: #e8e6e0;
+  color: var(--text-primary);
 }
 
 /* ── Not Found State ───────────────────────────────────────────────────── */
@@ -24,16 +24,16 @@
 }
 
 .notFoundContent h1 {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .notFoundContent p {
-  font-size: 1.125rem;
-  color: #9a9690;
+  font-size: var(--fs-lg);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -45,11 +45,11 @@
   padding: 0.75rem 1.5rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 500;
-  color: #9a9690;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(8px);
@@ -59,7 +59,7 @@
 .backButton:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(0, 212, 255, 0.3);
-  color: #e8e6e0;
+  color: var(--text-primary);
   transform: translateX(-4px);
 }
 
@@ -90,40 +90,40 @@
   padding: 0.5rem 1rem;
   background: rgba(0, 212, 255, 0.08);
   border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 100px;
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00d4ff;
+  color: var(--accent);
   backdrop-filter: blur(8px);
   width: fit-content;
 }
 
 .title {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #ffffff;
-  background: linear-gradient(180deg, #ffffff 0%, #e8e6e0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, var(--text-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-size: var(--fs-lg);
   line-height: 1.5;
-  color: #9a9690;
+  color: var(--text-secondary);
 }
 
 .tagline {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: var(--fs-lg);
   line-height: 1.6;
-  color: #6b6964;
+  color: var(--text-tertiary);
   font-style: italic;
 }
 
@@ -134,7 +134,7 @@
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   backdrop-filter: blur(8px);
 }
 
@@ -145,18 +145,18 @@
 }
 
 .metaLabel {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #6b6964;
+  color: var(--text-tertiary);
 }
 
 .metaValue {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
-  color: #e8e6e0;
+  color: var(--text-primary);
 }
 
 .ctaButtons {
@@ -171,9 +171,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  border-radius: 12px;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -181,14 +181,14 @@
 }
 
 .primaryButton {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  color: var(--accent);
   backdrop-filter: blur(8px);
 }
 
 .primaryButton:hover {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3) 0%, rgba(99, 102, 241, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3) 0%, rgba(167, 139, 250, 0.3) 100%);
   border-color: rgba(0, 212, 255, 0.5);
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
 }
@@ -196,19 +196,19 @@
 .secondaryButton {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #e8e6e0;
+  color: var(--text-primary);
   backdrop-filter: blur(8px);
 }
 
 .secondaryButton:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  color: var(--accent);
 }
 
 .heroImage {
   position: relative;
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
@@ -227,8 +227,8 @@
   right: 0;
   padding: 1.5rem;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-  font-size: 0.875rem;
-  color: #9a9690;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
   backdrop-filter: blur(8px);
 }
 
@@ -246,8 +246,8 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -263,14 +263,14 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #00d4ff, #6366f1);
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: var(--r-sm);
 }
 
 .sectionText {
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  font-size: var(--fs-base);
   line-height: 1.8;
-  color: #9a9690;
+  color: var(--text-secondary);
   max-width: 800px;
 }
 
@@ -288,19 +288,19 @@
   padding: 0.6rem 1.25rem;
   background: rgba(0, 212, 255, 0.08);
   border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 100px;
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.8rem;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: #00d4ff;
+  color: var(--accent);
   transition: all 0.3s ease;
 }
 
 .tag {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.1);
-  color: #9a9690;
+  color: var(--text-secondary);
 }
 
 .techBadge:hover,
@@ -325,7 +325,7 @@
 
 .galleryItem {
   position: relative;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
@@ -349,7 +349,7 @@
   right: 0;
   padding: 1rem 1.5rem;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   color: #ffffff;
   backdrop-filter: blur(8px);
 }
@@ -381,7 +381,7 @@
   padding: 2rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
@@ -394,19 +394,19 @@
 }
 
 .statIcon {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
 }
 
 .statValue {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
   font-weight: 700;
   color: #ffffff;
 }
 
 .statLabel {
-  font-size: 0.875rem;
-  color: #9a9690;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -424,10 +424,10 @@
   padding: 1rem 1.5rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: var(--r-md);
+  font-size: var(--fs-base);
   line-height: 1.6;
-  color: #e8e6e0;
+  color: var(--text-primary);
   transition: all 0.3s ease;
 }
 
@@ -438,8 +438,8 @@
 }
 
 .featureBullet {
-  color: #00d4ff;
-  font-size: 1.25rem;
+  color: var(--accent);
+  font-size: var(--fs-lg);
   font-weight: 700;
   line-height: 1.6;
 }

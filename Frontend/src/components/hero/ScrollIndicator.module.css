@@ -13,13 +13,13 @@
 }
 
 .label {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--text-muted, #5a5854);
+  color: var(--text-tertiary);
   /* Subtle gradient text */
-  background: linear-gradient(180deg, rgba(0, 212, 255, 0.5) 0%, var(--text-muted, #5a5854) 50%, var(--text-muted, #5a5854) 100%);
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.5) 0%, var(--text-tertiary) 50%, var(--text-tertiary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,7 +29,7 @@
   position: relative;
   width: 1px;
   height: 48px;
-  background: linear-gradient(180deg, rgba(0, 212, 255, 0.3) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 100%);
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.3) 0%, rgba(167, 139, 250, 0.2) 50%, transparent 100%);
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
 }
@@ -42,7 +42,7 @@
   height: 4px;
   margin-left: -2px;
   border-radius: 50%;
-  background: #00d4ff;
+  background: var(--accent);
   box-shadow:
     0 0 8px rgba(0, 212, 255, 0.8),
     0 0 16px rgba(0, 212, 255, 0.4);

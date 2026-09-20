@@ -5,9 +5,9 @@
 .skillsSection {
   position: relative;
   min-height: 100vh;
-  padding: 8rem 2rem;
+  padding: var(--section-y) var(--gutter);
   overflow: hidden;
-  color: #E0E7FF;
+  color: var(--text-primary);
   margin-bottom: 0 !important;
   max-width: none !important;
   width: 100%;
@@ -25,7 +25,7 @@
 .container {
   position: relative;
   z-index: 1;
-  max-width: 1600px;
+  max-width: var(--container-wide);
   margin: 0 auto;
 }
 
@@ -36,10 +36,10 @@
 }
 
 .mainTitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
   font-weight: 700;
-  color: #E0E7FF;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
@@ -57,15 +57,15 @@
   transform: translateX(-50%);
   width: 150px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
-  border-radius: 0;
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
+  border-radius: var(--r-sm);
   box-shadow: none;
 }
 
 .subtitle {
-  font-family: var(--font-display, 'Orbitron', sans-serif);
-  font-size: 1.25rem;
-  color: #94A3B8;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.8;
@@ -81,9 +81,9 @@
 
 .categoryCard {
   position: relative;
-  background: #111520;
+  background: var(--bg-elevated);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   padding: 2.5rem;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -115,12 +115,12 @@
 .categoryIcon {
   width: 60px;
   height: 60px;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
-  color: #fff;
+  font-size: var(--fs-2xl);
+  color: var(--text-primary);
   transition: all 0.3s ease;
 }
 
@@ -133,17 +133,17 @@
 }
 
 .categoryTitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   letter-spacing: 0.5px;
 }
 
 .categorySubtitle {
-  font-size: 0.95rem;
-  color: #94A3B8;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -161,9 +161,9 @@
 
 .skillCardInner {
   position: relative;
-  background: #f0f2f5;
+  background: var(--text-primary);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  border-radius: var(--r-md);
   padding: 1.1rem 0.9rem;
   display: flex;
   flex-direction: column;
@@ -179,7 +179,7 @@
 }
 
 .skillIconWrapper {
-  font-size: 1.8rem;
+  font-size: var(--fs-2xl);
   transition: all 0.3s ease;
 }
 
@@ -193,9 +193,9 @@
 }
 
 .skillName {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
-  color: #2d3348;
+  color: var(--bg-raised);
   text-align: center;
   line-height: 1.3;
 }
@@ -203,8 +203,8 @@
 .expertiseBadge {
   padding: 0.25rem 0.7rem;
   border: 1.5px solid;
-  border-radius: 16px;
-  font-size: 0.65rem;
+  border-radius: var(--r-lg);
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -243,7 +243,7 @@
 .expertiseLegend {
   background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   padding: 2rem 3rem;
   display: flex;
   align-items: center;
@@ -254,10 +254,10 @@
 }
 
 .legendTitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   letter-spacing: 1px;
 }
 
@@ -284,7 +284,7 @@
 }
 
 .legendItem span {
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -308,15 +308,15 @@
 /* Laptops & Tablets (Landscape) */
 @media (max-width: 1200px) {
   .skillsSection {
-    padding: 6rem 2rem;
+    padding: var(--section-y) var(--gutter);
   }
 
   .mainTitle {
-    font-size: 3.5rem;
+    font-size: var(--fs-4xl);
   }
 
   .subtitle {
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
   }
 
   .categoriesGrid {
@@ -355,11 +355,11 @@
   .categoryIcon {
     width: 55px;
     height: 55px;
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
   }
 
   .categoryTitle {
-    font-size: 1.6rem;
+    font-size: var(--fs-xl);
   }
 
   .skillsGrid {
@@ -379,7 +379,7 @@
   }
 
   .mainTitle {
-    font-size: 2.75rem;
+    font-size: var(--fs-3xl);
   }
 
   .mainTitle::after {
@@ -388,7 +388,7 @@
   }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .categoriesGrid {
@@ -410,15 +410,15 @@
   .categoryIcon {
     width: 50px;
     height: 50px;
-    font-size: 1.25rem;
+    font-size: var(--fs-lg);
   }
 
   .categoryTitle {
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
   }
 
   .categorySubtitle {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   /* Horizontal Scrollable Skills */
@@ -431,7 +431,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 231, 255, 0.3) rgba(255, 255, 255, 0.05);
+    scrollbar-color: rgba(0, 212, 255, 0.3) rgba(255, 255, 255, 0.05);
     padding-bottom: 1rem;
     padding-right: 1.75rem;
     margin-right: -1.75rem;
@@ -443,17 +443,17 @@
 
   .skillsGrid::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     margin-right: 1.75rem;
   }
 
   .skillsGrid::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #00E7FF, #7B00FF);
-    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: var(--r-md);
   }
 
   .skillsGrid::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, #00F0FF, #8B10FF);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
   }
 
   .skillCard {
@@ -468,7 +468,7 @@
   }
 
   .skillIconWrapper {
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
   }
 
   .skillIcon {
@@ -477,12 +477,12 @@
   }
 
   .skillName {
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseBadge {
     padding: 0.2rem 0.6rem;
-    font-size: 0.6rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseLegend {
@@ -492,7 +492,7 @@
   }
 
   .legendTitle {
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   .legendItems {
@@ -502,7 +502,7 @@
   }
 
   .legendItem span {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
 }
 
@@ -517,7 +517,7 @@
   }
 
   .mainTitle {
-    font-size: 2.25rem;
+    font-size: var(--fs-2xl);
   }
 
   .mainTitle::after {
@@ -525,7 +525,7 @@
   }
 
   .subtitle {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
   }
 
   .categoriesGrid {
@@ -547,16 +547,16 @@
   .categoryIcon {
     width: 48px;
     height: 48px;
-    font-size: 1.15rem;
+    font-size: var(--fs-lg);
     margin: 0 auto;
   }
 
   .categoryTitle {
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
   }
 
   .categorySubtitle {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
 
   /* Horizontal Scrollable Skills */
@@ -569,7 +569,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 231, 255, 0.4) rgba(255, 255, 255, 0.08);
+    scrollbar-color: rgba(0, 212, 255, 0.4) rgba(255, 255, 255, 0.08);
     padding-bottom: 1rem;
     padding-right: 1.5rem;
     margin-right: -1.5rem;
@@ -581,17 +581,17 @@
 
   .skillsGrid::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     margin-right: 1.5rem;
   }
 
   .skillsGrid::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #00E7FF, #7B00FF);
-    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: var(--r-md);
   }
 
   .skillsGrid::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, #00F0FF, #8B10FF);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
   }
 
   .skillCard {
@@ -606,7 +606,7 @@
   }
 
   .skillIconWrapper {
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
   }
 
   .skillIcon {
@@ -615,12 +615,12 @@
   }
 
   .skillName {
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseBadge {
     padding: 0.15rem 0.5rem;
-    font-size: 0.55rem;
+    font-size: var(--fs-xs);
   }
 
   .skillCardInner {
@@ -629,7 +629,7 @@
   }
 
   .skillIconWrapper {
-    font-size: 1.75rem;
+    font-size: var(--fs-2xl);
   }
 
   .skillIcon {
@@ -638,12 +638,12 @@
   }
 
   .skillName {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
 
   .expertiseBadge {
     padding: 0.3rem 0.75rem;
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseLegend {
@@ -651,7 +651,7 @@
   }
 
   .legendTitle {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
   }
 
   .legendDot {
@@ -660,7 +660,7 @@
   }
 
   .legendItem span {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 }
 
@@ -671,7 +671,7 @@
   }
 
   .mainTitle {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 
   .categoryCard {
@@ -684,7 +684,7 @@
   }
 
   .categoryTitle {
-    font-size: 1.2rem;
+    font-size: var(--fs-lg);
   }
 
   /* Horizontal Scrollable Skills */
@@ -712,7 +712,7 @@
   }
 
   .skillIconWrapper {
-    font-size: 1.2rem;
+    font-size: var(--fs-lg);
   }
 
   .skillIcon {
@@ -721,12 +721,12 @@
   }
 
   .skillName {
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseBadge {
     padding: 0.12rem 0.4rem;
-    font-size: 0.5rem;
+    font-size: var(--fs-xs);
   }
 
   .skillCardInner {
@@ -735,7 +735,7 @@
   }
 
   .skillIconWrapper {
-    font-size: 1.6rem;
+    font-size: var(--fs-xl);
   }
 
   .skillIcon {
@@ -744,11 +744,11 @@
   }
 
   .skillName {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 
   .expertiseBadge {
     padding: 0.25rem 0.65rem;
-    font-size: 0.6rem;
+    font-size: var(--fs-xs);
   }
 }

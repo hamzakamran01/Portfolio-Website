@@ -25,7 +25,7 @@
 }
 
 .container {
-  max-width: 1400px;
+  max-width: var(--container-wide);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -33,11 +33,11 @@
 }
 
 .logo {
-  font-family: var(--font-display, 'Syne', sans-serif);
-  font-size: 20px;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
   font-weight: 700;
   text-decoration: none;
-  color: var(--text-primary, #e8e6e0);
+  color: var(--text-primary);
   letter-spacing: 0.03em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -46,7 +46,7 @@
 }
 
 .logo:hover {
-  color: var(--accent-cyan, #00d4ff);
+  color: var(--accent);
   text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
   transform: translateY(-1px);
 }
@@ -66,10 +66,10 @@
 }
 
 .navLink {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  color: var(--text-secondary, #9a9690);
+  font-family: var(--font-body);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: 400;
   letter-spacing: 0.02em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -85,12 +85,12 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(99, 102, 241, 0.6) 100%);
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(167, 139, 250, 0.6) 100%);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navLink:hover {
-  color: var(--text-primary, #e8e6e0);
+  color: var(--text-primary);
 }
 
 .navLink:hover::after {
@@ -103,11 +103,11 @@
   gap: 0.5rem;
   padding: 12px 20px;
   border: 1px solid var(--border-default, rgba(255, 255, 255, 0.12));
-  border-radius: 3px;
+  border-radius: var(--r-sm);
   background: rgba(0, 212, 255, 0.04);
-  color: var(--text-primary, #e8e6e0);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 14px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 500;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -119,7 +119,7 @@
 
 .navCta:hover {
   border-color: rgba(0, 212, 255, 0.6);
-  color: var(--accent-cyan, #00d4ff);
+  color: var(--accent);
   background: rgba(0, 212, 255, 0.08);
   box-shadow:
     0 0 30px rgba(0, 212, 255, 0.15),
@@ -132,8 +132,8 @@
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
-  color: var(--text-primary, #e8e6e0);
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -168,10 +168,10 @@
 }
 
 .sidebarLink {
-  color: var(--text-secondary, #9a9690);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
   font-weight: 400;
   letter-spacing: 0.02em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -186,12 +186,12 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(99, 102, 241, 0.6) 100%);
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.8) 0%, rgba(167, 139, 250, 0.6) 100%);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sidebarLink:hover {
-  color: var(--text-primary, #e8e6e0);
+  color: var(--text-primary);
   transform: translateX(4px);
 }
 
@@ -204,12 +204,12 @@
   margin-top: 1rem;
   padding: 14px 24px;
   border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 3px;
+  border-radius: var(--r-sm);
   background: rgba(0, 212, 255, 0.08);
-  color: var(--text-primary, #e8e6e0);
+  color: var(--text-primary);
   text-decoration: none;
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(10px);
@@ -227,18 +227,69 @@
   transform: translateY(-2px);
 }
 
-@media (max-width: 1024px) {
-  .desktopNav {
-    display: none;
-  }
-
-  .menuToggle {
-    display: block;
-  }
+/* ── Active section (scroll spy) ──────────────────────────────────────── */
+/* There was previously no active state at all — only hover underlines. */
+.navLink.active,
+.sidebarLink.active {
+  color: var(--text-primary);
 }
 
-@media (min-width: 1025px) {
-  .sidebar {
+.navLink.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.sidebarLink.active {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--space-3);
+}
+
+/* ── Drawer backdrop ──────────────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  animation: navBackdropIn var(--dur-base) var(--ease-out);
+}
+
+@keyframes navBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.menuIcon {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ── Responsive switch ────────────────────────────────────────────────── */
+/* Mobile-first, and a single 1024 boundary. The previous pair was
+   `max-width: 1024px` / `min-width: 1025px`, a 1px dead zone, and it was
+   duplicated by a JS `innerWidth <= 1024` check that caused a first-paint
+   flash of the desktop nav on phones. */
+.desktopNav {
+  display: none;
+}
+
+.menuToggle {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .menuToggle,
+  .sidebar,
+  .backdrop {
     display: none;
   }
 }

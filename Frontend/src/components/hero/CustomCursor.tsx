@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import gsap from 'gsap';
 import styles from './CustomCursor.module.css';
 
@@ -12,7 +13,9 @@ const CustomCursor: React.FC = () => {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
-  const enabled = !isTouchDevice() && window.innerWidth >= 768;
+  const isWideEnough = useMediaQuery('(min-width: 768px)');
+  const prefersReduced = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const enabled = !isTouchDevice() && isWideEnough && !prefersReduced;
 
   useEffect(() => {
     if (!enabled) return;
@@ -108,30 +111,52 @@ const CustomCursor: React.FC = () => {
     };
     document.addEventListener('mouseover', onOver, { passive: true });
 
-    /* ── Magnetic effect on [data-cursor="button"] elements ──────── */
-    const magneticTargets: HTMLElement[] = [];
+    /* Magnetic effect on [data-cursor="button"] elements.
+     *
+     * Rect measurement is cached. The previous version ran querySelectorAll +
+     * getBoundingClientRect() for every magnetic target inside a rAF on every
+     * mousemove, forcing a layout each frame. Rects only change on scroll,
+     * resize or DOM mutation, so we measure then -- and we subtract the active
+     * GSAP translation so the centre we compare against is the element's
+     * resting position rather than its nudged one.
+     */
+    type MagneticTarget = { el: HTMLElement; cx: number; cy: number };
+    let magneticTargets: MagneticTarget[] = [];
     let rafMagnetic = 0;
+
+    const measureMagnetic = () => {
+      magneticTargets = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-cursor="button"]')
+      ).map(el => {
+        const rect = el.getBoundingClientRect();
+        const tx = Number(gsap.getProperty(el, 'x')) || 0;
+        const ty = Number(gsap.getProperty(el, 'y')) || 0;
+        return {
+          el,
+          cx: rect.left + rect.width / 2 - tx,
+          cy: rect.top + rect.height / 2 - ty,
+        };
+      });
+    };
+
+    measureMagnetic();
+    window.addEventListener('scroll', measureMagnetic, { passive: true });
+    window.addEventListener('resize', measureMagnetic, { passive: true });
+    const magneticObserver = new MutationObserver(measureMagnetic);
+    magneticObserver.observe(document.body, { childList: true, subtree: true });
 
     const updateMagnetic = (e: MouseEvent) => {
       cancelAnimationFrame(rafMagnetic);
       rafMagnetic = requestAnimationFrame(() => {
-        const fresh = Array.from(document.querySelectorAll<HTMLElement>('[data-cursor="button"]'));
-        fresh.forEach(btn => {
-          const rect = btn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
+        for (const { el, cx, cy } of magneticTargets) {
           const dx = e.clientX - cx;
           const dy = e.clientY - cy;
-          const dist = Math.hypot(dx, dy);
-
-          if (dist < 80) {
-            gsap.to(btn, { x: dx * 0.25, y: dy * 0.25, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
+          if (Math.hypot(dx, dy) < 80) {
+            gsap.to(el, { x: dx * 0.25, y: dy * 0.25, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
           } else {
-            gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.6)', overwrite: 'auto' });
+            gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.6)', overwrite: 'auto' });
           }
-        });
-        magneticTargets.length = 0;
-        magneticTargets.push(...fresh);
+        }
       });
     };
     window.addEventListener('mousemove', updateMagnetic, { passive: true });
@@ -143,7 +168,10 @@ const CustomCursor: React.FC = () => {
       window.removeEventListener('mousemove', updateMagnetic);
       document.removeEventListener('mouseover', onOver);
       cancelAnimationFrame(rafMagnetic);
-      magneticTargets.forEach(btn => gsap.set(btn, { x: 0, y: 0 }));
+      window.removeEventListener('scroll', measureMagnetic);
+      window.removeEventListener('resize', measureMagnetic);
+      magneticObserver.disconnect();
+      magneticTargets.forEach(({ el }) => gsap.set(el, { x: 0, y: 0 }));
       document.documentElement.classList.remove('signal-cursor-active');
     };
   }, [enabled]);

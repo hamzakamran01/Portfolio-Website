@@ -13,10 +13,10 @@ interface SpeakingEvent {
 
 const speakingEvents: SpeakingEvent[] = [
   {
-    title: " Parliamentary Debates Nationals",
+    title: "Parliamentary Debates Nationals",
     date: "LUMS 2024",
     venue: "Punjab University, Lahore",
-    description: "Represent Punjab University in National Level Parliamentary Debating Competitions",
+    description: "Represented Punjab University in national-level Parliamentary Debating Competitions",
     highlights: [
       "Participated in multiple debate competitions on contemporary issues",
       "Engaged in constructive discussions with teams from across Pakistan",

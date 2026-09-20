@@ -10,8 +10,20 @@ const app = express();
 
 // Security Middleware
 app.use(helmet());
+const ALLOWED_ORIGINS = (process.env.FRONTEND_URL || 'https://hamzakamran.tech')
+  .split(',')
+  .map(o => o.trim().replace(/[/]+$/, ''))
+  .filter(Boolean);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://hamza-portfolio-mocha.vercel.app/', // Replace with your frontend URL
+  origin(origin, callback) {
+    // Allow same-origin / server-to-server requests that send no Origin.
+    if (!origin) return callback(null, true);
+    const normalised = origin.replace(/[/]+$/, '');
+    return ALLOWED_ORIGINS.includes(normalised)
+      ? callback(null, true)
+      : callback(new Error('Not allowed by CORS'));
+  },
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -28,6 +40,15 @@ app.use(morgan('dev'));
 
 // Body parser
 app.use(express.json({ limit: '10kb' }));
+
+// Escape user input before it is interpolated into the HTML email body.
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+}[char]));
 
 // Create transporter with retry mechanism
 const createTransporter = () => {
@@ -86,12 +107,13 @@ app.post('/api/contact', async (req, res) => {
       name: name.trim().slice(0, 100),
       email: email.trim().slice(0, 100),
       subject: subject.trim().slice(0, 200),
-      message: message.trim().slice(0, 1000)
+      message: message.trim().slice(0, 4000)
     };
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
+      replyTo: sanitizedData.email,
       subject: `Portfolio Contact: ${sanitizedData.subject}`,
       text: `
         Name: ${sanitizedData.name}
@@ -101,10 +123,11 @@ app.post('/api/contact', async (req, res) => {
       `,
       html: `
         <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${sanitizedData.name}</p>
-        <p><strong>Email:</strong> ${sanitizedData.email}</p>
-        <p><strong>Subject:</strong> ${sanitizedData.subject}</p>
-        <p><strong>Message:</strong> ${sanitizedData.message}</p>
+        <p><strong>Name:</strong> ${escapeHtml(sanitizedData.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(sanitizedData.email)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(sanitizedData.subject)}</p>
+        <p><strong>Message:</strong></p>
+        <pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(sanitizedData.message)}</pre>
       `
     };
 

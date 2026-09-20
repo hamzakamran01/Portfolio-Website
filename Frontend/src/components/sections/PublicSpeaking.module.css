@@ -1,8 +1,8 @@
 .publicSpeaking {
-  padding: 8rem 2rem;
+  padding: var(--section-y) var(--gutter);
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to bottom, #0D1B2A, #0A1420);
+  background: linear-gradient(to bottom, var(--bg-surface), var(--bg-surface));
   margin-bottom: 0 !important;
 }
 
@@ -14,8 +14,8 @@
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 90% 10%, rgba(0, 231, 255, 0.1) 0%, transparent 40%);
+    radial-gradient(circle at 10% 90%, rgba(167, 139, 250, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -25,8 +25,8 @@
 }
 
 .header h2 {
-  font-size: 2.5rem;
-  color: #E0E7FF;
+  font-size: var(--fs-3xl);
+  color: var(--text-primary);
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -45,11 +45,11 @@
   transform: translateX(-50%);
   width: 150px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   color: rgb(0, 229, 255);
   font-weight: 300;
   letter-spacing: 1px;
@@ -59,13 +59,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  max-width: var(--container-content);
   margin: 0 auto;
 }
 
 .eventCard {
-  background: #111520;
-  border-radius: 20px;
+  background: var(--bg-elevated);
+  border-radius: var(--r-lg);
   padding: 2rem;
   position: relative;
   overflow: hidden;
@@ -80,14 +80,14 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .eventImage {
   width: 100%;
   height: 200px;
   margin-bottom: 1.5rem;
-  border-radius: 12px;
+  border-radius: var(--r-md);
   overflow: hidden;
   position: relative;
 }
@@ -124,28 +124,28 @@
 }
 
 .eventHeader h3 {
-  font-size: 1.5rem;
-  color: #E0E7FF;
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
   margin: 0;
 }
 
 .date {
-  font-size: 0.9rem;
-  color: #00E7FF;
-  background: rgba(0, 231, 255, 0.1);
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.1);
   padding: 0.3rem 0.8rem;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
 }
 
 .venue {
-  color: #94A3B8;
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
   margin-bottom: 1rem;
   font-style: italic;
 }
 
 .description {
-  color: #E0E7FF;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -160,14 +160,14 @@
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
-  color: #E0E7FF;
-  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
   line-height: 1.5;
 }
 
 .bullet {
-  color: #00E7FF;
-  font-size: 1.2rem;
+  color: var(--accent);
+  font-size: var(--fs-lg);
   line-height: 1;
 }
 
@@ -175,15 +175,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #6366F1;
+  color: var(--accent-2);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   margin-top: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .learnMore:hover {
-  color: #00E7FF;
+  color: var(--accent);
 }
 
 .learnMore svg {
@@ -205,27 +205,27 @@
 .statCard {
   text-align: center;
   padding: 1.5rem 2.5rem;
-  background: #111520;
-  border-radius: 15px;
+  background: var(--bg-elevated);
+  border-radius: var(--r-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
   min-width: 150px;
 }
 
 .statNumber {
   display: block;
-  font-size: 2.5rem;
+  font-size: var(--fs-3xl);
   font-weight: bold;
-  color: #00E7FF;
+  color: var(--accent);
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .statLabel {
-  color: #E0E7FF;
-  font-size: 1rem;
+  color: var(--text-primary);
+  font-size: var(--fs-base);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -236,7 +236,7 @@
   }
 
   .header h2 {
-    font-size: 1.7rem;
+    font-size: var(--fs-xl);
   }
 
   .eventsContainer {
@@ -253,6 +253,6 @@
   }
 
   .statNumber {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 }

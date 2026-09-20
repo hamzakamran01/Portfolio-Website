@@ -1,6 +1,6 @@
 .contact {
-  padding: 8rem 2rem;
-  color: #E0E7FF;
+  padding: var(--section-y) var(--gutter);
+  color: var(--text-primary);
   position: relative;
   overflow: hidden;
   margin-bottom: 0 !important;
@@ -15,7 +15,7 @@
   left: -10%;
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, rgba(0, 231, 255, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -27,13 +27,13 @@
   right: -10%;
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, rgba(123, 0, 255, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.03) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
 
 .contactContainer {
-  max-width: 1200px;
+  max-width: var(--container-content);
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -52,9 +52,9 @@
 }
 
 .contactHeader h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
-  color: #E0E7FF;
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
   position: relative;
@@ -69,13 +69,13 @@
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .contactHeader p {
   font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: #94A3B8;
+  font-size: var(--fs-base);
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -83,9 +83,9 @@
 
 /* --- Contact Info Panel (Left) --- */
 .contactInfo {
-  background: #111520;
+  background: var(--bg-elevated);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@
   align-items: flex-start;
   gap: 1.25rem;
   padding: 1.25rem;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
@@ -115,20 +115,20 @@
 .infoIcon {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
-  background: rgba(0, 231, 255, 0.1);
-  color: #00E7FF;
+  border-radius: var(--r-md);
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
 .infoItem:hover .infoIcon {
-  background: #00E7FF;
-  color: #0A0F1A;
+  background: var(--accent);
+  color: var(--bg-surface);
 }
 
 .infoContent {
@@ -138,9 +138,9 @@
 }
 
 .infoContent h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  color: #94A3B8;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
@@ -148,8 +148,8 @@
 
 .infoContent p,
 .infoContent a {
-  font-size: 1rem;
-  color: #E0E7FF;
+  font-size: var(--fs-base);
+  color: var(--text-primary);
   font-weight: 500;
   line-height: 1.5;
   text-decoration: none;
@@ -157,7 +157,7 @@
 }
 
 .infoContent a:hover {
-  color: #00E7FF;
+  color: var(--accent);
 }
 
 /* Social Links */
@@ -171,30 +171,30 @@
 .socialLink {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: var(--r-md);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94A3B8;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   transition: all 0.3s ease;
 }
 
 .socialLink:hover {
   background: #0A66C2;
   border-color: #0A66C2;
-  color: #fff;
+  color: var(--text-primary);
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
 }
 
 /* --- Contact Form Panel (Right) --- */
 .contactForm {
-  background: #0A0F1A;
+  background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  border-radius: var(--r-lg);
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -211,9 +211,9 @@
   padding: 1rem 1.25rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #E0E7FF;
-  font-size: 1rem;
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-size: var(--fs-base);
   transition: all 0.3s ease;
   font-family: inherit;
 }
@@ -225,9 +225,9 @@ textarea.formInput {
 
 .formInput:focus {
   outline: none;
-  border-color: #00E7FF;
+  border-color: var(--accent);
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 4px rgba(0, 231, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
 }
 
 .formInput::placeholder {
@@ -237,15 +237,15 @@ textarea.formInput {
 /* Buttons */
 .submitButton {
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #00E7FF 0%, #0099FF 100%);
-  color: #0A0F1A;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+  color: var(--bg-surface);
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: var(--r-md);
+  font-size: var(--fs-base);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  box-shadow: 0 8px 24px rgba(0, 231, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 1rem;
@@ -253,15 +253,15 @@ textarea.formInput {
 
 .submitButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 231, 255, 0.4);
-  background: linear-gradient(135deg, #00F0FF 0%, #00BBFF 100%);
+  box-shadow: 0 12px 32px rgba(0, 212, 255, 0.4);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
 }
 
 .submitButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  background: #334155;
-  color: #94A3B8;
+  background: var(--text-tertiary);
+  color: var(--text-secondary);
   box-shadow: none;
 }
 
@@ -269,8 +269,8 @@ textarea.formInput {
 .errorMessage,
 .successMessage {
   padding: 1rem 1.25rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -279,13 +279,13 @@ textarea.formInput {
 .errorMessage {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #EF4444;
+  color: var(--danger);
 }
 
 .successMessage {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.2);
-  color: #10B981;
+  color: var(--success);
 }
 
 /* --- Responsive --- */
@@ -323,7 +323,7 @@ textarea.formInput {
   }
 
   .contactHeader h2 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 
   .contactInfo {
@@ -344,7 +344,7 @@ textarea.formInput {
 
   .formInput {
     padding: 0.85rem 1rem;
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
   }
 }
 
@@ -354,11 +354,11 @@ textarea.formInput {
   }
 
   .contactHeader h2 {
-    font-size: 1.75rem;
+    font-size: var(--fs-2xl);
   }
 
   .contactHeader p {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
   }
 
   .contactInfo {
@@ -373,16 +373,16 @@ textarea.formInput {
   .infoIcon {
     width: 40px;
     height: 40px;
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
   }
 
   .infoContent h3 {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
   }
 
   .infoContent p,
   .infoContent a {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   .contactForm {
@@ -391,6 +391,53 @@ textarea.formInput {
 
   .submitButton {
     padding: 0.85rem 1.5rem;
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
+}
+/* ── Added with the form rewrite ──────────────────────────────────────── */
+
+/* Budget + timeline sit side by side on wider screens. */
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: var(--space-4);
+}
+
+.responseNote {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* `outline: none` was previously unconditional, leaving keyboard users with
+   only a subtle border change. Keep the styled focus, restore a real ring. */
+.formInput:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Was rgba(148,163,184,0.5) - roughly 2.3:1 on the dark surface. */
+.formInput::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+/* Native select needs explicit colours or it renders with the OS light theme. */
+select.formInput {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% + 2px), calc(100% - 14px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+select.formInput option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
 }

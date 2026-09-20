@@ -1,7 +1,7 @@
 .about {
   position: relative;
-  padding: 120px 20px;
-  background: linear-gradient(to bottom, #0D1B2A, #0A1420);
+  padding: var(--section-y) var(--gutter);
+  background: linear-gradient(to bottom, var(--bg-surface), var(--bg-surface));
   overflow: hidden;
   min-height: 100vh;
   display: flex;
@@ -16,9 +16,9 @@
 
 .about h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: var(--fs-3xl);
   margin-bottom: 3rem;
-  color: #E0E7FF;
+  color: var(--text-primary);
   letter-spacing: 2px;
   position: relative;
   display: inline-block;
@@ -32,13 +32,13 @@
   transform: translateX(-50%);
   width: 150px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #6366F1, transparent);
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
 }
 
 .aboutContent {
   display: flex;
   gap: 60px;
-  max-width: 1200px;
+  max-width: var(--container-content);
   margin: 0 auto;
   align-items: center;
   position: relative;
@@ -51,22 +51,22 @@
   text-align: left;
   background: rgba(13, 27, 42, 0.8);
   padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 231, 255, 0.2);
-  box-shadow: 0 0 20px rgba(0, 231, 255, 0.1);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
   position: relative;
   z-index: 2;
   backdrop-filter: blur(10px);
 }
 
 .aboutText p {
-  font-size: 1.2rem;
-  color: #E0E7FF;
+  font-size: var(--fs-lg);
+  color: var(--text-primary);
   line-height: 1.8;
   margin-bottom: 30px;
   position: relative;
   padding-left: 20px;
-  border-left: 2px solid #00E7FF;
+  border-left: 2px solid var(--accent);
 }
 
 .aboutStats {
@@ -77,27 +77,27 @@
 }
 
 .stat {
-  background: rgba(0, 231, 255, 0.1);
+  background: rgba(0, 212, 255, 0.1);
   padding: 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 231, 255, 0.2);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(0, 212, 255, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 231, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .stat h3 {
-  font-size: 2.5rem;
-  color: #00E7FF;
+  font-size: var(--fs-3xl);
+  color: var(--accent);
   margin-bottom: 10px;
 }
 
 .stat p {
-  font-size: 1rem;
-  color: #E0E7FF;
+  font-size: var(--fs-base);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   border: none;
@@ -108,9 +108,9 @@
   position: relative;
   max-width: 400px;
   height: 500px;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0, 231, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
 }
 
 .profileImage {
@@ -152,7 +152,7 @@
 /* Large Desktop (1400px and above) */
 @media (min-width: 1400px) {
   .aboutContent {
-    max-width: 1400px;
+    max-width: var(--container-wide);
   }
 
   .aboutText {
@@ -160,25 +160,25 @@
   }
 
   .aboutText p {
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
   }
 
   .stat h3 {
-    font-size: 3rem;
+    font-size: var(--fs-3xl);
   }
 }
 
 /* Desktop (1024px to 1399px) */
 @media (max-width: 1399px) {
   .aboutContent {
-    max-width: 1200px;
+    max-width: var(--container-content);
   }
 }
 
 /* Tablet Landscape (768px to 1023px) */
 @media (max-width: 1023px) {
   .about {
-    padding: 100px 20px;
+    padding: var(--section-y) var(--gutter);
   }
 
   .aboutContent {
@@ -190,7 +190,7 @@
   }
 
   .aboutText p {
-    font-size: 1.1rem;
+    font-size: var(--fs-base);
   }
 
   .profileImageContainer {
@@ -199,7 +199,7 @@
   }
 
   .stat h3 {
-    font-size: 2.2rem;
+    font-size: var(--fs-2xl);
   }
 }
 
@@ -222,7 +222,7 @@
   .aboutText p {
     padding-left: 0;
     border-left: none;
-    border-bottom: 2px solid #00E7FF;
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 20px;
   }
 
@@ -237,7 +237,7 @@
   }
 
   .stat h3 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 }
 
@@ -248,7 +248,7 @@
   }
 
   .about h2 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
     margin-bottom: 2rem;
   }
 
@@ -257,7 +257,7 @@
   }
 
   .aboutText p {
-    font-size: 1rem;
+    font-size: var(--fs-base);
     margin-bottom: 20px;
   }
 
@@ -271,11 +271,11 @@
   }
 
   .stat h3 {
-    font-size: 1.8rem;
+    font-size: var(--fs-2xl);
   }
 
   .stat p {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   .profileImageContainer {
@@ -291,7 +291,7 @@
   }
 
   .about h2 {
-    font-size: 1.8rem;
+    font-size: var(--fs-2xl);
   }
 
   .aboutText {
@@ -308,7 +308,7 @@
   }
 
   .stat h3 {
-    font-size: 1.6rem;
+    font-size: var(--fs-xl);
   }
 
   .profileImageContainer {
@@ -329,15 +329,15 @@
   }
 
   .about h2 {
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
   }
 
   .aboutText p {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
   }
 
   .stat h3 {
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
   }
 
   .profileImageContainer {

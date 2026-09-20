@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-brand">
           <h3>Hamza Kamran</h3>
-          <p>Building the Future of the Web</p>
+          <p>Production AI systems for US & EU founders</p>
         </div>
         <div className="footer-links">
           <a href="#hero">Home</a>

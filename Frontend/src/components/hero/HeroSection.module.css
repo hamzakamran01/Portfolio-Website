@@ -9,17 +9,17 @@
   background:
     /* Base deep gradient */
     linear-gradient(165deg,
-      #0a0a0f 0%,
-      #0d1117 25%,
-      #0f1419 50%,
-      #0a0f14 75%,
-      #080c10 100%),
+      var(--bg-base) 0%,
+      var(--bg-surface) 25%,
+      var(--bg-surface) 50%,
+      var(--bg-base) 75%,
+      var(--bg-base) 100%),
     /* Ambient glow layer */
     radial-gradient(ellipse 80% 50% at 20% 40%,
       rgba(0, 212, 255, 0.08) 0%,
       transparent 50%),
     radial-gradient(ellipse 60% 40% at 80% 60%,
-      rgba(99, 102, 241, 0.06) 0%,
+      rgba(167, 139, 250, 0.06) 0%,
       transparent 50%),
     radial-gradient(ellipse 50% 30% at 50% 80%,
       rgba(0, 212, 255, 0.04) 0%,
@@ -91,7 +91,7 @@
   height: 500px;
   bottom: -150px;
   right: -150px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
   animation: floatOrb 25s ease-in-out infinite reverse;
 }
 
@@ -146,10 +146,6 @@
 
 /* ── Performance / Reduced Motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .particles {
-    opacity: 1 !important;
-  }
-
   .ambientOrb {
     animation: none;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import ProjectDetail from './components/Projects/ProjectDetail';
+import './styles/tokens.css';
 import './index.css';
 
 // Check if the root element exists

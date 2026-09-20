@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════════════
    National Youth Summit + Unified Gallery  —  CSS Module
-   Palette: Cyan (#00e7ff) on Black (#000) — matching site-wide theme
+   Palette: Cyan (var(--accent)) on Black (var(--bg-base)) — matching site-wide theme
    ══════════════════════════════════════════════════════════════════════ */
 
 /* ─── Keyframes ────────────────────────────────────────────────────── */
@@ -32,18 +32,18 @@
 
     0%,
     100% {
-        box-shadow: 0 0 15px rgba(0, 231, 255, 0.15);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
     }
 
     50% {
-        box-shadow: 0 0 30px rgba(0, 231, 255, 0.35);
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.35);
     }
 }
 
 /* ─── Section Base ─────────────────────────────────────────────────── */
 .nysSummit {
     position: relative;
-    padding: 100px 20px 120px;
+    padding: var(--section-y) var(--gutter);
     overflow: hidden;
     margin-bottom: 0 !important;
     max-width: none !important;
@@ -57,7 +57,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(0, 231, 255, 0.06) 0%, transparent 50%);
+    background: radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -87,19 +87,19 @@
    COMPACT NYS CARD
    ══════════════════════════════════════════════════════════════════════ */
 .nysCard {
-    max-width: 1400px;
+    max-width: var(--container-wide);
     margin: 0 auto 100px;
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
     background: rgba(13, 27, 42, 0.4);
-    border: 1px solid rgba(0, 231, 255, 0.15);
-    border-radius: 24px;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: var(--r-lg);
     overflow: hidden;
     transition: border-color 0.4s ease;
 }
 
 .nysCard:hover {
-    border-color: rgba(0, 231, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.3);
 }
 
 /* Card Image */
@@ -135,10 +135,10 @@
     padding: 8px 18px;
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 231, 255, 0.3);
-    border-radius: 50px;
-    color: #00e7ff;
-    font-size: 0.78rem;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: var(--r-full);
+    color: var(--accent);
+    font-size: var(--fs-xs);
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -147,7 +147,7 @@
 .badgeDot {
     width: 6px;
     height: 6px;
-    background: #00e7ff;
+    background: var(--accent);
     border-radius: 50%;
     animation: pulseGlow 2s ease-in-out infinite;
 }
@@ -162,8 +162,8 @@
 }
 
 .cardHeader h2 {
-    font-size: 2.2rem;
-    color: #E0E7FF;
+    font-size: var(--fs-2xl);
+    color: var(--text-primary);
     margin-bottom: 8px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -178,12 +178,12 @@
     left: 0;
     width: 80px;
     height: 2px;
-    background: linear-gradient(90deg, #00e7ff, transparent);
+    background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .cardSubtitle {
-    font-size: 0.95rem;
-    color: #00e7ff;
+    font-size: var(--fs-sm);
+    color: var(--accent);
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -191,13 +191,13 @@
 }
 
 .cardDescription {
-    color: #e0e7ff;
-    font-size: 1rem;
+    color: var(--text-primary);
+    font-size: var(--fs-base);
     line-height: 1.7;
 }
 
 .cardDescription strong {
-    color: #00e7ff;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -213,35 +213,35 @@
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background: rgba(0, 231, 255, 0.04);
-    border: 1px solid rgba(0, 231, 255, 0.12);
+    background: rgba(0, 212, 255, 0.04);
+    border: 1px solid rgba(0, 212, 255, 0.12);
     padding: 16px;
-    border-radius: 12px;
+    border-radius: var(--r-md);
     transition: all 0.3s ease;
 }
 
 .highlightCompact:hover {
-    background: rgba(0, 231, 255, 0.08);
-    border-color: rgba(0, 231, 255, 0.3);
+    background: rgba(0, 212, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.3);
     transform: translateY(-2px);
 }
 
 .highlightIcon {
-    font-size: 1.6rem;
+    font-size: var(--fs-xl);
     margin-top: -2px;
     flex-shrink: 0;
 }
 
 .highlightText h4 {
-    color: #E0E7FF;
-    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-size: var(--fs-sm);
     margin-bottom: 4px;
     font-weight: 600;
 }
 
 .highlightText p {
-    color: #00e7ff;
-    font-size: 0.8rem;
+    color: var(--accent);
+    font-size: var(--fs-xs);
     margin: 0;
     opacity: 0.85;
     line-height: 1.4;
@@ -257,19 +257,19 @@
 
 .tag {
     padding: 6px 16px;
-    background: rgba(0, 231, 255, 0.06);
-    border: 1px solid rgba(0, 231, 255, 0.18);
-    border-radius: 50px;
-    font-size: 0.78rem;
-    color: #00e7ff;
+    background: rgba(0, 212, 255, 0.06);
+    border: 1px solid rgba(0, 212, 255, 0.18);
+    border-radius: var(--r-full);
+    font-size: var(--fs-xs);
+    color: var(--accent);
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
 }
 
 .tag:hover {
-    background: rgba(0, 231, 255, 0.12);
-    border-color: rgba(0, 231, 255, 0.35);
+    background: rgba(0, 212, 255, 0.12);
+    border-color: rgba(0, 212, 255, 0.35);
 }
 
 
@@ -277,7 +277,7 @@
    UNIFIED GALLERY
    ══════════════════════════════════════════════════════════════════════ */
 .gallerySection {
-    max-width: 1400px;
+    max-width: var(--container-wide);
     margin: 0 auto;
 }
 
@@ -287,16 +287,16 @@
 }
 
 .galleryHeader h3 {
-    font-size: 2.2rem;
-    color: #E0E7FF;
+    font-size: var(--fs-2xl);
+    color: var(--text-primary);
     margin-bottom: 12px;
     font-weight: 600;
-    text-shadow: 0 0 20px rgba(0, 231, 255, 0.2);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .galleryHeader p {
-    font-size: 1.05rem;
-    color: #00e7ff;
+    font-size: var(--fs-base);
+    color: var(--accent);
     opacity: 0.85;
 }
 
@@ -334,13 +334,13 @@
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: var(--r-md);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .galleryItem:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 231, 255, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.25);
     z-index: 2;
 }
 
@@ -365,7 +365,7 @@
 }
 
 .nysGroupFrame .imageWrapper {
-    background: #050a10;
+    background: var(--bg-base);
 }
 
 .nysGroupCustom {
@@ -374,7 +374,7 @@
 }
 
 .nysCulturalNightFrame .imageWrapper {
-    background: #050a10;
+    background: var(--bg-base);
 }
 
 .nysCulturalNightCustom {
@@ -411,11 +411,11 @@
 .photoLabel {
     align-self: flex-start;
     padding: 5px 14px;
-    background: rgba(0, 231, 255, 0.15);
-    border: 1px solid rgba(0, 231, 255, 0.3);
-    border-radius: 50px;
-    font-size: 0.72rem;
-    color: #00e7ff;
+    background: rgba(0, 212, 255, 0.15);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: var(--r-full);
+    font-size: var(--fs-xs);
+    color: var(--accent);
     font-weight: 600;
     letter-spacing: 0.8px;
     text-transform: uppercase;
@@ -428,7 +428,7 @@
 
 .photoInfo h4 {
     color: #ffffff;
-    font-size: 1.15rem;
+    font-size: var(--fs-lg);
     font-weight: 600;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
     margin: 0;
@@ -438,12 +438,12 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    color: #00e7ff;
+    color: var(--accent);
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 8px;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 231, 255, 0.2);
+    border: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 
@@ -470,10 +470,10 @@
     position: relative;
     max-width: 90vw;
     max-height: 90vh;
-    border-radius: 20px;
+    border-radius: var(--r-lg);
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 231, 255, 0.25);
-    border: 2px solid rgba(0, 231, 255, 0.3);
+    box-shadow: 0 30px 80px rgba(0, 212, 255, 0.25);
+    border: 2px solid rgba(0, 212, 255, 0.3);
 }
 
 .closeButton {
@@ -495,7 +495,7 @@
 }
 
 .closeButton:hover {
-    background: rgba(0, 231, 255, 0.8);
+    background: rgba(0, 212, 255, 0.8);
     transform: scale(1.1);
 }
 
@@ -512,7 +512,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
     .nysCard {
-        max-width: 1000px;
+        max-width: var(--container-content);
         grid-template-columns: 1fr;
     }
 
@@ -565,15 +565,15 @@
     }
 
     .cardHeader h2 {
-        font-size: 1.8rem;
+        font-size: var(--fs-2xl);
     }
 
     .cardSubtitle {
-        font-size: 0.82rem;
+        font-size: var(--fs-xs);
     }
 
     .cardDescription {
-        font-size: 0.92rem;
+        font-size: var(--fs-sm);
     }
 
     .summitHighlights {
@@ -582,7 +582,7 @@
     }
 
     .galleryHeader h3 {
-        font-size: 1.8rem;
+        font-size: var(--fs-2xl);
     }
 
     .galleryGrid {
@@ -617,7 +617,7 @@
     }
 
     .nysCard {
-        border-radius: 18px;
+        border-radius: var(--r-lg);
         margin-bottom: 50px;
     }
 
@@ -631,35 +631,35 @@
     }
 
     .cardHeader h2 {
-        font-size: 1.5rem;
+        font-size: var(--fs-xl);
     }
 
     .cardSubtitle {
-        font-size: 0.75rem;
+        font-size: var(--fs-xs);
         margin-top: 10px;
     }
 
     .cardDescription {
-        font-size: 0.85rem;
+        font-size: var(--fs-sm);
         line-height: 1.6;
     }
 
     .highlightCompact {
         padding: 12px;
         gap: 10px;
-        border-radius: 10px;
+        border-radius: var(--r-md);
     }
 
     .highlightIcon {
-        font-size: 1.35rem;
+        font-size: var(--fs-lg);
     }
 
     .highlightText h4 {
-        font-size: 0.9rem;
+        font-size: var(--fs-sm);
     }
 
     .highlightText p {
-        font-size: 0.75rem;
+        font-size: var(--fs-xs);
     }
 
     .themeTags {
@@ -667,7 +667,7 @@
     }
 
     .tag {
-        font-size: 0.7rem;
+        font-size: var(--fs-xs);
         padding: 4px 10px;
     }
 
@@ -676,11 +676,11 @@
     }
 
     .galleryHeader h3 {
-        font-size: 1.5rem;
+        font-size: var(--fs-xl);
     }
 
     .galleryHeader p {
-        font-size: 0.88rem;
+        font-size: var(--fs-sm);
     }
 
     .galleryGrid {
@@ -715,12 +715,12 @@
     }
 
     .photoLabel {
-        font-size: 0.6rem;
+        font-size: var(--fs-xs);
         padding: 3px 8px;
     }
 
     .photoInfo h4 {
-        font-size: 0.85rem;
+        font-size: var(--fs-sm);
     }
 
     .viewIcon {
@@ -735,7 +735,7 @@
     }
 
     .cardBadge {
-        font-size: 0.68rem;
+        font-size: var(--fs-xs);
         padding: 6px 14px;
     }
 }

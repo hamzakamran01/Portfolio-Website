@@ -124,7 +124,7 @@ const NationalYouthSummit: React.FC = () => {
                 <div className={styles.cardBody}>
                     <div className={styles.cardHeader}>
                         <h2>National Youth Summit</h2>
-                        <p className={styles.cardSubtitle}>Quetta 2025 — Government of Pakistan</p>
+                        <p className={styles.cardSubtitle}>Quetta 2025 — Government of Punjab</p>
                     </div>
 
                     <p className={styles.cardDescription}>

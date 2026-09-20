@@ -54,7 +54,7 @@ const QimamFellowship: React.FC = () => {
           <div className={styles.selectionHighlight}>
             <h3>Prestigious Selection</h3>
             <p>
-              Selected as one of  <strong> only 38 </strong> students across Pakistan from
+              Selected as one of <strong>only 38</strong> students across Pakistan from
               <strong> 11,000+ applicants</strong> in the Qimam Fellowship - an international
               program designed to empower high-potential leaders.
             </p>

@@ -424,7 +424,7 @@ export const projects: Project[] = [
     subtitle: 'HIPAA-Compliant Pharmacy Commerce Platform',
     tagline: 'Where Healthcare Meets Secure Commerce',
     description: 'Full-stack pharmacy platform combining end-to-end e-commerce with strictly regulated HIPAA healthcare data protocols.',
-    longDescription: 'Built for the US healthcare market where compliance is not optional and data integrity is everything. RxFlow is a full-stack pharmacy platform combining end-to-end medicine e-commerce with HIPAA-compliant data intake for both patients and vendors. Patients browse, order, and manage prescriptions through a clean consumer interface. On the backend, vendor onboarding, inventory management, and patient health records follow strict HIPAA data handling protocols including encrypted storage, access controls, and audit trails.',
+    longDescription: 'Built for the US healthcare market where compliance is not optional and data integrity is everything. MedConnect Rx is a full-stack pharmacy platform combining end-to-end medicine e-commerce with HIPAA-compliant data intake for both patients and vendors. Patients browse, order, and manage prescriptions through a clean consumer interface. On the backend, vendor onboarding, inventory management, and patient health records follow strict HIPAA data handling protocols including encrypted storage, access controls, and audit trails.',
     overview: 'The result is a platform that operates at the intersection of healthcare and commerce without compromising either—the exact standard US pharmacy clients require before trusting any external system with patient data.',
     challenge: 'The US healthcare market demands absolute HIPAA compliance. Any system handling patient data must implement encrypted storage, strict access controls, and comprehensive audit trails while maintaining a seamless e-commerce experience.',
     solution: 'Built a dual-interface platform: a clean consumer-facing e-commerce front and a strictly regulated backend with AWS KMS encryption, role-based access controls, vendor onboarding workflows, and complete audit trail logging for every data access event.',
@@ -439,16 +439,16 @@ export const projects: Project[] = [
     images: {
       thumbnail: {
         url: '/assets/pharmacyProjectpic.webp',
-        alt: 'RxFlow HIPAA-compliant pharmacy commerce platform',
+        alt: 'MedConnect Rx HIPAA-compliant pharmacy commerce platform',
       },
       hero: {
         url: '/assets/pharmacyProjectpic.webp',
-        alt: 'RxFlow - HIPAA Compliant Pharmacy Commerce',
+        alt: 'MedConnect Rx - HIPAA Compliant Pharmacy Commerce',
       },
       screenshots: [
         {
           url: '/assets/pharmacyProjectpic.webp',
-          alt: 'RxFlow Commerce Interface',
+          alt: 'MedConnect Rx Commerce Interface',
           caption: 'Secure pharmacy e-commerce with HIPAA compliance',
         },
       ],
@@ -611,7 +611,7 @@ export const projects: Project[] = [
 
   {
     id: 'padel-3d-ecommerce',
-    title: 'Custom 3d padels website',
+    title: 'Custom 3D Padel Website',
     subtitle: 'Immersive 3D E-Commerce for Padel Rackets',
     tagline: 'Experience Your Gear Before You Buy',
     description: 'Revolutionary 3D e-commerce platform for padel rackets featuring real-time product visualization, customization, and immersive shopping experience.',
@@ -682,7 +682,7 @@ export const projects: Project[] = [
     tagline: 'Discover Your Ideal Career Path with AI',
     description: 'Full-stack AI/ML web application that provides personalized career recommendations using hybrid machine learning algorithms and an intuitive web interface.',
     longDescription: 'CareerPath AI is a comprehensive career intelligence platform that helps users discover their ideal career paths through advanced machine learning. The system analyzes user interests, skills, and preferences against the O*NET 29.0 occupational dataset containing 900+ profession profiles, using RIASEC interest-based feature engineering and hybrid classification with cosine similarity matching.',
-    overview: 'Built as a complete web application with both backend ML processing and frontend user interface, CareerPath AI transforms raw occupational data into actionable career insights. Users input their interests and skills through an intuitive interface, and the system processes this data through a hybrid ML pipeline to recommend最适合 career paths with detailed information about required skills, salary ranges, and growth potential.',
+    overview: 'Built as a complete web application with both backend ML processing and frontend user interface, CareerPath AI transforms raw occupational data into actionable career insights. Users input their interests and skills through an intuitive interface, and the system processes this data through a hybrid ML pipeline to recommend the best-fit career paths with detailed information about required skills, salary ranges, and growth potential.',
     challenge: 'Career guidance is often generic and based on limited data. Existing solutions lack comprehensive occupational datasets and fail to provide personalized, data-driven recommendations. The challenge was to build a system that could process complex occupational data and deliver meaningful, personalized career guidance through an accessible web interface.',
     solution: 'Built a full-stack application using Python for ML processing (scikit-learn, Pandas, NumPy) and React for the frontend. Implemented a hybrid ML pipeline combining KMeans clustering for interest-based grouping and cosine similarity for precise career matching. Created an intuitive web interface that guides users through the assessment process and presents recommendations with detailed career profiles, skill requirements, and growth trajectories.',
     impact: 'Provided users with data-driven career recommendations based on 900+ occupational profiles, helping them make informed decisions about their career paths. The hybrid ML approach achieved 85% accuracy in matching user interests to suitable career categories.',
