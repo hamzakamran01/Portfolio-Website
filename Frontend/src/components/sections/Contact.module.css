@@ -158,8 +158,16 @@
   line-height: 1.5;
   text-decoration: none;
   transition: color 0.2s ease;
-  /* Emails and URLs have no break opportunities of their own. */
-  overflow-wrap: anywhere;
+}
+
+/* The email must never break — "…gmail.c / om" reads as a bug, not a wrap.
+   nowrap alone would just overflow, so the size is stepped down one notch and
+   the two-column grid now collapses before the column gets tight enough to
+   matter (see the 1200px breakpoint). */
+.emailLink {
+  white-space: nowrap;
+  font-size: var(--fs-sm);
+  overflow-wrap: normal;
 }
 
 .infoContent a:hover {
@@ -295,7 +303,11 @@ textarea.formInput {
 }
 
 /* --- Responsive --- */
-@media (max-width: 1024px) {
+/* Was 1024px. Between there and ~1300px the 1fr/1.5fr split starved the info
+   column: the icon, the card padding and the item padding left under 150px for
+   text, so a 24-character email could not fit on one line at any sane size.
+   Collapsing to one column sooner gives it the full width instead. */
+@media (max-width: 1200px) {
   .contactContainer {
     grid-template-columns: 1fr;
     gap: 3rem;

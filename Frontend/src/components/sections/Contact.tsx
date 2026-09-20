@@ -130,7 +130,9 @@ const Contact: React.FC = () => {
             </div>
             <div className={styles.infoContent}>
               <h3>Email</h3>
-              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              <a className={styles.emailLink} href={`mailto:${CONTACT_EMAIL}`}>
+                {CONTACT_EMAIL}
+              </a>
             </div>
           </div>
 
