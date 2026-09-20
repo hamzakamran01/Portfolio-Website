@@ -2,66 +2,63 @@ export interface Testimonial {
   id: string;
   quote: string;
   author: string;
-  role: string;
-  company: string;
+  /** What the quote is about. Shown under the name — this is what makes the
+   *  quote checkable, so it is required, not optional. */
+  project: string;
+  /** Case study link, when the project has a detail page on this site. */
+  projectHref?: string;
+  /** Where the client is based, when known. Left out rather than guessed. */
+  location?: string;
+  /** Platform the review was left on. Drives the source badge. */
+  source?: 'Upwork';
+  /** Star rating as left on the platform, 1–5. Omitted when not recorded. */
+  rating?: number;
   /** Optional headshot in /public/assets. Falls back to initials. */
   avatar?: string;
   /** A public profile makes the quote checkable. This is what turns a
    *  testimonial from decoration into evidence. */
   profileUrl?: string;
   /**
-   * True only when the quote has a real full name, a real role, a real
-   * company, and ideally a link. Unverified entries render with a muted
-   * treatment and no link, so the page never implies more than it can show.
+   * True only when the quote has a real full name and a real, named project
+   * behind it. Unverified entries render with a muted treatment and no link,
+   * so the page never implies more than it can show.
    */
   verified: boolean;
 }
 
 /**
- * ─────────────────────────────────────────────────────────────────────────
- * ACTION REQUIRED — replace the attribution on all three entries.
- * ─────────────────────────────────────────────────────────────────────────
+ * Client reviews, verbatim from Upwork.
  *
- * These quotes are recovered verbatim from the four dead testimonial
- * components that previously shipped in the repo and were never rendered.
- * The words are real; the attribution is not usable as proof:
+ * This list previously held three placeholder quotes recovered from four dead
+ * testimonial components — "Tech Lead" with no surname at Zaaric (Hamza's own
+ * company), "Sarah" with no surname, and a real name whose company was listed
+ * as "Self". For a page whose job is converting US/EU founders, an anonymous
+ * quote is worth less than no quote: it reads as filler and costs credibility.
+ * All three are gone. What is left is only what can be stood behind.
  *
- *   1. "Tech Lead" with no surname, at Zaaric — Hamza's OWN company.
- *   2. "Sarah" — first name only, company given as a generic description.
- *   3. "Sara Malik" — a real name, but company listed as "Self".
- *
- * For a page whose job is converting US/EU founders, an anonymous quote is
- * worth less than no quote: it reads as filler and costs credibility. Each
- * entry needs a full name, a real role, a real company and a profile link.
- * Set `verified: true` once that is in place.
+ * Patrick's wording is lightly copy-edited for typos; the substance is his.
+ * Ezra's is untouched.
  */
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'zaaric-tech-lead',
+    id: 'ezra-molkha',
     quote:
-      "Hamza's expertise in full-stack development and innovative 3D implementations transformed our digital presence. A true professional.",
-    author: 'Tech Lead', // TODO: full name
-    role: 'Engineering', // TODO: actual title
-    company: 'Zaaric',
-    verified: false,
+      'Hamza was very open to ideas and extremely patient throughout the project. He explained clearly what needed to be done, helped me understand the situation at each stage, and completed the work quickly. Communication was professional and cooperative, and he was always willing to discuss feedback and possible improvements. I appreciated his thoughtful approach and the effort he put into the project.',
+    author: 'Ezra Molkha',
+    project: 'Redhead Slideshow platform',
+    source: 'Upwork',
+    verified: true,
   },
   {
-    id: 'ecommerce-founder',
+    id: 'patrick-tonkinson',
     quote:
-      'His work on our online store was exceptional. The modern features and user-friendly design helped grow our small business significantly.',
-    author: 'Sarah', // TODO: full name
-    role: 'Founder',
-    company: 'Online Fashion Boutique', // TODO: actual company name
-    verified: false,
-  },
-  {
-    id: 'sara-malik',
-    quote:
-      'His 3D portfolio work is a masterpiece — innovative, immersive, and absolutely next-level.',
-    author: 'Sara Malik',
-    role: 'Freelance Designer',
-    company: 'Self', // TODO: studio or client name
-    verified: false,
+      "I'm genuinely impressed by how Zaaric transformed my idea into a fully realized product — with precision, maintaining excellent communication throughout, and delivering the entire process seamlessly.",
+    author: 'Patrick Tonkinson',
+    project: 'United by Art',
+    projectHref: '/project-detail.html?id=united-by-art',
+    location: 'United States',
+    source: 'Upwork',
+    verified: true,
   },
 ];
 

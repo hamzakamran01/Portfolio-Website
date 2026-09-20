@@ -1,18 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import SectionHeader from '../ui/SectionHeader';
 import styles from './Recognition.module.css';
 
 /**
  * Recognition & leadership.
  *
- * Replaces THREE separate full-bleed sections — QimamFellowship (945 lines of
- * CSS), NationalYouthSummit (740) and PublicSpeaking (257) — which together
+ * Replaces THREE separate full-bleed sections — QimamFellowship (946 lines of
+ * CSS), NationalYouthSummit (741) and PublicSpeaking (258) — which together
  * occupied more vertical space than all of the engineering work on the page
  * and sat directly between the skills content and the contact form.
  *
  * The credibility signal is kept and the real estate is not: three award
- * cards, one stat row, one photo strip. For a page whose job is converting
- * founders, this belongs after the technical case, not in front of it.
+ * cards, one photo strip. For a page whose job is converting founders, this
+ * belongs after the technical case rather than in front of it.
  */
 
 interface Award {
@@ -70,86 +71,170 @@ const PHOTOS: Photo[] = [
 ];
 
 const Recognition: React.FC = () => {
-  const [lightbox, setLightbox] = useState<Photo | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const isOpen = lightboxIndex !== null;
 
-  const close = useCallback(() => setLightbox(null), []);
+  const close = useCallback(() => setLightboxIndex(null), []);
+  const step = useCallback(
+    (delta: number) =>
+      setLightboxIndex(i => (i === null ? i : (i + delta + PHOTOS.length) % PHOTOS.length)),
+    []
+  );
 
+  /* Escape to close, arrow keys to move between photos, and scroll lock while
+     the dialog is open. */
   useEffect(() => {
-    if (!lightbox) return;
+    if (!isOpen) return;
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') step(1);
+      else if (e.key === 'ArrowLeft') step(-1);
     };
+
     const { overflow } = document.body.style;
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', onKey);
+
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = overflow;
     };
-  }, [lightbox, close]);
+  }, [isOpen, close, step]);
+
+  const photo = lightboxIndex !== null ? PHOTOS[lightboxIndex] : null;
 
   return (
     <section id="recognition" className={styles.section} aria-labelledby="recognition-heading">
-      <div className={styles.header}>
-        <p className={styles.eyebrow}>Beyond the code</p>
-        <h2 id="recognition-heading">Recognition &amp; leadership</h2>
-        <p className={styles.sub}>
-          Selection and speaking work that shaped how I run projects and communicate with
-          stakeholders.
-        </p>
+      <div className={styles.glow} aria-hidden="true" />
+
+      <div className={styles.inner}>
+        <SectionHeader
+          id="recognition-heading"
+          eyebrow="Beyond the code"
+          title="Recognition & leadership"
+          subtitle="Selection and speaking work that shaped how I run projects and communicate with stakeholders."
+        />
+
+        {/* ── Award cards ───────────────────────────────────────────── */}
+        <motion.ul
+          className={styles.awards}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          {AWARDS.map(award => (
+            <motion.li
+              key={award.title}
+              className={styles.award}
+              variants={{ hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className={styles.awardStat}>
+                <span className={styles.statValue}>{award.stat}</span>
+                <span className={styles.statLabel}>{award.statLabel}</span>
+              </div>
+              <h3 className={styles.awardTitle}>{award.title}</h3>
+              <p className={styles.awardOrg}>
+                {award.org} <span className={styles.dot} aria-hidden="true" /> {award.year}
+              </p>
+              <p className={styles.awardDetail}>{award.detail}</p>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        {/* ── Photo strip ───────────────────────────────────────────── */}
+        <motion.ul
+          className={styles.strip}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
+        >
+          {PHOTOS.map((p, i) => (
+            <motion.li
+              key={p.src}
+              variants={{ hidden: { opacity: 0, scale: 0.94 }, visible: { opacity: 1, scale: 1 } }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <button
+                type="button"
+                className={styles.thumb}
+                onClick={() => setLightboxIndex(i)}
+                aria-label={`Open photo: ${p.caption}`}
+                data-cursor="button"
+              >
+                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+                <span className={styles.thumbOverlay} aria-hidden="true" />
+                <span className={styles.thumbCaption}>{p.caption}</span>
+              </button>
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
 
-      <ul className={styles.awards}>
-        {AWARDS.map((award, i) => (
-          <motion.li
-            key={award.title}
-            className={styles.award}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.45, delay: i * 0.08 }}
+      {/* ── Lightbox ────────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {photo && (
+          <motion.div
+            className={styles.lightbox}
+            role="dialog"
+            aria-modal="true"
+            aria-label={photo.caption}
+            onClick={close}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
           >
-            <div className={styles.awardStat}>
-              <span className={styles.statValue}>{award.stat}</span>
-              <span className={styles.statLabel}>{award.statLabel}</span>
-            </div>
-            <h3 className={styles.awardTitle}>{award.title}</h3>
-            <p className={styles.awardOrg}>
-              {award.org} &middot; {award.year}
-            </p>
-            <p className={styles.awardDetail}>{award.detail}</p>
-          </motion.li>
-        ))}
-      </ul>
-
-      <ul className={styles.strip}>
-        {PHOTOS.map(photo => (
-          <li key={photo.src}>
-            <button type="button" className={styles.thumb} onClick={() => setLightbox(photo)}>
-              <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
-              <span className={styles.thumbCaption}>{photo.caption}</span>
+            <button type="button" className={styles.close} onClick={close} aria-label="Close">
+              &times;
             </button>
-          </li>
-        ))}
-      </ul>
 
-      {lightbox && (
-        <div
-          className={styles.lightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-label={lightbox.caption}
-          onClick={close}
-        >
-          <button type="button" className={styles.lightboxClose} onClick={close} aria-label="Close">
-            &times;
-          </button>
-          <figure className={styles.lightboxFigure} onClick={e => e.stopPropagation()}>
-            <img src={lightbox.src} alt={lightbox.alt} />
-            <figcaption>{lightbox.caption}</figcaption>
-          </figure>
-        </div>
-      )}
+            <button
+              type="button"
+              className={`${styles.nav} ${styles.navPrev}`}
+              onClick={e => {
+                e.stopPropagation();
+                step(-1);
+              }}
+              aria-label="Previous photo"
+            >
+              &#8249;
+            </button>
+
+            <motion.figure
+              className={styles.figure}
+              onClick={e => e.stopPropagation()}
+              key={photo.src}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img src={photo.src} alt={photo.alt} />
+              <figcaption>
+                {photo.caption}
+                <span className={styles.counter}>
+                  {(lightboxIndex ?? 0) + 1} / {PHOTOS.length}
+                </span>
+              </figcaption>
+            </motion.figure>
+
+            <button
+              type="button"
+              className={`${styles.nav} ${styles.navNext}`}
+              onClick={e => {
+                e.stopPropagation();
+                step(1);
+              }}
+              aria-label="Next photo"
+            >
+              &#8250;
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

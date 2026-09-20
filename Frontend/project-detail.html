@@ -2,15 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/ceo_image.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#08090C" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/assets/ceo_image.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Details - Hamza Kamran</title>
-    <meta name="description" content="Enterprise-grade project showcase and details" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!--
+      Title, description, canonical and Open Graph are supplied per project by
+      <SEO> in ProjectDetail.tsx. They are deliberately NOT declared statically
+      here: all ten case studies previously shared the single static title
+      "Project Details - Hamza Kamran", and declaring them in both places would
+      produce duplicate tags and two canonicals.
+      Fallback title only, replaced on mount:
+    -->
+    <title>Case study | Hamza Kamran</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=Space+Mono&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=Space+Mono&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width:42rem;margin:4rem auto;padding:0 1.5rem;font-family:system-ui,sans-serif;color:#ECEEF2;background:#08090C">
+        <h1 style="font-size:1.5rem">Case study</h1>
+        <p style="color:#A8AEB8;line-height:1.6">
+          This page needs JavaScript. See all work at
+          <a style="color:#00D4FF" href="/#projects">hamzakamran.tech</a>.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/project-detail-main.tsx"></script>
   </body>
 </html>

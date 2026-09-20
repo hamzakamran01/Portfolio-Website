@@ -1,65 +1,209 @@
 .section {
+  position: relative;
+  max-width: none !important;
+  width: 100%;
+  padding: var(--section-y) var(--gutter);
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 120%);
+  height: 420px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(167, 139, 250, 0.07) 0%,
+    rgba(0, 212, 255, 0.04) 45%,
+    transparent 70%
+  );
+  filter: blur(40px);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-content);
-}
-
-.header {
-  margin-bottom: var(--space-8);
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: var(--space-3);
+  margin-inline: auto;
 }
 
 /* ── Grid ─────────────────────────────────────────────────────────────── */
-/* auto-fit + minmax so this needs no breakpoints of its own. */
+/* Two real reviews, so two columns — and capped below the 1200px container.
+   Stretched to full width a pair of cards reads as a thin banner; held to
+   ~1080px they read as a matched pair, and the quote keeps a sane measure.
+   Revisit this cap when a third verified entry lands. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-5);
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+@media (min-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ── Card ─────────────────────────────────────────────────────────────── */
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  margin: 0;
   padding: var(--space-6);
-  background: var(--bg-surface);
+  background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-base) 100%);
   border: 1px solid var(--border-subtle);
   border-radius: var(--r-lg);
+  overflow: hidden;
+  isolation: isolate;
   transition: border-color var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Two cards instead of three leaves room for more air inside each.
+   Must sit after the base .card rule — a media query adds no specificity. */
+@media (min-width: 860px) {
+  .card {
+    padding: var(--space-8);
+  }
 }
 
 .card:hover {
-  border-color: var(--border-default);
-  transform: translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.28);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3);
 }
 
-/* Quotes without usable attribution are visibly held back rather than
-   presented as confirmed client proof. */
+/* Accent hairline along the top edge, drawn in on hover. */
+.card::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+  transform: scaleX(0);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Cursor-tracked spotlight, positioned from --mx/--my set in JS. */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(0, 212, 255, 0.1),
+    transparent 60%
+  );
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.card:hover .spotlight {
+  opacity: 1;
+}
+
+/* Oversized closing quote as a background mark. */
+.watermark {
+  position: absolute;
+  right: var(--space-4);
+  bottom: -2.5rem;
+  z-index: -1;
+  font-family: var(--font-display);
+  font-size: 10rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--text-primary);
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Held-back treatment for quotes whose attribution is not usable as proof. */
 .cardUnverified {
   border-style: dashed;
-  opacity: 0.78;
+}
+
+.cardUnverified .quote {
+  color: var(--text-tertiary);
+}
+
+/* ── Provenance row ───────────────────────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .quoteMark {
   font-size: var(--fs-lg);
   color: var(--accent);
-  opacity: 0.5;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.rating {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: auto;
+  font-size: var(--fs-xs);
+}
+
+.starOn {
+  color: var(--warning);
+}
+
+.starOff {
+  color: var(--border-strong);
+}
+
+/* Upwork green, lightened from the brand #14a800 so it clears AA on the
+   near-black surface. */
+.source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  padding: 0.3rem var(--space-3);
+  border: 1px solid rgba(111, 218, 68, 0.28);
+  border-radius: var(--r-full);
+  background: rgba(111, 218, 68, 0.08);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #8fe36a;
+}
+
+/* Stars already took the auto margin; the badge then sits next to them. */
+.rating + .source {
+  margin-left: 0;
+}
+
+.sourceIcon {
+  font-size: var(--fs-sm);
 }
 
 .quote {
   margin: 0;
-  font-size: var(--fs-base);
+  font-size: var(--fs-lg);
   line-height: var(--lh-normal);
   color: var(--text-secondary);
   flex: 1;
+  text-wrap: pretty;
 }
 
 /* ── Attribution ──────────────────────────────────────────────────────── */
@@ -83,12 +227,12 @@
 .avatarFallback {
   display: grid;
   place-items: center;
-  background: var(--bg-raised);
-  border: 1px solid var(--border-default);
+  background: var(--accent-dim);
+  border: 1px solid rgba(0, 212, 255, 0.25);
   font-family: var(--font-display);
   font-size: var(--fs-sm);
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--accent);
 }
 
 .who {
@@ -105,31 +249,84 @@
 }
 
 .role {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   font-size: var(--fs-xs);
   color: var(--text-tertiary);
   overflow-wrap: anywhere;
+}
+
+/* The project name is the claim; where a case study exists it is clickable,
+   so the quote can be checked against the work it describes. */
+.projectLink {
+  color: var(--text-secondary);
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.projectLink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: var(--r-full);
+  background: currentColor;
+  opacity: 0.5;
 }
 
 .verifyLink {
   margin-left: auto;
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-default);
   border-radius: var(--r-md);
   color: var(--text-tertiary);
-  transition: color var(--dur-fast) var(--ease-out);
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
 }
 
 .verifyLink:hover {
   color: var(--accent);
+  border-color: var(--accent);
 }
 
+/* ── Pending marker ───────────────────────────────────────────────────── */
 .pending {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   margin: 0;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--text-tertiary);
+}
+
+.pendingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--warning);
+  opacity: 0.8;
+}
+
+/* Touch devices get no hover, so the accent hairline is always drawn. */
+@media (hover: none) {
+  .card::before {
+    transform: scaleX(1);
+  }
+
+  .spotlight {
+    display: none;
+  }
 }

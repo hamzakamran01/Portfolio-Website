@@ -4,14 +4,13 @@ import HeroSection from './components/hero/HeroSection';
 import { useLenis } from './hooks/useLenis';
 import About from './components/sections/About';
 import ZaaricFounder from './components/sections/ZaaricFounder';
-import QimamFellowship from './components/sections/QimamFellowship';
-import NationalYouthSummit from './components/sections/NationalYouthSummit';
 import Projects from './components/Projects/UnifiedProjectsGrid';
 import Contact from './components/sections/Contact';
+import HowIWork from './components/sections/HowIWork';
+import Testimonials from './components/sections/Testimonials';
+import Recognition from './components/sections/Recognition';
 import Footer from './components/sections/Footer';
 import './App.css';
-import PublicSpeaking from './components/sections/PublicSpeaking';
-import Philosophy from './components/sections/Philosophy';
 import { MotionConfig } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './components/ui/ErrorFallback';
@@ -72,22 +71,27 @@ function App() {
             <HeroSection />
           </ErrorBoundary>
 
+          {/* Proof of work first, then the offer, then the evidence. */}
           <Projects />
+
+          <HowIWork />
+
+          <Testimonials />
 
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <About />
           </ErrorBoundary>
 
-          <ZaaricFounder />
-
           <Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
             <Skills />
           </Suspense>
 
-          <QimamFellowship />
-          <NationalYouthSummit />
-          <Philosophy />
-          <PublicSpeaking />
+          <ZaaricFounder />
+
+          {/* Credibility signal, kept — but after the commercial case, not
+              blocking it. */}
+          <Recognition />
+
           <Contact />
         </main>
 

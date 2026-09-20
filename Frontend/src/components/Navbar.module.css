@@ -143,7 +143,7 @@
   right: -100%;
   width: min(85%, 320px);
   height: 100vh;
-  height: 100dvh;
+  height: 100dvh; /* iOS: 100vh overshoots the visible viewport */
   background: rgba(10, 14, 20, 0.95);
   backdrop-filter: blur(24px) saturate(180%);
   border-left: 1px solid rgba(0, 212, 255, 0.15);

@@ -9,9 +9,11 @@
      was silently cut off with no way to reach it. min-height lets the hero
      grow instead of clipping. */
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100dvh; /* iOS: 100vh overshoots the visible viewport */
   display: flex;
-  overflow-x: clip;
+  /* Safe again now that the hero grows to fit its content: this only clips
+     the decorative ambient orbs, which are positioned to bleed off-canvas. */
+  overflow: hidden;
   /* Premium multi-layered gradient background */
   background:
     /* Base deep gradient */

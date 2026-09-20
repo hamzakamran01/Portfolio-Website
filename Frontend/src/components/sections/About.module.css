@@ -4,6 +4,7 @@
   background: linear-gradient(to bottom, var(--bg-surface), var(--bg-surface));
   overflow: hidden;
   min-height: 100vh;
+  min-height: 100dvh; /* iOS: 100vh overshoots the visible viewport */
   display: flex;
   flex-direction: column;
   justify-content: center;

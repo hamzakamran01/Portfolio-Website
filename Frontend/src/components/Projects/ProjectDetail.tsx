@@ -5,6 +5,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { getAllProjects } from '../../data/projects';
+import SEO from '../seo/SEO';
 import styles from './ProjectDetail.module.css';
 
 const ProjectDetail: React.FC = () => {
@@ -20,6 +21,11 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return (
       <div className={styles.notFound}>
+        <SEO
+          title="Project not found — Hamza Kamran"
+          description="This project does not exist."
+          canonical="/project-detail.html"
+        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,7 +41,29 @@ const ProjectDetail: React.FC = () => {
     );
   }
 
+  const canonical = `/project-detail.html?id=${project.id}`;
+  const ogImage = project.images?.hero?.url ?? project.images?.thumbnail?.url;
+
   return (
+    <>
+      <SEO
+        title={`${project.title} — ${project.subtitle} | Hamza Kamran`}
+        description={project.description}
+        canonical={canonical}
+        ogImage={ogImage}
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: project.title,
+          headline: project.subtitle,
+          description: project.description,
+          url: `https://hamzakamran.tech${canonical}`,
+          keywords: project.techStack?.join(', '),
+          author: { '@type': 'Person', '@id': 'https://hamzakamran.tech/#person' },
+          ...(ogImage ? { image: ogImage.startsWith('http') ? ogImage : 'https://hamzakamran.tech' + ogImage } : {}),
+          ...(project.createdAt ? { dateCreated: project.createdAt } : {}),
+        }}
+      />
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -365,6 +393,7 @@ const ProjectDetail: React.FC = () => {
         )}
       </div>
     </motion.div>
+    </>
   );
 };
 

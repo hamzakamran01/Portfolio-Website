@@ -5,6 +5,7 @@
 .skillsSection {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh; /* iOS: 100vh overshoots the visible viewport */
   padding: var(--section-y) var(--gutter);
   overflow: hidden;
   color: var(--text-primary);

@@ -20,10 +20,10 @@ import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
   { id: 'projects', label: 'Work' },
+  { id: 'how-i-work', label: 'Process' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'zaaric-founder', label: 'Zaaric' },
-  { id: 'qimam-fellowship', label: 'Recognition' },
+  { id: 'recognition', label: 'Recognition' },
 ] as const;
 
 const SPY_IDS = [...NAV_LINKS.map(l => l.id), 'contact'];
