@@ -135,6 +135,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  /* A flex item defaults to min-width:auto, so it refuses to shrink below its
+     longest unbreakable string — a long email address then pushed straight out
+     through the card's right edge instead of wrapping. */
+  min-width: 0;
 }
 
 .infoContent h3 {
@@ -154,6 +158,8 @@
   line-height: 1.5;
   text-decoration: none;
   transition: color 0.2s ease;
+  /* Emails and URLs have no break opportunities of their own. */
+  overflow-wrap: anywhere;
 }
 
 .infoContent a:hover {

@@ -1,8 +1,6 @@
-import { useEffect, useRef, lazy, Suspense } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// three (~1 MB) loads as an async chunk so it never blocks the hero's first paint.
-const ParticleField = lazy(() => import('./ParticleField'));
 import HeroContent, { HeroContentHandle } from './HeroContent';
 import ScrollIndicator from './ScrollIndicator';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -182,13 +180,6 @@ const HeroSection: React.FC = () => {
 
   return (
     <section id="hero" ref={sectionRef} className={styles.hero} aria-label="Introduction">
-      {/* Layer 0: WebGL particle field */}
-      {!isMobile && !prefersReduced && (
-        <Suspense fallback={null}>
-          <ParticleField className={styles.particles} />
-        </Suspense>
-      )}
-
       {/* Layer 1: Radial vignette */}
       <div className={styles.vignette} aria-hidden="true" />
 

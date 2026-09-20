@@ -71,7 +71,6 @@ const HeroContent = forwardRef<HeroContentHandle, HeroContentProps>(({ isMobile 
         */}
         <h1
           className={styles.nameBlock}
-          data-cursor="text"
           aria-label="Hamza Kamran — AI engineer. I build production AI systems for US and EU founders."
         >
           <span className={styles.nameLine} ref={nameLine1Ref}>

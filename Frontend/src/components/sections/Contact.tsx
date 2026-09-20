@@ -34,7 +34,7 @@ const BUDGETS = ['Under $5k', '$5k - $15k', '$15k - $50k', '$50k+', 'Not sure ye
 
 const TIMELINES = ['ASAP', 'Within a month', '1 - 3 months', 'Just exploring'];
 
-const CONTACT_EMAIL = 'services@zaaric-ai.com';
+const CONTACT_EMAIL = 'hamzakamran843@gmail.com';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
