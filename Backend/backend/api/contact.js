@@ -10,19 +10,32 @@ const app = express();
 
 // Security Middleware
 app.use(helmet());
-const ALLOWED_ORIGINS = (process.env.FRONTEND_URL || 'https://hamzakamran.tech')
-  .split(',')
-  .map(o => o.trim().replace(/[/]+$/, ''))
-  .filter(Boolean);
+const normaliseOrigin = (o) => o.trim().replace(/[/]+$/, '');
+
+// The site's own origins are always allowed, and FRONTEND_URL only *adds* to
+// them. This used to be either/or: FRONTEND_URL replaced the default outright,
+// and because it still listed nothing but a long-dead preview domain, the live
+// site's own origin matched nothing and every submission died at the preflight.
+// Note both hosts — the apex 307-redirects to www, so www is what browsers
+// actually send.
+const DEFAULT_ORIGINS = ['https://www.hamzakamran.tech', 'https://hamzakamran.tech'];
+
+const ALLOWED_ORIGINS = [...new Set([
+  ...DEFAULT_ORIGINS,
+  ...(process.env.FRONTEND_URL || '').split(',').map(normaliseOrigin).filter(Boolean),
+])];
 
 app.use(cors({
   origin(origin, callback) {
     // Allow same-origin / server-to-server requests that send no Origin.
     if (!origin) return callback(null, true);
-    const normalised = origin.replace(/[/]+$/, '');
-    return ALLOWED_ORIGINS.includes(normalised)
-      ? callback(null, true)
-      : callback(new Error('Not allowed by CORS'));
+    const normalised = normaliseOrigin(origin);
+    // A disallowed origin is a policy decision, not a server fault. Passing an
+    // Error here sent it to the error middleware, so the preflight answered
+    // 500 "Something went wrong!" with no Access-Control-* headers — which
+    // made a misconfigured allowlist look like the backend was crashing.
+    // `false` omits the headers and lets the browser block it cleanly.
+    return callback(null, ALLOWED_ORIGINS.includes(normalised));
   },
   methods: ['POST'],
   allowedHeaders: ['Content-Type']
