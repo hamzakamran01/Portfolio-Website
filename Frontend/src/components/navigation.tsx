@@ -68,8 +68,7 @@ const Navigation: FC = () => {
   }, []);
 
   /* ── Navigate ───────────────────────────────────────────────────────── */
-  const goTo = useCallback((id: string) => {
-    setMenuOpen(false);
+  const scrollToId = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
 
@@ -77,13 +76,45 @@ const Navigation: FC = () => {
     const offset = -(parseFloat(getComputedStyle(document.documentElement).fontSize) * 5);
 
     if (lenis) {
-      lenis.scrollTo(el, { offset });
+      // Defensive: the drawer stops Lenis while it is open, and scrollTo is a
+      // no-op for as long as `isStopped` is set.
+      lenis.start();
+      lenis.scrollTo(el, { offset, force: true });
     } else {
       // Reduced motion, or Lenis not running: native jump. scroll-margin-top
       // in App.css keeps the heading clear of the fixed navbar.
       el.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
   }, []);
+
+  /**
+   * Why the drawer links are deferred rather than scrolling inline.
+   *
+   * goTo() used to call setMenuOpen(false) and then scroll in the same tick,
+   * and on mobile that did nothing at all. Both of the things the scroll needs
+   * are undone by the open drawer's effect *cleanup*, which React does not run
+   * until the close has been committed:
+   *   - `document.body.style.overflow = 'hidden'` blocks scrolling outright;
+   *   - `lenis.stop()` makes `lenis.scrollTo()` bail, because Lenis guards it
+   *     with `if (!this.isStopped && !this.isLocked || force)`.
+   * So every sidebar tap closed the drawer and went nowhere. Park the target
+   * instead, and scroll from an effect declared *after* the drawer effect —
+   * React runs effects in declaration order, so by then the cleanup has
+   * restored scrolling.
+   */
+  const pendingTarget = useRef<string | null>(null);
+
+  const goTo = useCallback(
+    (id: string) => {
+      if (menuOpen) {
+        pendingTarget.current = id;
+        setMenuOpen(false);
+        return;
+      }
+      scrollToId(id);
+    },
+    [menuOpen, scrollToId]
+  );
 
   /* ── Drawer: scroll lock, Escape, focus trap, focus restore ─────────── */
   useEffect(() => {
@@ -123,9 +154,22 @@ const Navigation: FC = () => {
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = overflow;
       getLenis()?.start();
-      previouslyFocused?.focus();
+      // preventScroll: restoring focus to the toggle must not yank the page
+      // back while the deferred nav scroll below is starting.
+      previouslyFocused?.focus({ preventScroll: true });
     };
   }, [menuOpen]);
+
+  /* Deferred drawer navigation — see goTo(). This effect is declared after the
+     drawer effect on purpose, so it runs once that cleanup has restored body
+     scrolling and restarted Lenis. */
+  useEffect(() => {
+    if (menuOpen) return;
+    const id = pendingTarget.current;
+    if (!id) return;
+    pendingTarget.current = null;
+    scrollToId(id);
+  }, [menuOpen, scrollToId]);
 
   const renderLink = (id: string, label: string, className: string) => (
     <a

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { FaQuoteLeft, FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6';
+import { FaArrowUpRightFromSquare, FaStar } from 'react-icons/fa6';
 import { SiUpwork } from 'react-icons/si';
 import SectionHeader from '../ui/SectionHeader';
 import { TESTIMONIALS, type Testimonial } from '../../data/testimonials';
@@ -18,6 +18,15 @@ import styles from './Testimonials.module.css';
  * without usable attribution render in a held-back treatment with an explicit
  * marker rather than being dressed up as confirmed client quotes. See
  * data/testimonials.ts.
+ *
+ * Layout notes — the quote is the hero.
+ * The previous card buried it: a small quote glyph, a source badge and a star
+ * row all competed above it, and the words themselves sat at body size. Here
+ * the running order is inverted. Provenance is demoted to a quiet rail at the
+ * top (index + platform), the quote itself is set at display scale as the only
+ * thing with real weight, and attribution closes the card beneath a gradient
+ * rule. Two reviews is a small number, so each card is built to carry weight
+ * on its own rather than relying on the count.
  */
 
 const initials = (name: string): string =>
@@ -42,20 +51,23 @@ const Card: React.FC<{ item: Testimonial; index: number }> = ({ item, index }) =
       className={`${styles.card} ${item.verified ? '' : styles.cardUnverified}`}
       onMouseMove={onMouseMove}
       variants={{
-        hidden: { opacity: 0, y: 28 },
+        hidden: { opacity: 0, y: 32 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
     >
+      {/* Gradient ring, cursor spotlight and hover sheen. All decorative. */}
+      <span className={styles.ring} aria-hidden="true" />
       <span className={styles.spotlight} aria-hidden="true" />
-      <span className={styles.watermark} aria-hidden="true">
-        &rdquo;
-      </span>
+      <span className={styles.sheen} aria-hidden="true" />
 
-      {/* Quote glyph and provenance share one row — the badge is the first
-          thing read, before the words it vouches for. */}
-      <div className={styles.topRow}>
-        <FaQuoteLeft className={styles.quoteMark} aria-hidden="true" />
+      {/* Provenance rail — deliberately quiet, above the quote. */}
+      <div className={styles.rail}>
+        <span className={styles.index} aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <span className={styles.railLine} aria-hidden="true" />
 
         {item.rating != null && (
           <span className={styles.rating} aria-label={`${item.rating} out of 5`}>
@@ -72,12 +84,19 @@ const Card: React.FC<{ item: Testimonial; index: number }> = ({ item, index }) =
         {item.source && (
           <span className={styles.source}>
             <SiUpwork className={styles.sourceIcon} aria-hidden="true" />
-            {item.source} review
+            {item.source}
           </span>
         )}
       </div>
 
+      {/* Oversized glyph sits behind the quote as texture, not as a label. */}
+      <span className={styles.watermark} aria-hidden="true">
+        &rdquo;
+      </span>
+
       <blockquote className={styles.quote}>{item.quote}</blockquote>
+
+      <span className={styles.rule} aria-hidden="true" />
 
       <figcaption className={styles.attribution}>
         {item.avatar ? (
@@ -85,8 +104,8 @@ const Card: React.FC<{ item: Testimonial; index: number }> = ({ item, index }) =
             className={styles.avatar}
             src={item.avatar}
             alt=""
-            width={44}
-            height={44}
+            width={48}
+            height={48}
             loading="lazy"
             decoding="async"
           />
@@ -100,11 +119,7 @@ const Card: React.FC<{ item: Testimonial; index: number }> = ({ item, index }) =
           <span className={styles.author}>{item.author}</span>
           <span className={styles.role}>
             {item.projectHref ? (
-              <a
-                className={styles.projectLink}
-                href={item.projectHref}
-                data-cursor="button"
-              >
+              <a className={styles.projectLink} href={item.projectHref} data-cursor="button">
                 {item.project}
               </a>
             ) : (
@@ -149,6 +164,7 @@ const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className={styles.section} aria-labelledby="testimonials-heading">
       <div className={styles.glow} aria-hidden="true" />
+      <div className={styles.gridLines} aria-hidden="true" />
 
       <div className={styles.inner}>
         <SectionHeader

@@ -5,6 +5,15 @@
   text-align: center;
   gap: var(--space-4);
   margin-bottom: clamp(3rem, 6vw, 5rem);
+  /* A column flex container sizes children to their content, so a wide child
+     overflows rather than shrinking. This bounds them all. */
+  max-width: 100%;
+  min-width: 0;
+}
+
+.header > * {
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* ── Eyebrow pill ─────────────────────────────────────────────────────── */
@@ -42,7 +51,12 @@
 /* ── Title ────────────────────────────────────────────────────────────── */
 .title {
   font-family: var(--font-display);
-  font-size: var(--fs-3xl);
+  /* Was var(--fs-3xl). Its floor is 2.25rem, and a single long uppercase word
+     in Syne at 36px ("RECOGNITION") is wider than the content box of a 360px
+     phone once --gutter takes its 20px a side — so "RECOGNITION & LEADERSHIP"
+     ran past the container and was clipped by .section's overflow: hidden.
+     Same 3.25rem ceiling as before; this one keeps falling below 480px. */
+  font-size: clamp(1.75rem, 1.1rem + 3.2vw, 3.25rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0.01em;
@@ -52,7 +66,12 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  max-width: 20ch;
+  /* 20ch alone is ~2x a phone's content box, so it never actually constrained
+     anything on mobile. Cap against the container as well. */
+  max-width: min(20ch, 100%);
+  /* Last-resort guarantee: no title can push past its column at any width. */
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 /* ── Accent rule ──────────────────────────────────────────────────────── */
